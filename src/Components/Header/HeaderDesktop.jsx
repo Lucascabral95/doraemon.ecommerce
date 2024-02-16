@@ -15,7 +15,7 @@ export default function HeaderDesktop() {
     })
     const [activeSearch, setActiveSearch] = useState(false)
     const [articuloBuscado, setArticuloBuscado] = useState("")
-    const { cart, setCart, cantidadArticulossss, setCantidadArticulossss } = storeZustand()
+    const { cart, cantidadArticulossss, setCantidadArticulossss } = storeZustand()
 
     const handleCategoria = (categoria) => {
         setActiveCategoria({
@@ -48,7 +48,7 @@ export default function HeaderDesktop() {
     useEffect(() => {
         const nuevaCantidad = cart?.reduce((acc, item) => acc + item?.cantidad, 0);
         setCantidadArticulossss(nuevaCantidad);
-    }, [cart]); 
+    }, [cart]);
 
     return (
         <div className="header-desktop">
@@ -278,7 +278,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">FIGURAS</p>
                                         </Link>
                                         <Link to={"/categoria/AireLibre"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">AIRE LIBRE</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>AIRE LIBRE</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -300,7 +300,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">BLUE RAY</p>
                                         </Link>
                                         <Link to={"/categoria/PACK"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">PACK</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>PACK</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -323,7 +323,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">MOCHILAS Y BOLSAS</p>
                                         </Link>
                                         <Link to={"/categoria/Libro"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">LIBROS DE ACTIVIDADES</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>LIBROS DE ACTIVIDADES</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">ACCESORIOS Y COMPLEMENTOS</p>
                                         </Link>
                                         <Link to={"/categoria/Disfraz"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">DISFRACES</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>DISFRACES</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -372,7 +372,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">BAÑO</p>
                                         </Link>
                                         <Link to={"/categoria/Otros"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">OTROS</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>OTROS</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -408,7 +408,7 @@ export default function HeaderDesktop() {
                                             <p className="texto">DE 8 A 11 AÑOS</p>
                                         </Link>
                                         <Link to={"/categoria/ADULTOS"} onClick={() => setActiveSidebar(false)}>
-                                            <p className="texto">ADULTOS</p>
+                                            <p className="texto" style={{ marginBottom: "0px" }}>ADULTOS</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -420,7 +420,15 @@ export default function HeaderDesktop() {
 
             <div className="fondo-buscador" style={{ display: activeSearch ? "block" : "none" }}>
                 <div className="busqueda">
-                    <input id="texto-busqueda" type="text" required placeholder="Buscar producto" />
+                    <input
+                        id="texto-busqueda"
+                        type="text"
+                        required
+                        placeholder="Buscar producto"
+                        value={articuloBuscado}
+                        onChange={busqueda}
+                        onKeyPress={handleKeyPress}
+                    />
                     <div className="con-lupa">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-6 h-6 md:w-5 md:h-5 text-primary-300" width="24" height="24" fill="#009FE3" viewBox="0 0 22.4 22.4" overflow="visible">
                             <path className="lupa" d="M22.4 21l-4.8-4.8c1.4-1.7 2.2-3.9 2.2-6.3 0-5.5-4.4-9.9-9.9-9.9S0 4.4 0 9.9s4.4 9.9 9.9 9.9c2.4 0 4.5-.8 6.3-2.2l4.8 4.8 1.4-1.4zM9.9 17.8C5.5 17.8 2 14.3 2 9.9S5.5 2 9.9 2s7.9 3.5 7.9 7.9-3.5 7.9-7.9 7.9z"></path>
