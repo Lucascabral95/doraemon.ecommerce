@@ -1,0 +1,99 @@
+[
+    {
+        "estrellas": 5,
+        "nombreApellido": "Mauro V.",
+        "titulo": "Los regalos me han gustado.",
+        "comentario": "Los regalos de cortesía me han gustado. Se podría mejorar la página web en cuanto a optimización", 
+        "fecha": "18/12/2023",
+        "respuestaDoraemon": "¡Gracias por tu comentario! Tus comentarios son muy apreciados y ayudan a nuestro equipo a mejorar."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Carolina J..",
+        "titulo": "Muy profesional.",
+        "comentario": "Muy profesional. Todo rápido y eficaz.", 
+        "fecha": "17/12/2023",
+        "respuestaDoraemon": "Estamos muy felices de escuchar que has tenido una grata experiencia con nosotros."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Esther D.",
+        "titulo": "Muy rápido y buen servicio.",
+        "comentario": "Los regalos de cortesía me han gustado. Se podría mejorar la página web en cuanto a optimización", 
+        "fecha": "14/12/2023",
+        "respuestaDoraemon": "Muchas gracias por compartir tu opinión sobre nuestro servicio."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Ana O.",
+        "titulo": "Pedido entregado super rapido y con amabilidad.",
+        "comentario": "Pedido entregado súper rápido y con tres extras con los que no contaba. Muy contenta con mi compra.", 
+        "fecha": "06/01/2024",
+        "respuestaDoraemon": "Muchas gracias por tu respuesta positiva. Estamos encantados de escucharte y de que hayas disfrutado de la experiencia."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Mauro V.",
+        "titulo": "Calidad y servicio de 10.",
+        "comentario": "Calidad y servicio de 10.", 
+        "fecha": "01/06/2024",
+        "respuestaDoraemon": "Muchas gracias por tus comentarios. Nos alegra saber que nuestro equipo te proporcionó un servicio excelente."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Pedro P.",
+        "titulo": "Envío rápido.",
+        "comentario": "Envío rápido, (ponía que llegaría el jueves 4 y llegó el viernes 5, pero llegó antes de reyes). Los artículos creo que estaban a buen precio.", 
+        "fecha": "18/12/2023",
+        "respuestaDoraemon": "Estamos muy agradecidos de que te hayas tomado el tiempo de compartir tu opinión con nosotros."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Ana O.",
+        "titulo": "Pedido entregado super rapido y con amabilidad.",
+        "comentario": "Pedido entregado súper rápido y con tres extras con los que no contaba. Muy contenta con mi compra.", 
+        "fecha": "06/01/2024",
+        "respuestaDoraemon": "Muchas gracias por tu respuesta positiva. Estamos encantados de escucharte y de que hayas disfrutado de la experiencia."
+    },
+
+    {
+        "estrellas": 5,
+        "nombreApellido": "Cristina D.",
+        "titulo": "Todo perfecto",
+        "comentario": "Siempre que pido todo perfecto. Y además siempre con detalles en cada pedido", 
+        "fecha": "05/01/2024",
+        "respuestaDoraemon": "Gracias por tus amables palabras. Te agradecemos tu comentario. Es un placer para nosotros ofrecer el mejor servicio posible."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Marta T.",
+        "titulo": "Rapidez,todo muy bonito",
+        "comentario": "Rapidez,todo muy bonito", 
+        "fecha": "30/12/2023",
+        "respuestaDoraemon": "Estamos muy felices de escuchar que has tenido una grata experiencia con nosotros."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Carlos O.",
+        "titulo": "Envío rapido",
+        "comentario": "Envío rapido", 
+        "fecha": "30/12/2023",
+        "respuestaDoraemon": "Muchas gracias por compartir tu opinión sobre nuestro servicio."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Lucia R.",
+        "titulo": "Fácil compra.",
+        "comentario": "Fácil compra, envío rápido, buen seguimiento, bien empaquetado. El artículo no lo puedo abrir porque es para un regalo, espero que su estado sea correcto.", 
+        "fecha": "12/12/2023",
+        "respuestaDoraemon": "Gracias por tus amables palabras. Te agradecemos tu comentario. Es un placer para nosotros ofrecer el mejor servicio posible."
+    },
+    {
+        "estrellas": 5,
+        "nombreApellido": "Paloma M.",
+        "titulo": "No me ha llegado el pedido",
+        "comentario": "No me ha llegado el pedido y aparece como entregado.", 
+        "fecha": "20/12/2023",
+        "respuestaDoraemon": "Su pedido consta como entregado el 23/12, por favor si esto no es correcto póngase en contacto con nosotros para que podamos solucionarlo."
+    }
+]

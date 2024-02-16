@@ -1,0 +1,151 @@
+.cupones {
+    width: 100%;
+    margin: auto;
+    background-color: white;
+    padding: 0px 24px;
+    padding-bottom: 2%;
+
+    .cup {
+        margin: auto;
+        max-width: 1488px;
+
+        .contenedor-cupones {
+            margin: 0px 0px 48px;
+            padding: 32px 0px 0px;
+
+            .title {
+                text-align: center;
+                font-size: 72px;
+                font-family: "Sniglet", sans-serif;
+                font-weight: 800;
+                color: #009FE3;
+            }
+        }
+
+        .conte {
+            padding: 32px 0px 80px;
+            padding-bottom: 7%;
+            width: 100%;
+
+            .contenedor-resto {
+                margin: 0px 0px 100px;
+                padding: 12px 0px;
+
+                .sin-cupones {
+                    background-color: #FEF3C7;
+                    border: solid 1px #f59f0b83;
+                    display: flex;
+                    align-items: center;
+                    height: 74px;
+                    padding-left: 20px;
+
+                    .sin-cupones-texto {
+                        font-size: 15px;
+                        margin: 0px 0px 8px;
+                        color: #F59E0B;
+                        transform: translateY(4px);
+                    }
+                }
+
+                .texto-extra{
+                    margin-top: 34px;
+                    .abono{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+
+        .volver {
+            .volver-texto {
+                font-size: 16px;
+                color: #009FE3;
+
+                &:hover {
+                    color: #00569C;
+                }
+            }
+
+        }
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1536px) {
+    .cupones {
+        .cup {
+            max-width: 1232px;
+
+            .conte {
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .cupones {
+
+        .cup {
+            max-width: 970px;
+
+            .conte {
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1223px) {
+    .cupones {
+
+        .cup {
+            max-width: 720px;
+
+            .conte {
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+    .cupones {
+
+        .cup {
+            max-width: 592px;
+
+            .conte {
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 639px) {
+    .cupones {
+        padding-top: 20px;
+
+        .cup {
+            max-width: 592px;
+
+            .contenedor-cupones {
+                margin: 0px 0px 48px;
+
+                .title {
+                    font-size: 36px;
+                }
+            }
+
+            .conte {
+                margin-top: -20px;
+                padding-bottom: 14%;
+
+                .contenedor-resto {
+                    // margin: 0px 0px 100px;
+                    margin: 0px 0px 50px;
+                    padding: 12px 0px;
+                }
+            }
+        }
+    }
+}

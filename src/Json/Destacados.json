@@ -1,0 +1,58 @@
+[
+    {
+        "texto": "Mochila Doraemon 3D preescolar",
+        "imagen": "https://doraemon.lukinternacional.com/1442-home_default/mochila-preescolar-doraemon.jpg",
+        "descripcion": "Mochila Doraemon 3D",
+        "precio": "19,95 €",
+        "link": "/detalle/Mochila Doraemon 3D preescolar"
+    },
+    {
+        "texto": "Peluche velboa 40 cm Doraemon Dorayaki",
+        "imagen": "https://doraemon.lukinternacional.com/1582-home_default/peluche-velboa-40-cm-doraemon-dorayaki.jpg",
+        "descripcion": "Peluche velboa 40 cm",
+        "precio": "22,95 €",
+        "link": "/detalle/Peluche velboa 40 cm Doraemon Dorayaki"
+    },
+    {
+        "texto": "Peluche velboa 28 cm Doraemon Gorrocóptero",
+        "imagen": "https://doraemon.lukinternacional.com/1585-home_default/peluche-doraemon-28-cm-gorrocoptero.jpg",
+        "descripcion": "Peluche velboa 28 cm",
+        "precio": "16,95 €",
+        "link": "/detalle/Peluche velboa 28 cm Doreemon Gorrocóptero"
+    },
+    {
+        "texto": "Juego de mesa Glutton Doraemon Game",
+        "imagen": "https://doraemon.lukinternacional.com/1176-home_default/juego-mesa-doraemon-gloton.jpg",
+        "descripcion": "Mochila Doraemon 3D",
+        "precio": "36,95 €",
+        "link": "/detalle/Juego de mesa Glutton Doraemon Game"
+    },
+    {
+        "texto": "Juego Doraemon Wall Game",
+        "imagen": "https://doraemon.lukinternacional.com/1451-home_default/juguete-doraemon-wall-game.jpg",
+        "descripcion": "Wall Game Doraemon",
+        "precio": "25,95 €",
+        "link": "/detalle/Juego Doraemon Wall Game"
+    },
+    {
+        "texto": "Aquabeads Doraemon",
+        "imagen": "https://doraemon.lukinternacional.com/1348-home_default/aquabeads-doraemon.jpg",
+        "descripcion": "Aquabeads Doraemon",
+        "precio": "16,95 €",
+        "link": "/detalle/Aquabeads Doraemon"
+    },
+    {
+        "texto": "Pack de 3 tazas Doraemon",
+        "imagen": "https://doraemon.lukinternacional.com/1123-home_default/pack-3-tazas-doraemon.jpg",
+        "descripcion": "Pack de 3 tazas Doraemon",
+        "precio": "29,95 €",
+        "link": "/detalle/Pack de 3 tazas Doraemon"
+    },
+    {
+        "texto": "Disfraz Kids Doraemon",
+        "imagen": "https://doraemon.lukinternacional.com/1298-home_default/disfraz-kids-doraemon.jpg",
+        "descripcion": "Disfraz Kids Doraemon",
+        "precio": "24,95 €",
+        "link": "/detalle/Disfraz Kids Doraemon"
+    }
+]
