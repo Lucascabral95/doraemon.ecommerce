@@ -1,0 +1,166 @@
+.compras-realizadas {
+
+    .compras-realizadas-title {
+        text-align: center;
+        color: #009fe3;
+        font-family: "Sniglet", sans-serif;
+        font-size: 72px;
+        font-weight: 700;
+    }
+
+    .tabla-de-compras {
+        margin-top: 4%;
+
+        .link-detalle-compra {
+            color: #009fe3;
+
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}
+
+@media (max-width: 638px) {
+    .compras-realizadas {
+
+        .compras-realizadas-title {
+            text-align: center;
+            color: #009fe3;
+            font-family: "Sniglet", sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 12px 0px 40px 0px;
+        }
+
+        .a-evaluar {
+            display: block !important;
+            display: flex;
+            flex-wrap: wrap;
+            column-count: 2;
+
+            .contenedor-a-evaluar {
+                padding: 10px;
+                width: 100%;
+                background-color: #009fe3;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+
+                .englobado {
+
+                    .numero-orden {
+                        font-weight: 700;
+                        font-size: 3vw;
+                        transform: translateY(6px);
+                        margin-bottom: 0px;
+                        margin-bottom: 22px;
+                    }
+
+                    .texto-extra {
+                        margin-bottom: 0px;
+                        font-size: 15px;
+                        color: white;
+                        font-weight: 600;
+                        margin: 6px 0px;
+                    }
+
+                    .contenedor-boton {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .boton-pedido {
+                            background-color: transparent;
+                            border: none;
+                            border-radius: 30px;
+                            background-color: #F3F4F6;
+                            color: #009fe3;
+                            font-size: 14px;
+                            font-weight: 700;
+                            box-shadow: 4px 4px 0px #00569C;
+                            padding: 9.6px 38.4px;
+                            margin-top: 18px;
+                            margin-bottom: 8px;
+                            text-align: center;
+
+                            &:hover {
+                                background-color: #00569C;
+                                color: white;
+                                transition: background-color 0.3s ease, color 0.3s ease;
+                            }
+
+                            &:disabled {
+                                opacity: 0.5;
+                                cursor: not-allowed;
+                            }
+
+                            &:focus {
+                                box-shadow: 0 0 0 3px #009fe3;
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .compras-realizadas {
+
+        .compras-realizadas-title {
+            margin: 10px 0px 40px 0px;
+        }
+
+        .a-evaluar {
+            column-count: 1;
+
+            .contenedor-a-evaluar {
+                padding: 10px;
+                width: 100%;
+                background-color: #009fe3;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+
+                .englobado {
+
+                    .numero-orden {
+                        font-weight: 700;
+                        font-size: 24px;
+                        transform: translateY(6px);
+                        margin-bottom: 0px;
+                        margin-bottom: 22px;
+                    }
+
+                    .texto-extra {
+                        font-size: 18px;
+                        margin: 6px 0px;
+                    }
+
+                    .contenedor-boton {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .boton-pedido {
+                            font-size: 16px;
+                            font-weight: 700;
+                            padding: 9.6px 38.4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

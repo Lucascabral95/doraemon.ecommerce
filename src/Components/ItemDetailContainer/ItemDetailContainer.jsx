@@ -35,9 +35,9 @@ export default function ItemDetailContainer() {
     }, [producto])
 
     useEffect(() => {
-        const nuevaCantidad = cart.reduce((acc, item) => acc + item.cantidad, 0);
+        const nuevaCantidad = cart?.reduce((acc, item) => acc + item.cantidad, 0);
         setCantidadArticulossss(nuevaCantidad);
-    }, [cart, cantidadArticulossss]); 
+    }, [cart, cantidadArticulossss]);  
 
     // guardar imagenes favoritas en localStorage
     const agregarAFavoritos = (idProduct) => {

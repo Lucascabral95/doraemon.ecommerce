@@ -9,7 +9,7 @@ import LoginHecho from "./LoginHecho.jsx";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { acceso, setAcceso } = storeZustand()
+  const { acceso, setAcceso, setEmailDeInicioDeSesion } = storeZustand()
 
   useEffect(() => {
     const auth = getAuth();
@@ -30,15 +30,19 @@ export default function Login() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("Inicio de sesión exitoso");
         localStorage.setItem("LogueoDeSesion", true)
+        const emailDeIngreso = {
+          email: email
+        }
+        localStorage.setItem("EmailDeInicioDeSesion", JSON.stringify(emailDeIngreso))
+        setEmailDeInicioDeSesion(email)
 
         const datosPersonales = {
           email: email,
           password: password
         }
+        setUsuarioEnSesion(datosPersonales.email)
         localStorage.setItem("datosMios", JSON.stringify(datosPersonales))
-
         console.log(`Acceso: ${acceso}`);
       })
       .catch((error) => {
@@ -97,7 +101,7 @@ export default function Login() {
           </div>
         </div>
       )}
-      
+
     </>
   );
 }

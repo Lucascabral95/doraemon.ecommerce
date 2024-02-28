@@ -5,7 +5,7 @@ import Cookies from "./LoginSecciones/Cookies.jsx";
 import storeZustand from "../zustand.jsx";
 
 export default function LoginHecho() {
-    const { acceso, activeModal, setActiveModal } = storeZustand()
+    const { acceso, setActiveModal, EmailDeInicioDeSesion } = storeZustand()
 
     const cerrarSesion = (e) => {
         e.preventDefault();
@@ -14,6 +14,9 @@ export default function LoginHecho() {
             .then(() => {
                 localStorage.setItem("LogueoDeSesion", false)
                 localStorage.removeItem("datosMios")
+
+                localStorage.removeItem("carritoDoraemon")
+
                 console.log("Deslogueo exitoso.");
             })
             .catch((error) => {
@@ -22,7 +25,7 @@ export default function LoginHecho() {
     };
 
     const abrirModal = () => {
-      setActiveModal(true)
+        setActiveModal(true)
     }
 
     return (
@@ -37,7 +40,7 @@ export default function LoginHecho() {
 
                         <div className="cont">
                             <div className="boton-info-personal">
-                                <Link to={"/"}>
+                                <Link to={"/datos/personales"}>
                                     <span> DATOS PERSONALES </span>
                                 </Link>
                             </div>
@@ -49,7 +52,7 @@ export default function LoginHecho() {
                             </div>
 
                             <div className="boton-info-personal">
-                                <Link to={"/pedidos"}>
+                                <Link to={"/comprasrealizadas"}>
                                     <span> MIS PEDIDOS </span>
                                 </Link>
                             </div>
@@ -67,7 +70,7 @@ export default function LoginHecho() {
                             </div>
 
                             <div className="boton-info-personal" onClick={abrirModal}>
-                                    <span> TU CONFIGURACIÓN DE COOKIES </span>
+                                <span> TU CONFIGURACIÓN DE COOKIES </span>
                             </div>
 
                             <div className="boton-info-personal">

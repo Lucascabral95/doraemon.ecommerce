@@ -8,7 +8,7 @@ import { FaTimesCircle } from "react-icons/fa";
 import CuerpoVacio from "./CuerpoVacio.jsx"
 
 export default function Wishlist() {
-    const { wishList, setWishList, cart, setCart } = storeZustand()
+    const { wishList, setWishList, cart, setCart, cantidadArticulossss } = storeZustand()
     const [articulosSeleccionados, setArticulosSeleccionados] = useState([])
 
     const precioTotalWishList = wishList.reduce((total, producto) => total + producto.precio, 0);
@@ -118,7 +118,7 @@ export default function Wishlist() {
                                     <thead >
                                         <tr>
                                             <th style={{ color: "#4b5563" }}>Seleccion</th>
-                                            <th style={{ color: "#4b5563" }}></th>
+                                            <th style={{ color: "#4b5563" }}>Producto</th>
                                             <th style={{ color: "#4b5563" }}>Artículos</th>
                                             <th style={{ color: "#4b5563" }}>Precio</th>
                                             <th style={{ color: "#4b5563" }}>Cantidad</th>

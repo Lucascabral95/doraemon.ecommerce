@@ -1,0 +1,144 @@
+.detalle-compras {
+
+    .title-title {
+        .title {
+            text-align: center;
+            color: black;
+            font-size: 72px;
+            color: #009fe3;
+            font-family: "Sniglet", sans-serif;
+            font-weight: 700;
+        }
+    }
+
+    table {
+        width: 90%;
+        margin: auto;
+        background-color: white;
+        margin-bottom: 32px;
+
+        tr {
+            .contenedor-de-tabla {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px;
+
+                img {
+                    width: 160px;
+                    height: 160px;
+                }
+            }
+
+            .link-de-tabla {
+                color: #009fe3;
+
+                &:hover {
+                    color: #0B71B4;
+                }
+            }
+        }
+    }
+
+    .hola {
+
+        .hola-uno {
+            p {
+                text-align: center;
+                color: black;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 0px;
+            }
+        }
+
+        .hola-dos {
+            p {
+                margin-bottom: 0px;
+                text-align: center;
+                color: black;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .monto-total {
+
+        .div-div-monto-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .numero-pedido {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .orden-pedido {
+                    .pedido-texto {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: black;
+                        margin: 0px 0px 0px 0px;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .monto-total {
+
+                .monto {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .monto-letra {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: black;
+                        margin: 0px 0px 0px 0px;
+                        text-align: center;
+                    }
+
+                    .monto-numero {
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: black;
+                        margin: 0px 0px 0px 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 639px) {
+    .detalle-compras {
+
+        .title-title {
+
+            .monto-total {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .div-div-monto-total {
+                    display: block;
+
+                    .monto-total {
+                        display: block;
+
+                        .monto {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,9 @@
 import "./Direccion.scss"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import storeZustand from "../../zustand.jsx";
 import CardDirection from "./CardDirection.jsx";
 
 export default function Direccion() {
-    const { miDireccionCompleta } = storeZustand()
     const [direccionCompleta, setDireccionCompleta] = useState({
         alias: "",
         nombre: "",
@@ -17,6 +16,7 @@ export default function Direccion() {
         provincia: "Buenos Aires",
         telefono: "",
     })
+    const { miDireccionCompleta } = storeZustand()
 
     const provinciasArgentinas = [
         "Buenos Aires",
@@ -141,14 +141,12 @@ export default function Direccion() {
             ...direccionCompleta,
             [e.target.name]: e.target.value
         })
-        console.log(`Pais momentaneamente seleccionado: ${direccionCompleta.pais}`);
     }
 
     const handleSubmit = (e) => {
         window.location.reload()
         e.preventDefault()
         localStorage.setItem("miDireccionCompleta", JSON.stringify(direccionCompleta))
-        console.log(`Los datos de mi direccion completa son: ${direccionCompleta}`);
     }
 
     return (

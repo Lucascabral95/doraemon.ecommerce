@@ -3,7 +3,7 @@ import { FaRegTrashAlt, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../Firebase-config.jsx";
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc, getDocs } from "firebase/firestore"
 import CuerpoVacio from "../Login/LoginSecciones/CuerpoVacio.jsx";
 import storeZustand from "../zustand.jsx";
 import Swal from "sweetalert2";
@@ -13,6 +13,7 @@ export default function Checkout() {
     const [cart, setCart] = useState([]);
     const { setCantidadArticulossss } = storeZustand()
     const [loadingSkeleton, setLoadingSkeleton] = useState(false)
+    const [datas, setDatas] = useState([]);
 
     const total = cart?.reduce((acc, item) => acc + item?.precio * item?.cantidad, 0);
     const cantidadArticulos = cart.reduce((acc, item) => acc + item.cantidad, 0);
@@ -21,34 +22,6 @@ export default function Checkout() {
         const nuevaCantidad = cart.reduce((acc, item) => acc + item.cantidad, 0);
         setCantidadArticulossss(nuevaCantidad);
     }, [cart]);
-
-    const handleCrearOrden = async () => {
-        const ordersRef = collection(db, "ordenes")
-
-        const datosPersonales = {
-            nombre: "Lucas",
-            apellido: " Cabral",
-            edad: 28
-        }
-
-        const contenido = {
-            carrito: cart,
-            datosDelCliente: datosPersonales,
-            fecha: new Date,
-            total: total
-        }
-
-        addDoc(ordersRef, contenido)
-            .then((doc) => {
-                console.log(doc.id)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Compra Exitosa',
-                    text: '¡Tu compra ha sido procesada exitosamente!',
-                    confirmButtonText: 'OK'
-                });
-            })
-    };
 
     const aumentarCantidad = (id) => {
         const updatedCart = cart.map(item => {
@@ -153,6 +126,23 @@ export default function Checkout() {
         }, 1000);
     }, [cart])
 
+    useEffect(() => {
+        async function obtenerDatos() {
+            const querySnapshot = await getDocs(collection(db, 'ordenes'));
+            const dataArr = [];
+            querySnapshot.forEach((doc) => {
+                dataArr.push({ id: doc.id, ...doc.data() });
+            });
+            setDatas(dataArr);
+        }
+        obtenerDatos();
+    }, []);
+
+    const definirCarrito = () => {
+        window.location.reload();
+        window.location.href = '/checkout/fin';
+    }
+
     return (
         <>
             {cart.length === 0 ? (
@@ -164,7 +154,7 @@ export default function Checkout() {
                     textoAbono="Agregá artículos al carrito para poder visualizarlos por acá."
                 />
             ) : (
-                <div className="productosBuscados checkout" style={{ padding:'0px 0px 0px 0px' }}>
+                <div className="productosBuscados checkout" style={{ padding: '0px 0px 0px 0px' }}>
                     <div className="contenedor-card">
                         <div className="categorias">
                             <span>INICIO</span>
@@ -175,14 +165,6 @@ export default function Checkout() {
                             </div>
                             <div className="contenedor-compra">
                                 <div className="contenedor-articulos">
-
-
-
-
-
-
-
-
 
                                     {!loadingSkeleton ? (
                                         cart.map((item, index) => (
@@ -324,9 +306,6 @@ export default function Checkout() {
                                         ))
                                     )}
 
-
-
-
                                     {!loadingSkeleton ? (
                                         <div className="articulos">
                                             <div className="contenedor-imagen d-flex">
@@ -453,11 +432,6 @@ export default function Checkout() {
                                         </div>
                                     )}
 
-
-
-
-
-
                                     <div className="d-flex justify-content-center align-items-center">
                                         <div className="boton-ver-mas-productos">
                                             <Link to={"/"}>
@@ -502,7 +476,10 @@ export default function Checkout() {
                                         <button className="boton-anadir">AÑADIR</button>
                                     </div>
                                     <div className="contenedor-boton-comprar">
-                                        <button className="boton-comprar" onClick={handleCrearOrden}>COMPRAR</button>
+                                        {/* <Link onClick={() => window.location.reload()} to={"/checkout/fin"}>
+                                            <button className="boton-comprar">COMPRAR</button>
+                                        </Link> */}
+                                        <button onClick={definirCarrito} className="boton-comprar">COMPRAR</button>
                                     </div>
                                 </div>
                             </div>

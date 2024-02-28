@@ -25,6 +25,11 @@ import CondicionesDeUso from "../Components/Footer/SectionsFooter/CondicionesDeU
 import NotaLegal from "../Components/Footer/SectionsFooter/NotaLegal.jsx";
 import PoliticaDeCookies from "../Components/Footer/SectionsFooter/PoliticaDeCookies.jsx";
 import PoliticaDePrivacidad from "../Components/Footer/SectionsFooter/PoliticaDePrivacidad.jsx";
+import CardDirection from "../Components/Login/LoginSecciones/CardDirection.jsx";
+import CheckoutFin from "../Components/Checkout/CheckoutFin.jsx";
+import ComprasRealizadas from "../Components/Compras/ComprasRealizadas.jsx";
+import DatosPersonales from "../Components/Login/LoginSecciones/DatosPersonajes.jsx";
+import DetalleCompras from "../Components/Compras/DetalleCompras.jsx";
 
 export default function Body() {
 
@@ -47,6 +52,7 @@ export default function Body() {
                 <Route path={"/detalle/:producto"} element={<ItemDetailContainer />} />
                 <Route path={"/producto/:producto"} element={<ProductosBuscados />} />
                 <Route path={"/checkout"} element={<Checkout />} />
+                <Route path={"/checkout/fin"} element={<CheckoutFin />} />
                 <Route path={"/register"} element={<Register />} />
                 <Route path={"/login"} element={<Login />} />
                 <Route path={"/direccion"} element={<Direccion />} />
@@ -62,6 +68,9 @@ export default function Body() {
                 <Route path={"/footer/politica-de-privacidad"} element={<PoliticaDePrivacidad />} />
                 <Route path={"/footer/politica-de-cookies"} element={<PoliticaDeCookies />} />
                 <Route path={"/footer/nota-legal"} element={<NotaLegal />} />
+                <Route path={"/datos/personales"} element={<DatosPersonales />} />
+                <Route path={"/comprasRealizadas"} element={<ComprasRealizadas />} />
+                <Route path={"/detalle/compra/:id"} element={<DetalleCompras />} />
 
             </Routes>
 
