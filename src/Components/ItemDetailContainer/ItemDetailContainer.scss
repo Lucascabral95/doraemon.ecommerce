@@ -92,7 +92,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-evenly;
-                    
+
                     img {
                         width: 100px;
                         height: 100px;
@@ -659,8 +659,45 @@
     .original {
         margin-bottom: 11%;
 
-        .infooooo {
+        .itemDetailContainer {
+            .contenedor-detalle {
+                .contenedor-imagen-big-data {
 
+                    .contenedor-imagen {
+                        .imagenes-extras {
+                            display: flex;
+                            flex-wrap: wrap;
+                            column-count: 2;
+                            
+                            img {
+                                width: 100px;
+                                height: 100px;
+                            }
+                        }
+                    }
+
+                    .contenedor-big-data {
+                        .titulo-producto {
+                            span {
+                                font-size: 24px;
+                                line-height: 1px;
+                            }
+                        }
+
+                        .detalles-producto {
+                            .descripcion-producto {
+
+                                span {
+                                    line-height: -20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .infooooo {
             .mas-informacion-dos {
                 margin-top: 10%;
                 max-width: 1232px;

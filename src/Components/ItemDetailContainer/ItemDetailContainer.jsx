@@ -39,7 +39,6 @@ export default function ItemDetailContainer() {
         setCantidadArticulossss(nuevaCantidad);
     }, [cart, cantidadArticulossss]);  
 
-    // guardar imagenes favoritas en localStorage
     const agregarAFavoritos = (idProduct) => {
         const buscarProducto = Articulos.find(a => a.id === idProduct);
         const productoYaEnLista = wishList.some(item => item.id === idProduct);
@@ -52,7 +51,6 @@ export default function ItemDetailContainer() {
         }
     };
 
-    // agregar producto al carrito de compras localStorage
     const agregarAlCarrito = (id) => {
         const articuloSeleccionado = Articulos.find(articulo => articulo.id === id);
         const articuloEnCart = cart.find(a => a.id === id);
@@ -222,54 +220,6 @@ export default function ItemDetailContainer() {
                     ))}
                 </div>
             </div>
-
-            {/* {buscadorTexto.map((item, index) => (
-                <div className="infooooo" key={index}>
-                    <div className="mas-informacion">
-                        <div className="titulo">
-                            {buscadorInformacion === "" ? (
-                                <>
-                                <h2 className="puede-interesarte-titulo"> TAMBIÉN PODRÍA INTERESARTE </h2>
-                                    <div className="puede-interesarte">
-                                        {primerosCuatroElementos.map((item, index) => (
-                                            <div key={index} className="contenedor-puede-interesarte">
-                                                <div className="contenedor-mayor">
-
-                                                    <div className="imagen-interesante">
-                                                        <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                            <img src={item.imagen} alt={item.descripcion} />
-                                                        </Link>
-                                                    </div>
-
-                                                    <div className="texto-texto">
-                                                        <div>
-                                                            <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                                <p className="textt"> {item.texto} </p>
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="precio-precio">
-                                                        <div className="precio">
-                                                            <p> {item.precio} </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </>
-                            ) : (
-                                <h2 className="mas-informacion-titulo"> más información </h2>
-                            )}
-                        </div>
-                        <div className="texto">
-                            <span style={{ whiteSpace: 'pre-line' }} className="mas-informacion-texto"> {item.informacion} </span>
-                        </div>
-                    </div>
-                </div>
-            ))} */}
 
             {buscadorInformacion === "" ? (
                 null

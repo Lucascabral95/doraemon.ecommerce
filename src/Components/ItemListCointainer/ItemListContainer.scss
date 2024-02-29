@@ -131,8 +131,8 @@
                         text-align: center;
                     }
 
-                    &:hover{
-                        span{
+                    &:hover {
+                        span {
                             color: #00569C;
                         }
                     }
@@ -228,13 +228,14 @@
 
             .filtro-div {
                 z-index: 100;
-
+                
                 span {
                     font-size: 16px;
                     color: black;
                 }
-
+                
                 button {
+                    cursor: pointer;
                     border: none;
                     background-color: transparent;
                     font-size: 16px;
@@ -259,10 +260,35 @@
                     margin: 0px 8px;
                     padding: 0px 8px;
                     font-weight: 600;
-
-                    // font-family: "Source Code Pro", sans-serif;
                     &:hover {
                         border: none;
+                    }
+                }
+            }
+        }
+
+        .contenedor-de-filtros {
+            width: 224px;
+            height: auto;
+            background-color: #FFFFFF;
+            margin: 8px 0px 0px;
+            position: absolute;
+            transform: translateY(20px);
+            z-index: 1001;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            border: 0 solid #e5e7eb;
+
+            .cont-filtros {
+                padding: 20px 28px;
+
+                p {
+                    cursor: pointer;
+                    font-size: 16px;
+                    margin-bottom: 12px;
+
+                    &:hover {
+                        color: #00569C;
                     }
                 }
             }

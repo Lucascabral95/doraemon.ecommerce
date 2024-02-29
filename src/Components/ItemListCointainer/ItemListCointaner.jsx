@@ -16,6 +16,7 @@ export default function ItemListContainer() {
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
     const [carritoDeCompras, setCarritoDeCompras] = useState([]);
     const { cart, setCantidadArticulossss } = storeZustand()
+    const [mostrarFiltros, setMostrarFiltros] = useState(false)
 
     const busquedaImagenCategoria = DetallesCategoria.find(i => i.Categoria === categoria)
     // const TextoDeLaCategoria = busquedaImagenCategoria.TextoDescripcion
@@ -79,6 +80,8 @@ export default function ItemListContainer() {
         }
     };
 
+    const [arrayMapeo, setArrayMapeo] = useState(ArticulosAMostrar);
+
     useEffect(() => {
         JSON.parse(localStorage.getItem("carritoDoraemon"));
     }, [carritoDeCompras]);
@@ -86,13 +89,10 @@ export default function ItemListContainer() {
     useEffect(() => {
         setTimeout(() => {
             setLoadingSkeleton(false);
-        }, 400);
-    }, [categoria]);
+        // }, 400);
+        }, 600);
+    }, [categoria, arrayMapeo]);
 
-    // useEffect(() => {
-    //     const nuevaCantidad = cart.reduce((acc, item) => acc + item.cantidad, 0);
-    //     setCantidadArticulossss(nuevaCantidad);
-    // }, [cart]);
     useEffect(() => {
         if (cart && cart.length > 0) {
             const nuevaCantidad = cart.reduce((acc, item) => acc + item.cantidad, 0);
@@ -101,6 +101,26 @@ export default function ItemListContainer() {
             setCantidadArticulossss(0);
         }
     }, [cart])
+
+    const filtrarArticulos = () => {
+        setMostrarFiltros(!mostrarFiltros)
+        console.log(`El estado actual es: ${mostrarFiltros}`);
+    }
+
+    const filtrar = (value) => {
+        if (value === "Alfabetico") {
+            const mapeo = ArticulosAMostrar.sort((a, b) => a.texto.localeCompare(b.texto));
+            setArrayMapeo(mapeo);
+        } else if (value === "PrecioMasBajo") {
+            const mapeo2 = ArticulosAMostrar.sort((a, b) => a.precio - b.precio);
+            setArrayMapeo(mapeo2);
+        } else if (value === "PrecioMasAlto") {
+            const mapeo3 = ArticulosAMostrar.sort((a, b) => b.precio - a.precio);
+            setArrayMapeo(mapeo3);
+        } else if (value === "Normal") {
+            setArrayMapeo(ArticulosAMostrar);
+        }
+    }
 
     return (
         <div className="itemListContainer">
@@ -224,17 +244,27 @@ export default function ItemListContainer() {
                     <div className="filtro">
                         <div className="filtro-div">
                             <span> Ordenar por: </span>
-                            <button> Revelancia </button>
+                            <button onClick={filtrarArticulos}> Revelancia </button>
                             <svg xmlns="http://www.w3.org/2000/svg" class="fill-current ml-2" width="9" height="5.56" viewBox="0 0 9 5.56">
                                 <path d="M9 1.06L7.94 0 4.5 3.44 1.06 0 0 1.06l4.5 4.5z"></path>
                             </svg>
+                        </div>
+                        <div className="contenedor-de-filtros" style={{ display: mostrarFiltros === true ? 'block' : 'none' }} >
+                            <div className="cont-filtros shadow">
+                                <p onClick={() => filtrar('Normal')} > Los más vendidos</p>
+                                <p onClick={() => filtrar('Normal')} > Relevancia</p>
+                                <p onClick={() => filtrar('Alfabetico')} > Nombre A a Z </p>
+                                <p onClick={() => filtrar('PrecioMasBajo')} > Precio: de más bajo a más alto </p>
+                                <p onClick={() => filtrar('PrecioMasAlto')} style={{ marginBottom: '0px' }}> Precio: de más alto a más bajo </p>
+                            </div>
                         </div>
                     </div>
                     <div className="cardd">
 
                         {loadingSkeleton === true ? (
                             <>
-                                {ArticulosAMostrar.map((item, index) => (
+                                {/* {ArticulosAMostrar.map((item, index) => ( */}
+                                {arrayMapeo.map((item, index) => (
                                     <div className="contenedor-card" key={index}>
                                         <div className="imagen-cart">
                                             <div className="icono" onClick={() => mostrarID(item.id)}>
@@ -258,7 +288,8 @@ export default function ItemListContainer() {
                             </>
                         ) : (
                             <>
-                                {ArticulosAMostrar.map((item, index) => (
+                                {/* {ArticulosAMostrar.map((item, index) => ( */}
+                                {arrayMapeo.map((item, index) => (
                                     <div className="contenedor-card" key={index}>
                                         <div className="imagen-cart">
                                             <div className="icono" onClick={() => mostrarID(item.id)}>
