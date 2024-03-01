@@ -1,32 +1,39 @@
-import "./ItemListContainer.scss"
-import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
-import Articulos from "../../Json/Articulos.json"
-import DetallesCategoria from "../../Json/DetallesCategoria.json"
-import Skeleton from 'react-loading-skeleton';
-import storeZustand from "../zustand.jsx"
+import "./ItemListContainer.scss";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import Articulos from "../../Json/Articulos.json";
+import DetallesCategoria from "../../Json/DetallesCategoria.json";
+import Skeleton from "react-loading-skeleton";
+import storeZustand from "../zustand.jsx";
 
 export default function ItemListContainer() {
     const { categoria } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const [arrayArticulos, setArrayArticulos] = useState({
         primerElemento: 0,
-        ultimoElemento: 16
+        ultimoElemento: 16,
     });
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
     const [carritoDeCompras, setCarritoDeCompras] = useState([]);
-    const { cart, setCantidadArticulossss } = storeZustand()
-    const [mostrarFiltros, setMostrarFiltros] = useState(false)
+    const { cart, setCantidadArticulossss } = storeZustand();
+    const [mostrarFiltros, setMostrarFiltros] = useState(false);
 
-    const busquedaImagenCategoria = DetallesCategoria.find(i => i.Categoria === categoria)
-    // const TextoDeLaCategoria = busquedaImagenCategoria.TextoDescripcion
-    // const imagenDeLaCategoria = busquedaImagenCategoria.Imagen
-    const TextoDeLaCategoria = busquedaImagenCategoria?.TextoDescripcion
-    const imagenDeLaCategoria = busquedaImagenCategoria?.Imagen
+    const busquedaImagenCategoria = DetallesCategoria.find((i) => i.Categoria === categoria);
+    const TextoDeLaCategoria = busquedaImagenCategoria?.TextoDescripcion;
+    const imagenDeLaCategoria = busquedaImagenCategoria?.Imagen;
 
-    const categoriaFiltrada = Articulos.filter(c => c.categoria === categoria || c.subcategoria === categoria
-        || c.subcategoria2 === categoria || c.subcategoria4 === categoria || c.edades === categoria || c.edades2 === categoria
-        || c.edadesCio === categoria || c.edadesoo === categoria || c.adulto === categoria)
+    const categoriaFiltrada = Articulos.filter(
+        (c) =>
+            c.categoria === categoria ||
+            c.subcategoria === categoria ||
+            c.subcategoria2 === categoria ||
+            c.subcategoria4 === categoria ||
+            c.edades === categoria ||
+            c.edades2 === categoria ||
+            c.edadesCio === categoria ||
+            c.edadesoo === categoria ||
+            c.adulto === categoria
+    );
     const elementosTotales = categoriaFiltrada.length;
     const cantidadPaginas = Math.ceil(elementosTotales / 16);
 
@@ -35,7 +42,7 @@ export default function ItemListContainer() {
         setArrayArticulos({
             primerElemento: (numPage - 1) * 16,
             ultimoElemento: numPage * 16,
-            paginaActual: numPage
+            paginaActual: numPage,
         });
     };
 
@@ -43,7 +50,15 @@ export default function ItemListContainer() {
     for (let i = 1; i <= cantidadPaginas; i++) {
         paginacion.push(
             <div className="paginacion-numeros" key={i}>
-                <button style={{ color: i === currentPage ? 'red' : '#374151' }} onClick={() => cambiarPagina(i)}> {i} </button>
+                <button
+                    style={{
+                        color: i === currentPage ? "red" : "#374151",
+                    }}
+                    onClick={() => cambiarPagina(i)}
+                >
+                    {" "}
+                    {i}{" "}
+                </button>
             </div>
         );
     }
@@ -61,26 +76,34 @@ export default function ItemListContainer() {
     }, []);
 
     const mostrarID = (id) => {
-        const articuloSeleccionado = ArticulosAMostrar.find(articulo => articulo.id === id);
+        const articuloSeleccionado = ArticulosAMostrar.find(
+            (articulo) => articulo.id === id
+        );
         if (articuloSeleccionado) {
             let articulosGuardadosActualizados;
-            const existeEnCarrito = carritoDeCompras.find(articulo => articulo.id === id);
+            const existeEnCarrito = carritoDeCompras.find(
+                (articulo) => articulo.id === id
+            );
             if (existeEnCarrito) {
-                articulosGuardadosActualizados = carritoDeCompras.map(articulo => {
+                articulosGuardadosActualizados = carritoDeCompras.map((articulo) => {
                     if (articulo.id === id) {
                         return { ...articulo, cantidad: articulo.cantidad + 1 };
                     }
                     return articulo;
                 });
             } else {
-                articulosGuardadosActualizados = [...carritoDeCompras, { ...articuloSeleccionado, cantidad: 1 }];
+                articulosGuardadosActualizados = [
+                    ...carritoDeCompras,
+                    { ...articuloSeleccionado, cantidad: 1 },
+                ];
             }
             setCarritoDeCompras(articulosGuardadosActualizados);
-            localStorage.setItem('carritoDoraemon', JSON.stringify(articulosGuardadosActualizados));
+            localStorage.setItem(
+                "carritoDoraemon",
+                JSON.stringify(articulosGuardadosActualizados)
+            );
         }
     };
-
-    const [arrayMapeo, setArrayMapeo] = useState(ArticulosAMostrar);
 
     useEffect(() => {
         JSON.parse(localStorage.getItem("carritoDoraemon"));
@@ -89,9 +112,8 @@ export default function ItemListContainer() {
     useEffect(() => {
         setTimeout(() => {
             setLoadingSkeleton(false);
-        // }, 400);
         }, 600);
-    }, [categoria, arrayMapeo]);
+    }, [categoria]);
 
     useEffect(() => {
         if (cart && cart.length > 0) {
@@ -100,27 +122,24 @@ export default function ItemListContainer() {
         } else {
             setCantidadArticulossss(0);
         }
-    }, [cart])
+    }, [cart]);
 
     const filtrarArticulos = () => {
-        setMostrarFiltros(!mostrarFiltros)
+        setMostrarFiltros(!mostrarFiltros);
         console.log(`El estado actual es: ${mostrarFiltros}`);
-    }
+    };
 
-    const filtrar = (value) => {
-        if (value === "Alfabetico") {
-            const mapeo = ArticulosAMostrar.sort((a, b) => a.texto.localeCompare(b.texto));
-            setArrayMapeo(mapeo);
-        } else if (value === "PrecioMasBajo") {
-            const mapeo2 = ArticulosAMostrar.sort((a, b) => a.precio - b.precio);
-            setArrayMapeo(mapeo2);
-        } else if (value === "PrecioMasAlto") {
-            const mapeo3 = ArticulosAMostrar.sort((a, b) => b.precio - a.precio);
-            setArrayMapeo(mapeo3);
-        } else if (value === "Normal") {
-            setArrayMapeo(ArticulosAMostrar);
-        }
-    }
+
+
+
+
+
+
+
+
+
+    const [array, setArray] = useState('Normal');
+
 
     return (
         <div className="itemListContainer">
@@ -251,11 +270,11 @@ export default function ItemListContainer() {
                         </div>
                         <div className="contenedor-de-filtros" style={{ display: mostrarFiltros === true ? 'block' : 'none' }} >
                             <div className="cont-filtros shadow">
-                                <p onClick={() => filtrar('Normal')} > Los más vendidos</p>
-                                <p onClick={() => filtrar('Normal')} > Relevancia</p>
-                                <p onClick={() => filtrar('Alfabetico')} > Nombre A a Z </p>
-                                <p onClick={() => filtrar('PrecioMasBajo')} > Precio: de más bajo a más alto </p>
-                                <p onClick={() => filtrar('PrecioMasAlto')} style={{ marginBottom: '0px' }}> Precio: de más alto a más bajo </p>
+                                <p onClick={() => { setMostrarFiltros(false), setArray('Normal') }} > Los más vendidos</p>
+                                <p onClick={() => { setMostrarFiltros(false), setArray('Normal') }} > Relevancia</p>
+                                <p onClick={() => { setMostrarFiltros(false), setArray('Alfabetico') }} > Nombre A a Z </p>
+                                <p onClick={() => { setMostrarFiltros(false), setArray('PrecioMasBajo') }} > Precio: de más bajo a más alto </p>
+                                <p onClick={() => { setMostrarFiltros(false), setArray('PrecioMasAlto') }} style={{ marginBottom: '0px' }}> Precio: de más alto a más bajo </p>
                             </div>
                         </div>
                     </div>
@@ -263,8 +282,7 @@ export default function ItemListContainer() {
 
                         {loadingSkeleton === true ? (
                             <>
-                                {/* {ArticulosAMostrar.map((item, index) => ( */}
-                                {arrayMapeo.map((item, index) => (
+                                {ArticulosAMostrar.map((item, index) => (
                                     <div className="contenedor-card" key={index}>
                                         <div className="imagen-cart">
                                             <div className="icono" onClick={() => mostrarID(item.id)}>
@@ -288,8 +306,7 @@ export default function ItemListContainer() {
                             </>
                         ) : (
                             <>
-                                {/* {ArticulosAMostrar.map((item, index) => ( */}
-                                {arrayMapeo.map((item, index) => (
+                                {/* {ArticulosAMostrar.map((item, index) => (
                                     <div className="contenedor-card" key={index}>
                                         <div className="imagen-cart">
                                             <div className="icono" onClick={() => mostrarID(item.id)}>
@@ -309,7 +326,144 @@ export default function ItemListContainer() {
                                             <span> {item.precio} € </span>
                                         </div>
                                     </div>
+                                ))} */}
+
+
+
+
+
+
+
+
+
+
+
+
+                                {/* {array === 'PrecioMasBajo' ? (
+                                    ArticulosAMostrar.sort((a, b) => a.precio - b.precio).map((item, index) => (
+                                        <div className="contenedor-card" key={index}>
+                                            <div className="imagen-cart">
+                                                <div className="icono" onClick={() => mostrarID(item.id)}>
+                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
+                                                    </svg>
+                                                </div>
+                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
+                                                    <img src={item.imagen} alt={item.descripcion} />
+                                                </Link>
+                                            </div>
+                                            <div className="texto">
+                                                <Link to={`/detalle/${item.texto}`}>
+                                                    <span> {item.texto} </span>
+                                                </Link>
+                                            </div>
+                                            <div className="precio">
+                                                <span> {item.precio} € </span>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : array === 'PrecioMasAlto' ? (
+                                    ArticulosAMostrar.sort((a, b) => b.precio - a.precio).map((item, index) => (
+                                        <div className="contenedor-card" key={index}>
+                                            <div className="imagen-cart">
+                                                <div className="icono" onClick={() => mostrarID(item.id)}>
+                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
+                                                    </svg>
+                                                </div>
+                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
+                                                    <img src={item.imagen} alt={item.descripcion} />
+                                                </Link>
+                                            </div>
+                                            <div className="texto">
+                                                <Link to={`/detalle/${item.texto}`}>
+                                                    <span> {item.texto} </span>
+                                                </Link>
+                                            </div>
+                                            <div className="precio">
+                                                <span> {item.precio} € </span>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : array === 'Alfabetico' ? (
+                                    ArticulosAMostrar.sort((a, b) => a.texto.localeCompare(b.texto)).map((item, index) => (
+                                        <div className="contenedor-card" key={index}>
+                                            <div className="imagen-cart">
+                                                <div className="icono" onClick={() => mostrarID(item.id)}>
+                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
+                                                    </svg>
+                                                </div>
+                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
+                                                    <img src={item.imagen} alt={item.descripcion} />
+                                                </Link>
+                                            </div>
+                                            <div className="texto">
+                                                <Link to={`/detalle/${item.texto}`}>
+                                                    <span> {item.texto} </span>
+                                                </Link>
+                                            </div>
+                                            <div className="precio">
+                                                <span> {item.precio} € </span>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    ArticulosAMostrar.map((item, index) => (
+                                        <div className="contenedor-card" key={index}>
+                                            <div className="imagen-cart">
+                                                <div className="icono" onClick={() => mostrarID(item.id)}>
+                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
+                                                    </svg>
+                                                </div>
+                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
+                                                    <img src={item.imagen} alt={item.descripcion} />
+                                                </Link>
+                                            </div>
+                                            <div className="texto">
+                                                <Link to={`/detalle/${item.texto}`}>
+                                                    <span> {item.texto} </span>
+                                                </Link>
+                                            </div>
+                                            <div className="precio">
+                                                <span> {item.precio} € </span>
+                                            </div>
+                                        </div>
+                                    ))
+                                )} */}
+                                {ArticulosAMostrar.sort((a, b) => {
+                                    switch (array) {
+                                        case 'PrecioMasBajo':
+                                            return a.precio - b.precio;
+                                        case 'PrecioMasAlto':
+                                            return b.precio - a.precio;
+                                        case 'Alfabetico':
+                                            return a.texto.localeCompare(b.texto);
+                                        default:
+                                            return 0;
+                                    }
+                                }).map((item, index) => (
+                                    <div className="contenedor-card" key={index}>
+                                        <div className="imagen-cart">
+                                            <div className="icono" onClick={() => mostrarID(item.id)}>
+                                                <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" className="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible">
+                                                    <path className="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path>
+                                                    <path className="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path>
+                                                    <path className="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
+                                                </svg>
+                                            </div>
+                                            <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
+                                                <img src={item.imagen} alt={item.descripcion} />
+                                            </Link>
+                                        </div>
+                                        <div className="texto">
+                                            <Link to={`/detalle/${item.texto}`}>
+                                                <span>{item.texto}</span>
+                                            </Link>
+                                        </div>
+                                        <div className="precio">
+                                            <span>{item.precio} €</span>
+                                        </div>
+                                    </div>
                                 ))}
+
                             </>
                         )}
 

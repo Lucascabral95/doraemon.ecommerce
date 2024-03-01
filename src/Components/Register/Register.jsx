@@ -12,9 +12,9 @@ export default function Register() {
   const [apellido, setApellido] = useState("")
   const [fechaNacimiento, setFechaNacimiento] = useState("")
 
-const { datosDeSesion } = storeZustand()
+  const { datosDeSesion } = storeZustand()
 
-console.log(datosDeSesion);
+  console.log(datosDeSesion);
 
   const handleRegistro = async (e) => {
     e.preventDefault();
@@ -29,19 +29,7 @@ console.log(datosDeSesion);
           icon: "success",
           confirmButtonText: "Ok",
         });
-
-        // const datosPersonales = {
-        //   email: email,
-        //   password: password,
-        //   nombre: nombre,
-        //   apellido: apellido,
-        //   fechaNacimiento: fechaNacimiento
-        // }
-        // localStorage.setItem("datosMios", JSON.stringify(datosPersonales))
-
         window.location.href = "/login"
-        
-
       } catch (error) {
         const errorCode = error.code;
         let errorMessage = "Ocurrió un error al registrar el usuario.";
@@ -125,8 +113,8 @@ console.log(datosDeSesion);
               <div className="contenedor-input">
                 <input type="text" id="fechaNacimiento" name="fecha" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/AAAA" title="Formato: DD/mm/aaaa" onChange={(e) => setFechaNacimiento(e.target.value)} required />
               </div>
-              <div style={{ marginBottom:"14px" }}>
-              <span style={{ fontSize:"12px" }}> (Ejemplo: 31/05/1970) </span>
+              <div style={{ marginBottom: "14px" }}>
+                <span style={{ fontSize: "12px" }}> (Ejemplo: 31/05/1970) </span>
               </div>
             </div>
           </form>
