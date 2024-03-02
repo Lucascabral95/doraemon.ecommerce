@@ -14,7 +14,6 @@ export default function CheckoutFin() {
     const [emailDeSesion, setEmailDeSesion] = useState("")
     const [cancelacionCompra, setCancelacionCompra] = useState(false)
     const [direccionCompleta, setDireccionCompleta] = useState({
-        alias: "",
         nombre: "",
         apellido: "",
         empresa: "",
@@ -308,10 +307,18 @@ export default function CheckoutFin() {
     }
 
     const handleGuardarDireccion = () => {
-        console.log(direccionCompleta);
-        setMiDireccionCompleta(direccionCompleta)
-        localStorage.setItem("miDireccionCompleta", JSON.stringify(direccionCompleta))
-        window.location.reload()
+        if (direccionCompleta && !Object.values(direccionCompleta).some(value => value === null || value === "")) {
+            setDireccionCompleta(direccionCompleta);
+            localStorage.setItem("miDireccionCompleta", JSON.stringify(direccionCompleta));
+            window.location.reload();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa todos los campos antes de guardar la dirección',
+                confirmButtonText: 'OK'
+            })
+        }
     }
 
     return (
@@ -360,8 +367,6 @@ export default function CheckoutFin() {
 
                     <div className="contenido-datos direccion-direccion" style={{ display: collapseSelected === 2 ? 'block' : 'none' }}>
                         <p className="texto-contenido-datos"> Indícanos a qué dirección quieres recibir tu pedido. </p>
-
-
 
                         {miDireccionCompleta.length === 0 ? (
 
@@ -458,8 +463,10 @@ export default function CheckoutFin() {
                                     </div>
                                 </div>
                                 <div className="contenedor-input-datos">
-                                    <div className="cont-input">
-                                        <button onClick={handleGuardarDireccion} type="submit" className="boton-guardar"> GUARDAR</button>
+                                    <div className="cont-input" style={{ border: "none" }}>
+                                        <div className="handle-enviar">
+                                            <button onClick={handleGuardarDireccion} type="submit" className="boton-guardar"> GUARDAR</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -503,7 +510,6 @@ export default function CheckoutFin() {
                         )}
 
                         <div className="contenedor-button" style={{ marginTop: "2%" }}>
-                            {/* <button onClick={() => usoCollapse(3)}> CONTINUAR </button> */}
                             <button onClick={() => { handleEnviarDireccion(); usoCollapse(3); }}> CONTINUAR </button>
                         </div>
                     </div>

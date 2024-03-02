@@ -17,6 +17,7 @@ export default function ItemListContainer() {
     const [carritoDeCompras, setCarritoDeCompras] = useState([]);
     const { cart, setCantidadArticulossss } = storeZustand();
     const [mostrarFiltros, setMostrarFiltros] = useState(false);
+    const [array, setArray] = useState('Normal');
 
     const busquedaImagenCategoria = DetallesCategoria.find((i) => i.Categoria === categoria);
     const TextoDeLaCategoria = busquedaImagenCategoria?.TextoDescripcion;
@@ -107,13 +108,7 @@ export default function ItemListContainer() {
 
     useEffect(() => {
         JSON.parse(localStorage.getItem("carritoDoraemon"));
-    }, [carritoDeCompras]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoadingSkeleton(false);
-        }, 600);
-    }, [categoria]);
+    }, [carritoDeCompras]);;
 
     useEffect(() => {
         if (cart && cart.length > 0) {
@@ -129,17 +124,28 @@ export default function ItemListContainer() {
         console.log(`El estado actual es: ${mostrarFiltros}`);
     };
 
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoadingSkeleton(false);
+    //     }, 1000);
+    // }, [categoria])
+    useEffect(() => {
+        setLoadingSkeleton(true);
 
+        setTimeout(() => {
+            setLoadingSkeleton(false);
+        }, 600);
 
+    }, [categoria, currentPage]);
 
-
-
-
-
-
-
-    const [array, setArray] = useState('Normal');
-
+    useEffect(() => {
+        setArrayArticulos({
+            primerElemento: 0,
+            ultimoElemento: currentPage * 16,
+        })
+        setCurrentPage(1)
+        setArray('Normal');
+    }, [categoria])
 
     return (
         <div className="itemListContainer">
@@ -428,6 +434,7 @@ export default function ItemListContainer() {
                                         </div>
                                     ))
                                 )} */}
+
                                 {ArticulosAMostrar.sort((a, b) => {
                                     switch (array) {
                                         case 'PrecioMasBajo':
@@ -463,7 +470,6 @@ export default function ItemListContainer() {
                                         </div>
                                     </div>
                                 ))}
-
                             </>
                         )}
 
