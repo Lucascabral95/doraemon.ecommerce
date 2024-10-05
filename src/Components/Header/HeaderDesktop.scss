@@ -78,6 +78,7 @@
                             color: #FFFFFF;
                             margin-left: 20px;
 
+
                             &:hover {
                                 background-color: #006AB0;
                             }
@@ -170,7 +171,8 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        padding: 2px;
+                        width: 18px;
+                        height: 18px;
 
                         span {
                             color: white;
@@ -266,15 +268,15 @@
                                 // padding-right: 8%;
                                 // padding-top: 8px;
                                 // padding-bottom: 8px;
-                                
+
                                 .texto {
                                     font-family: "Source Code Pro", sans-serif;
                                     font-size: 14px;
                                     font-weight: 800;
                                     color: #FFFFFF;
-                                    
-                                    
-                                    
+
+
+
                                     margin-bottom: 0px;
                                     padding-left: 8%;
                                     padding-right: 8%;
@@ -662,5 +664,19 @@
     }
 }
 
-// font-family: "Source Code Pro", sans-serif;
-// font-family: "Sniglet", sans-serif;
+// Ajuste de Menu Hamburguesa 
+@media (max-width: 1279px) {
+    .header-desktop {
+        navbar {
+            .contenedor-busqueda {
+                .carrito-login {
+                    .caja {
+                        #hamburguesa {
+                            display: flex !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

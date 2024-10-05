@@ -60,38 +60,6 @@ export default function Opiniones() {
                     </div>
                 </div>
 
-                {/* <div className="contenedor-de-opiniones">
-                    {Criticas.map((item, index) => (
-                        <div className="opinioness" key={index}>
-                            <div className="estrellas-verificado">
-                                <div className="estrellas">
-                                    <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/assets/images/star-filled.svg" alt="Estrella" />
-                                    <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/assets/images/star-filled.svg" alt="Estrella" />
-                                    <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/assets/images/star-filled.svg" alt="Estrella" />
-                                    <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/assets/images/star-filled.svg" alt="Estrella" />
-                                    <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/assets/images/star-filled.svg" alt="Estrella" />
-                                </div>
-                                <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/f935c7395ce5f72e6f2d.svg" alt="Verificado" />
-                            </div>
-                            <div className="contenedor">
-                                <div className="nombre-y-fecha">
-                                    <span> {item.fecha} </span> por <span> {item.nombreApellido} </span>
-                                </div>
-                                <div className="titulo">
-                                    <span className="titulo-titulo"> {item.titulo} </span>
-                                </div>
-                                <div className="comentario-comentario">
-                                    <span> {item.comentario} </span>
-                                </div>
-                            </div>
-                            <div className="leer-respuesta">
-                                <img src="https://integrations.etrusted.com/applications/review-carousel-service-widget/1.17.6/0f2a1db71f6a32077500.svg" alt="Leer" />
-                                <span> leer respuestas </span>
-                            </div>
-                        </div>
-                    ))}
-                </div> */}
-
                 <div className="contenedor-de-opiniones">
                     <FastMarquee
                         duration={1000}

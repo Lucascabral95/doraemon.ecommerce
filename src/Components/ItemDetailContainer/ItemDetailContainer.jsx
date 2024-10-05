@@ -13,9 +13,8 @@ export default function ItemDetailContainer() {
     const [zoomPictureSecundaria2, setZoomPictureSecundaria2] = useState(false)
     const [cantidadArticulo, setCantidadArticulo] = useState(1)
     const [loadingSkeleton, setLoadingSkeleton] = useState(true)
-    const [carritoDeCompras, setCarritoDeCompras] = useState([]);
-    const { wishList, setWishList, cart, setCart, cantidadArticulossss, setCantidadArticulossss } = storeZustand()
-
+    const { wishList, setWishList, cart, setCart, setCantidadArticulossss } = storeZustand()
+    const [carritoActualizado, setCarritoActualizado] = useState("")
     const buscadorTexto = Articulos.filter(e => e.texto.toLowerCase().includes(producto.toLowerCase()));
 
     const buscadorImagen = buscadorTexto[0].imagen
@@ -34,11 +33,6 @@ export default function ItemDetailContainer() {
         }, 1600);
     }, [producto])
 
-    useEffect(() => {
-        const nuevaCantidad = cart?.reduce((acc, item) => acc + item.cantidad, 0);
-        setCantidadArticulossss(nuevaCantidad);
-    }, [cart, cantidadArticulossss]);  
-
     const agregarAFavoritos = (idProduct) => {
         const buscarProducto = Articulos.find(a => a.id === idProduct);
         const productoYaEnLista = wishList.some(item => item.id === idProduct);
@@ -55,8 +49,11 @@ export default function ItemDetailContainer() {
         const articuloSeleccionado = Articulos.find(articulo => articulo.id === id);
         const articuloEnCart = cart.find(a => a.id === id);
         if (articuloEnCart) {
-            articuloEnCart.cantidad += 1;
+            articuloEnCart.cantidad += cantidadArticulo;
             localStorage.setItem('carritoDoraemon', JSON.stringify(cart));
+            setCarritoActualizado({
+                movimiento: Date.now()
+            });
         } else {
             const acerca2 = [...cart, { ...articuloSeleccionado, cantidad: 1 }];
             localStorage.setItem('carritoDoraemon', JSON.stringify(acerca2));
@@ -64,29 +61,18 @@ export default function ItemDetailContainer() {
         }
     }
 
-
-
-    // const listaPeliculas = Articulos.filter(p => p.categoria === buscadorTexto[0].categoria)
     const listaPeliculas = Articulos.filter(p => p.subcategoria === buscadorTexto[0].subcategoria)
     const primerosCuatroElementos = listaPeliculas.splice(0, 4)
 
-    // function shuffleArray(array) {
-    //     for (let i = array.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         [array[i], array[j]] = [array[j], array[i]];
-    //     }
-    //     return array;
-    // }
-    // const listaPeliculas = Articulos.filter(p => p.subcategoria === buscadorTexto[0].subcategoria);
-    // const listaPeliculasAleatorias = shuffleArray(listaPeliculas);
-    // const primerosCuatroElementos = listaPeliculasAleatorias.slice(0, 4);
+    useEffect(() => {
+        const carritoGuardado = JSON.parse(localStorage.getItem("carritoDoraemon"));
+        if (carritoGuardado) {
+            setCantidadArticulossss(carritoGuardado.reduce((acc, item) => acc + item.cantidad, 0));
+        }
+    }, [cart, carritoActualizado]);
 
     return (
         <div className="original">
-
-            {/* <div className="doraemon-de-fondo">
-            <img src="/img/doraemon-volador.png" alt="Doraemon" />
-        </div> */}
 
             <div style={{ display: zoomPicture ? "flex" : "none" }} className="imagenEnGrande" onClick={() => setZoomPicture(false)}>
                 <div className="contenedor-imagen">
@@ -112,7 +98,6 @@ export default function ItemDetailContainer() {
                     {buscadorTexto.map((item, index) => (
                         <>
                             <div className="informacion-superior">
-                                {/* <span> INICIO / JUGUETES / JUEGOS / JUEGO DE MESA GLUTTON DORAEMON GAME </span> */}
                                 <span>
                                     <Link to={"/"}>
                                         <span className="link">

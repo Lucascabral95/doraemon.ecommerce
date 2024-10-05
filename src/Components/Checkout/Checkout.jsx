@@ -11,7 +11,7 @@ import Skeleton from 'react-loading-skeleton';
 
 export default function Checkout() {
     const [cart, setCart] = useState([]);
-    const { setCantidadArticulossss } = storeZustand()
+    const { cantidadArticulossss, setCantidadArticulossss } = storeZustand()
     const [loadingSkeleton, setLoadingSkeleton] = useState(false)
     const [datas, setDatas] = useState([]);
 
@@ -49,7 +49,10 @@ export default function Checkout() {
         const updatedCart = cart.filter(item => item.id !== id);
         setCart(updatedCart);
         localStorage.setItem("carritoDoraemon", JSON.stringify(updatedCart));
-        // window.location.reload()
+
+        if (updatedCart.length === 0) {
+            window.location.reload();
+        }
     }
 
     useEffect(() => {
@@ -57,7 +60,7 @@ export default function Checkout() {
         if (storedCart) {
             setCart(JSON.parse(storedCart));
         }
-    }, []);
+    }, [cantidadArticulossss]);
 
     const gorrocoptero = {
         texto: "Regalo Gorrocóptero Doraemon",

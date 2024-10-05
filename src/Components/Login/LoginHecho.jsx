@@ -39,45 +39,45 @@ export default function LoginHecho() {
                         </div>
 
                         <div className="cont">
-                            <div className="boton-info-personal">
-                                <Link to={"/datos/personales"}>
+                            <Link to={"/datos/personales"} className="boton-info-personal">
+                                <div>
                                     <span> DATOS PERSONALES </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
-                            <div className="boton-info-personal">
-                                <Link to={"/direccion"}>
+                            <Link to={"/direccion"} className="boton-info-personal">
+                                <div>
                                     <span> AÑADIR PRIMERA DIRECCIÓN </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
-                            <div className="boton-info-personal">
-                                <Link to={"/comprasrealizadas"}>
+                            <Link to={"/comprasrealizadas"} className="boton-info-personal">
+                                <div>
                                     <span> MIS PEDIDOS </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
-                            <div className="boton-info-personal">
-                                <Link to={"/abono"}>
+                            <Link to={"/abono"} className="boton-info-personal">
+                                <div>
                                     <span> FACTURAS POR ABONO </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
-                            <div className="boton-info-personal">
-                                <Link to={"/cupones"}>
+                            <Link to={"/cupones"} className="boton-info-personal">
+                                <div>
                                     <span> CUPONES DE DESCUENTO  </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
                             <div className="boton-info-personal" onClick={abrirModal}>
                                 <span> TU CONFIGURACIÓN DE COOKIES </span>
                             </div>
 
-                            <div className="boton-info-personal">
-                                <Link to={"/wishlist"}>
+                            <Link to={"/wishlist"} className="boton-info-personal">
+                                <div>
                                     <span> LISTA DE DESEOS  </span>
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
 
                             <div className="boton-info-personal" onClick={cerrarSesion}>
                                 <span> CERRAR SESIÓN  </span>

@@ -25,15 +25,14 @@ import CondicionesDeUso from "../Components/Footer/SectionsFooter/CondicionesDeU
 import NotaLegal from "../Components/Footer/SectionsFooter/NotaLegal.jsx";
 import PoliticaDeCookies from "../Components/Footer/SectionsFooter/PoliticaDeCookies.jsx";
 import PoliticaDePrivacidad from "../Components/Footer/SectionsFooter/PoliticaDePrivacidad.jsx";
-import CardDirection from "../Components/Login/LoginSecciones/CardDirection.jsx";
 import CheckoutFin from "../Components/Checkout/CheckoutFin.jsx";
 import ComprasRealizadas from "../Components/Compras/ComprasRealizadas.jsx";
 import DatosPersonales from "../Components/Login/LoginSecciones/DatosPersonajes.jsx";
 import DetalleCompras from "../Components/Compras/DetalleCompras.jsx";
 
 export default function Body() {
-
     const location = useLocation();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.pathname]);

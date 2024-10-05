@@ -8,7 +8,7 @@ import Swal from "sweetalert2"
 import { signOut, getAuth } from "firebase/auth";
 
 export default function CheckoutFin() {
-    const { cantidadArticulossss, cart, miDireccionCompleta, setMiDireccionCompleta, datosPersonaless } = storeZustand()
+    const { cantidadArticulossss, cart, miDireccionCompleta, datosPersonaless } = storeZustand()
     const [collapseSelected, setCollapseSelected] = useState(1)
     const [comentarioEnvio, setComentarioEnvio] = useState("")
     const [emailDeSesion, setEmailDeSesion] = useState("")
@@ -143,7 +143,6 @@ export default function CheckoutFin() {
         'Asunción',
     ];
 
-
     const total = cart?.reduce((acc, item) => acc + item?.precio * item?.cantidad, 0);
 
     const gorrocoptero = {
@@ -238,49 +237,60 @@ export default function CheckoutFin() {
 
     const handleOrden = async () => {
         if (cancelacionCompra === true) {
-            const ordersRef = collection(db, "ordenes")
-
+            const ordersRef = collection(db, "ordenes");
+    
+            // Validamos los campos, asignando valores por defecto si están indefinidos
             const datosPersonales = {
-                nombre: datosPersonaless?.nombre,
-                apellido: datosPersonaless?.apellido,
-                email: emailDeSesion?.email,
-                edad: datosPersonaless?.edad,
-                telefono: miDireccionCompleta?.telefono
-            }
-
+                nombre: datosPersonaless?.nombre || "Nombre no proporcionado",
+                apellido: datosPersonaless?.apellido || "Apellido no proporcionado",
+                email: emailDeSesion?.email || "Email no proporcionado",
+                edad: datosPersonaless?.edad || "Edad no proporcionada",
+                telefono: miDireccionCompleta?.telefono || "Teléfono no proporcionado"
+            };
+    
             const direccionDeEnvio = {
-                ciudad: miDireccionCompleta?.ciudad,
-                codigoPostal: miDireccionCompleta?.codigoPostal,
-                direccion: miDireccionCompleta?.direccion,
-                pais: miDireccionCompleta?.pais,
-                provincia: miDireccionCompleta?.provincia
-            }
-
+                ciudad: miDireccionCompleta?.ciudad || "Ciudad no proporcionada",
+                codigoPostal: miDireccionCompleta?.codigoPostal || "Código Postal no proporcionado",
+                direccion: miDireccionCompleta?.direccion || "Dirección no proporcionada",
+                pais: miDireccionCompleta?.pais || "País no proporcionado",
+                provincia: miDireccionCompleta?.provincia || "Provincia no proporcionada"
+            };
+    
             const fecha = new Date();
-
+    
             const contenido = {
                 direccionEnvio: direccionDeEnvio,
                 datosPersonales: datosPersonales,
                 carrito: cart,
                 fecha: fecha.toLocaleString(),
-                comentarioDeLaOrden: comentarioEnvio,
-                cantidadDeArticulos: cantidadArticulossss,
-                totalDeLaCompra: total.toFixed(2)
-            }
+                comentarioDeLaOrden: comentarioEnvio || "Sin comentarios",
+                cantidadDeArticulos: cantidadArticulossss || 0, 
+                totalDeLaCompra: total ? total.toFixed(2) : "0.00" 
+            };
+    
+            try {
+                const doc = await addDoc(ordersRef, contenido);
+                console.log(doc.id);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Compra Exitosa',
+                    text: '¡Tu compra ha sido procesada exitosamente!',
+                    confirmButtonText: 'OK'
+                });
+                setTimeout(() => {
+                    window.location.href = "/comprasrealizadas";
+                }, 1600);
 
-            addDoc(ordersRef, contenido)
-                .then((doc) => {
-                    console.log(doc.id)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Compra Exitosa',
-                        text: '¡Tu compra ha sido procesada exitosamente!',
-                        confirmButtonText: 'OK'
-                    });
-                    setTimeout(() => {
-                        window.location.href = "/comprasrealizadas";
-                    }, 1600);
-                })
+                localStorage.removeItem("carritoDoraemon");
+            } catch (error) {
+                console.error("Error al agregar el documento: ", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al realizar la compra',
+                    text: 'Hubo un problema al procesar tu compra. Inténtalo de nuevo.',
+                    confirmButtonText: 'OK'
+                });
+            }
         } else {
             Swal.fire({
                 icon: 'error',
@@ -290,6 +300,7 @@ export default function CheckoutFin() {
             });
         }
     };
+    
 
     const handleCerrarSesion = (e) => {
         e.preventDefault();

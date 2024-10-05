@@ -64,18 +64,18 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Juguete"} className="categoria-texto">JUGUETES</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }}>
                             <div className="articulos">
-                                <div className="con-texto" >
-                                    <Link to={"/categoria/Peluche"} className="texto">PELUCHES</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Juego"} className="texto">JUEGOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Figura"} className="texto">FIGURAS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/AireLibre"} className="texto">AIRE LIBRE</Link>
-                                </div>
+                                <Link to={"/categoria/Peluche"} className="con-texto" >
+                                    <div className="texto">PELUCHES</div>
+                                </Link>
+                                <Link to={"/categoria/Juego"} className="con-texto">
+                                    <div className="texto">JUEGOS</div>
+                                </Link>
+                                <Link to={"/categoria/Figura"} className="con-texto">
+                                    <div className="texto">FIGURAS</div>
+                                </Link>
+                                <Link to={"/categoria/AireLibre"} className="con-texto">
+                                    <div className="texto">AIRE LIBRE</div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -83,15 +83,15 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Pelicula"} className="categoria-texto">PELÍCULAS</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }}>
                             <div className="articulos">
-                                <div className="con-texto">
-                                    <Link to={"/categoria/DVD"} className="texto">DVD</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/BLURAY"} className="texto">BLU RAY</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/PACK"} className="texto">PACKS</Link>
-                                </div>
+                                <Link to={"/categoria/DVD"} className="con-texto">
+                                    <div className="texto">DVD</div>
+                                </Link>
+                                <Link to={"/categoria/BLURAY"} className="con-texto">
+                                    <div className="texto">BLU RAY</div>
+                                </Link>
+                                <Link to={"/categoria/PACK"} className="con-texto">
+                                    <div className="texto">PACKS</div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -99,15 +99,15 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Escolar"} className="categoria-texto">ESCOLAR Y PAPALERÍA</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }} >
                             <div className="articulos">
-                                <div className="con-texto">
-                                    <Link to={"/categoria/MaterialEscolar"} className="texto">MATERIAL ESCOLAR</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Mochila"} className="texto">MOCHILAS Y BOLSAS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Libro"} className="texto">LIBROS DE ACTIVIDADES</Link>
-                                </div>
+                                <Link to={"/categoria/MaterialEscolar"} className="con-texto">
+                                    <div className="texto">MATERIAL ESCOLAR</div>
+                                </Link>
+                                <Link to={"/categoria/Mochila"} className="con-texto">
+                                    <div className="texto">MOCHILAS Y BOLSAS</div>
+                                </Link>
+                                <Link to={"/categoria/Libro"} className="con-texto">
+                                    <div className="texto">LIBROS DE ACTIVIDADES</div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -115,15 +115,15 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Moda"} className="categoria-texto">MODA</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }}>
                             <div className="articulos">
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Ropa"} className="texto">ROPA</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Accesorios"} className="texto">ACCESORIOS Y COMPLEMENTOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Disfraz"} className="texto">DISFRACES</Link>
-                                </div>
+                                <Link to={"/categoria/Ropa"} className="con-texto">
+                                    <div className="texto">ROPA</div>
+                                </Link>
+                                <Link to={"/categoria/Accesorios"} className="con-texto">
+                                    <div className="texto">ACCESORIOS Y COMPLEMENTOS</div>
+                                </Link>
+                                <Link to={"/categoria/Disfraz"} className="con-texto">
+                                    <div className="texto">DISFRACES</div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -131,18 +131,18 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Hogar"} className="categoria-texto">HOGAR</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }} >
                             <div className="articulos">
-                                <div className="con-texto">
-                                    <Link to={"/categoria/RopaCama"} className="texto">ROPA DE CAMA</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Taza"} className="texto">TAZAS Y VAJILLA</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Baño"} className="texto">BAÑO</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/Otros"} className="texto">OTROS</Link>
-                                </div>
+                                <Link to={"/categoria/RopaCama"} className="con-texto">
+                                    <div className="texto">ROPA DE CAMA</div>
+                                </Link>
+                                <Link to={"/categoria/Taza"} className="con-texto">
+                                    <div className="texto">TAZAS Y VAJILLA</div>
+                                </Link>
+                                <Link to={"/categoria/Baño"} className="con-texto">
+                                    <div className="texto">BAÑO</div>
+                                </Link>
+                                <Link to={"/categoria/Otros"} className="con-texto">
+                                    <div className="texto">OTROS</div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -153,21 +153,21 @@ export default function HeaderDesktop() {
                         <Link to={"/categoria/Regalo"} className="categoria-texto">REGALOS</Link>
                         <div className="contenedor-articulos" style={{ display: 'none' }} >
                             <div className="articulos">
-                                <div className="con-texto">
-                                    <Link to={"/categoria/DE 1 A 3 AÑOS"} className="texto">DE 1 A 3 AÑOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/DE 3 A 5 AÑOS"} className="texto">DE 3 A 5 AÑOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/DE 5 A 8 AÑOS"} className="texto">DE 5 A 8 AÑOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/DE 8 A 11 AÑOS"} className="texto">DE 8 A 11 AÑOS</Link>
-                                </div>
-                                <div className="con-texto">
-                                    <Link to={"/categoria/ADULTOS"} className="texto">ADULTOS</Link>
-                                </div>
+                                <Link to={"/categoria/DE 1 A 3 AÑOS"} className="con-texto">
+                                    <div className="texto">DE 1 A 3 AÑOS</div>
+                                </Link>
+                                <Link to={"/categoria/DE 3 A 5 AÑOS"} className="con-texto">
+                                    <div className="texto">DE 3 A 5 AÑOS</div>
+                                </Link>
+                                <Link to={"/categoria/DE 5 A 8 AÑOS"} className="con-texto">
+                                    <div className="texto">DE 5 A 8 AÑOS</div>
+                                </Link>
+                                <Link to={"/categoria/DE 8 A 11 AÑOS"} className="con-texto">
+                                    <div className="texto">DE 8 A 11 AÑOS</div>
+                                </Link>
+                                <Link to={"/categoria/ADULTOS"} className="con-texto">
+                                    <div className="texto">ADULTOS</div>
+                                </Link>
                             </div>
                         </div>
 
@@ -225,10 +225,11 @@ export default function HeaderDesktop() {
                                     <path d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
                                 </svg>
 
-                                <div className="carrito-cantidad-articulos">
-                                    <span> {cantidadArticulossss} </span>
-                                </div>
-
+                                {cantidadArticulossss > 0 &&
+                                    <div className="carrito-cantidad-articulos">
+                                        <span> {cantidadArticulossss} </span>
+                                    </div>
+                                }
 
                             </Link>
                         </div>

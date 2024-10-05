@@ -15,7 +15,6 @@ export default function ItemListContainer() {
     });
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
     const [carritoDeCompras, setCarritoDeCompras] = useState([]);
-    const { cart, setCantidadArticulossss } = storeZustand();
     const [mostrarFiltros, setMostrarFiltros] = useState(false);
     const [array, setArray] = useState('Normal');
 
@@ -46,6 +45,8 @@ export default function ItemListContainer() {
             paginaActual: numPage,
         });
     };
+
+    const { cart, setCantidadArticulossss } = storeZustand();
 
     let paginacion = [];
     for (let i = 1; i <= cantidadPaginas; i++) {
@@ -108,7 +109,7 @@ export default function ItemListContainer() {
 
     useEffect(() => {
         JSON.parse(localStorage.getItem("carritoDoraemon"));
-    }, [carritoDeCompras]);;
+    }, [carritoDeCompras]);
 
     useEffect(() => {
         if (cart && cart.length > 0) {
@@ -124,11 +125,6 @@ export default function ItemListContainer() {
         console.log(`El estado actual es: ${mostrarFiltros}`);
     };
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoadingSkeleton(false);
-    //     }, 1000);
-    // }, [categoria])
     useEffect(() => {
         setLoadingSkeleton(true);
 
@@ -146,6 +142,14 @@ export default function ItemListContainer() {
         setCurrentPage(1)
         setArray('Normal');
     }, [categoria])
+
+    
+    useEffect(() => {
+        const carritoGuardado = JSON.parse(localStorage.getItem("carritoDoraemon"));
+        if (carritoGuardado) {
+            setCantidadArticulossss(carritoGuardado.reduce((acc, item) => acc + item.cantidad, 0));
+        }
+    }, [carritoDeCompras]);
 
     return (
         <div className="itemListContainer">
@@ -312,128 +316,6 @@ export default function ItemListContainer() {
                             </>
                         ) : (
                             <>
-                                {/* {ArticulosAMostrar.map((item, index) => (
-                                    <div className="contenedor-card" key={index}>
-                                        <div className="imagen-cart">
-                                            <div className="icono" onClick={() => mostrarID(item.id)}>
-                                                <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
-                                                </svg>
-                                            </div>
-                                            <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                <img src={item.imagen} alt={item.descripcion} />
-                                            </Link>
-                                        </div>
-                                        <div className="texto">
-                                            <Link to={`/detalle/${item.texto}`}>
-                                                <span> {item.texto} </span>
-                                            </Link>
-                                        </div>
-                                        <div className="precio">
-                                            <span> {item.precio} € </span>
-                                        </div>
-                                    </div>
-                                ))} */}
-
-
-
-
-
-
-
-
-
-
-
-
-                                {/* {array === 'PrecioMasBajo' ? (
-                                    ArticulosAMostrar.sort((a, b) => a.precio - b.precio).map((item, index) => (
-                                        <div className="contenedor-card" key={index}>
-                                            <div className="imagen-cart">
-                                                <div className="icono" onClick={() => mostrarID(item.id)}>
-                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
-                                                    </svg>
-                                                </div>
-                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                    <img src={item.imagen} alt={item.descripcion} />
-                                                </Link>
-                                            </div>
-                                            <div className="texto">
-                                                <Link to={`/detalle/${item.texto}`}>
-                                                    <span> {item.texto} </span>
-                                                </Link>
-                                            </div>
-                                            <div className="precio">
-                                                <span> {item.precio} € </span>
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : array === 'PrecioMasAlto' ? (
-                                    ArticulosAMostrar.sort((a, b) => b.precio - a.precio).map((item, index) => (
-                                        <div className="contenedor-card" key={index}>
-                                            <div className="imagen-cart">
-                                                <div className="icono" onClick={() => mostrarID(item.id)}>
-                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
-                                                    </svg>
-                                                </div>
-                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                    <img src={item.imagen} alt={item.descripcion} />
-                                                </Link>
-                                            </div>
-                                            <div className="texto">
-                                                <Link to={`/detalle/${item.texto}`}>
-                                                    <span> {item.texto} </span>
-                                                </Link>
-                                            </div>
-                                            <div className="precio">
-                                                <span> {item.precio} € </span>
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : array === 'Alfabetico' ? (
-                                    ArticulosAMostrar.sort((a, b) => a.texto.localeCompare(b.texto)).map((item, index) => (
-                                        <div className="contenedor-card" key={index}>
-                                            <div className="imagen-cart">
-                                                <div className="icono" onClick={() => mostrarID(item.id)}>
-                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
-                                                    </svg>
-                                                </div>
-                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                    <img src={item.imagen} alt={item.descripcion} />
-                                                </Link>
-                                            </div>
-                                            <div className="texto">
-                                                <Link to={`/detalle/${item.texto}`}>
-                                                    <span> {item.texto} </span>
-                                                </Link>
-                                            </div>
-                                            <div className="precio">
-                                                <span> {item.precio} € </span>
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : (
-                                    ArticulosAMostrar.map((item, index) => (
-                                        <div className="contenedor-card" key={index}>
-                                            <div className="imagen-cart">
-                                                <div className="icono" onClick={() => mostrarID(item.id)}>
-                                                    <svg fill="#009FE3" xmlns="http://www.w3.org/2000/svg" class="fill-current" width="22.1" height="23.6" viewBox="0 0 22.1 23.6" overflow="visible"><path class="st0" d="M6.5 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_55_1_"></path><path class="st0" d="M18.8 22.6c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2zm0-4.4c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2 1.2-.5 1.2-1.2-.5-1.2-1.2-1.2z" id="Elipse_56_1_"></path><path class="st0" d="M20.4 15.4H4.2L2 1H0v-2h3.8l.5 3.6h17.8l-1.7 12.8zM6 13.4h12.7l1.2-8.8H4.6L6 13.4z"></path>
-                                                    </svg>
-                                                </div>
-                                                <Link to={`/detalle/${encodeURIComponent(item.texto)}`}>
-                                                    <img src={item.imagen} alt={item.descripcion} />
-                                                </Link>
-                                            </div>
-                                            <div className="texto">
-                                                <Link to={`/detalle/${item.texto}`}>
-                                                    <span> {item.texto} </span>
-                                                </Link>
-                                            </div>
-                                            <div className="precio">
-                                                <span> {item.precio} € </span>
-                                            </div>
-                                        </div>
-                                    ))
-                                )} */}
 
                                 {ArticulosAMostrar.sort((a, b) => {
                                     switch (array) {
