@@ -35,6 +35,6 @@ const storeZustand = create((set) => ({
     EmailDeInicioDeSesion: JSON.parse(localStorage.getItem("EmailDeInicioDeSesion")) || [], // contiene el email de sesion de firebase
     setEmailDeInicioDeSesion: (data) => set({ EmailDeInicioDeSesion: data }), // actualiza el email de sesion de firebase
 }));
-    
+
 export default storeZustand;
 

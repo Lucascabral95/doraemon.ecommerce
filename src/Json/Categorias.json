@@ -1,31 +1,31 @@
 [
     {
         "categoria": "JUGUETES",
-        "imagen": "https://doraemon.lukinternacional.com/c/30-category_default/juguetes-doraemon.jpg",
+        "imagen": "/img/ecommerce-doraemon-uno.jpg",
         "link": "/categoria/Juguete",
         "descripcion": "JUGUETES"
     },
     {
         "categoria": "PELÍCULAS",
-        "imagen": "https://doraemon.lukinternacional.com/c/31-category_default/peliculas-doraemon.jpg",
+        "imagen": "/img/ecommerce-doraemon-dos.jpg",
         "link": "/categoria/Pelicula",
         "descripcion": "PELÍCULAS"
     },
     {
         "categoria": "ESCOLAR Y PAPELERÍA",
-        "imagen": "https://doraemon.lukinternacional.com/c/32-category_default/material-escolar-y-papeleria-doraemon.jpg",
+        "imagen": "/img/ecommerce-doraemon-tres.jpg",
         "link": "/categoria/Escolar",
         "descripcion": "ESCOLAR Y PAPELERÍA"
     },
     {
         "categoria": "MODA",
-        "imagen": "https://doraemon.lukinternacional.com/c/33-category_default/moda-complementos-doraemon.jpg",
+        "imagen": "/img/ecommerce-doraemon-cuatro.jpg",
         "link": "/categoria/Moda",
         "descripcion": "MODA"
     },
     {
         "categoria": "HOGAR",
-        "imagen": "https://doraemon.lukinternacional.com/c/34-category_default/objetos-hogar-doraemon.jpg",
+        "imagen": "/img/ecommerce-doraemon-cinco.jpg",
         "link": "/categoria/Hogar",
         "descripcion": "HOGAR"
     }

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./HeaderDesktop.scss"
+import { Link } from "react-router-dom";
+
 import storeZustand from "../zustand.jsx";
+import "./HeaderDesktop.scss"
 
 export default function HeaderDesktop() {
     const [activeSidebar, setActiveSidebar] = useState(false)
