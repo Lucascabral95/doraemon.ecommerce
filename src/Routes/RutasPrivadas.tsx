@@ -84,8 +84,6 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import HeaderDesktop from "../Components/Header/HeaderDesktop";
-// import FooterDesktop from "../Components/Footer/FooterDesktop";
 import ProteccionComprador from "../Components/ProteccionComprador/ProteccionComprador";
 import LoadingSpinner from "../presentation/components/UI/LoadingSpinner/LoadingSpinner";
 import { useScrollToTop } from "../presentation/hooks/useScrollToTop";
