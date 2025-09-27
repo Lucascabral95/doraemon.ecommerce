@@ -114,8 +114,12 @@ const ProductosBuscados = lazy(
 const Login = lazy(() => import("../presentation/components/auth/Login/Login"));
 //const Register = lazy(() => import("../Components/Register/Register"));
 const Register = lazy(() => import("../presentation/pages/Register/Register"));
-const Checkout = lazy(() => import("../Components/Checkout/Checkout"));
-const CheckoutFin = lazy(() => import("../Components/Checkout/CheckoutFin"));
+//const Checkout = lazy(() => import("../Components/Checkout/Checkout"));
+const Checkout = lazy(() => import("../presentation/pages/Checkout/Checkout"));
+// const CheckoutFin = lazy(() => import("../Components/Checkout/CheckoutFin"));
+const CheckoutFin = lazy(
+  () => import("../presentation/pages/Checkout/CheckoutFin")
+);
 
 const Direccion = lazy(
   () => import("../Components/Login/LoginSecciones/Direccion")

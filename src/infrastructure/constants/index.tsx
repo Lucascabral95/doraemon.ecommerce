@@ -5,3 +5,5 @@ export * from "./headerIcons.constants";
 export * from "./navigation.constants";
 export * from "./categories.constants";
 export * from "./register.constants";
+export * from "./giftProducts.constants";
+export * from "./provinces.constants";
