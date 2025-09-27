@@ -84,25 +84,38 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import HeaderDesktop from "../Components/Header/HeaderDesktop";
-import FooterDesktop from "../Components/Footer/FooterDesktop";
+// import HeaderDesktop from "../Components/Header/HeaderDesktop";
+// import FooterDesktop from "../Components/Footer/FooterDesktop";
 import ProteccionComprador from "../Components/ProteccionComprador/ProteccionComprador";
-import LoadingSpinner from "../presentation/components/UI/LoadingSpinner";
+import LoadingSpinner from "../presentation/components/UI/LoadingSpinner/LoadingSpinner";
 import { useScrollToTop } from "../presentation/hooks/useScrollToTop";
+import FooterDesktop from "../presentation/components/layout/FooterDesktop/FooterDesktop";
+import HeaderDesktop from "../presentation/components/layout/HeaderDesktop/HeaderDesktop";
 
-const MainPage = lazy(() => import("../Components/MainPage/MainPage"));
+const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
+// const ItemListContainer = lazy(
+//   () => import("../Components/ItemListCointainer/ItemListCointaner")
+// );
 const ItemListContainer = lazy(
-  () => import("../Components/ItemListCointainer/ItemListCointaner")
+  () => import("../presentation/pages/ItemListContainer/ItemListContainer")
 );
+// const ItemDetailContainer = lazy(
+//   () => import("../Components/ItemDetailContainer/ItemDetailContainer")
+// );
 const ItemDetailContainer = lazy(
-  () => import("../Components/ItemDetailContainer/ItemDetailContainer")
+  () => import("../presentation/pages/ItemDetailContainer/ItemDetailContainer")
 );
+// const ProductosBuscados = lazy(
+//   () => import("../Components/ProductosBuscados/ProductosBuscados")
+// );
 const ProductosBuscados = lazy(
-  () => import("../Components/ProductosBuscados/ProductosBuscados")
+  () => import("../presentation/pages/ProductosBuscados/ProductosBuscados")
 );
 
-const Login = lazy(() => import("../Components/Login/Login"));
-const Register = lazy(() => import("../Components/Register/Register"));
+// const Login = lazy(() => import("../Components/Login/Login"));
+const Login = lazy(() => import("../presentation/components/auth/Login/Login"));
+//const Register = lazy(() => import("../Components/Register/Register"));
+const Register = lazy(() => import("../presentation/pages/Register/Register"));
 const Checkout = lazy(() => import("../Components/Checkout/Checkout"));
 const CheckoutFin = lazy(() => import("../Components/Checkout/CheckoutFin"));
 

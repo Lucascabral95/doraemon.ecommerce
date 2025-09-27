@@ -1,0 +1,103 @@
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton {
+  &-container {
+    padding: 24px;
+    border: solid 1.6px #ebf8ff;
+    border-radius: 30px;
+    background-color: white;
+    width: 288px;
+    height: 388px;
+    margin: 8px;
+  }
+
+  &-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-image {
+    flex: 1;
+    background: linear-gradient(
+      to right,
+      #f0f0f0 0%,
+      #e0e0e0 20%,
+      #f0f0f0 40%,
+      #f0f0f0 100%
+    );
+    background-size: 800px 104px;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
+
+  &-text {
+    width: 80%;
+    height: 20px;
+    background: linear-gradient(
+      to right,
+      #f0f0f0 0%,
+      #e0e0e0 20%,
+      #f0f0f0 40%,
+      #f0f0f0 100%
+    );
+    background-size: 800px 104px;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+    margin: 8px auto;
+  }
+
+  &-price {
+    width: 40%;
+    height: 24px;
+    background: linear-gradient(
+      to right,
+      #f0f0f0 0%,
+      #e0e0e0 20%,
+      #f0f0f0 40%,
+      #f0f0f0 100%
+    );
+    background-size: 800px 104px;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+    margin: 8px auto 0;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1550px) {
+  .skeleton-container {
+    width: 236.8px;
+    height: 336.8px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .skeleton-container {
+    width: 248px;
+    height: 348px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .skeleton-container {
+    width: 368px;
+    height: 468px;
+  }
+}
+
+@media (max-width: 767px) {
+  .skeleton-container {
+    width: 100%;
+    max-width: 608px;
+    height: auto;
+    aspect-ratio: 1/1.6;
+  }
+}
