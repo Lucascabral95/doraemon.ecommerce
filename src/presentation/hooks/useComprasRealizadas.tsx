@@ -25,14 +25,14 @@ export const useComprasRealizadas = () => {
   const [emailDeSesion, setEmailDeSesion] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [hasFinishedLoading, setHasFinishedLoading] = useState<boolean>(false);
 
   const obtenerDatos = useCallback(
     async (email: string) => {
       try {
         setIsLoading(true);
         setError(null);
-
-        console.log("🔍 Buscando pedidos para:", email);
+        setHasFinishedLoading(false);
 
         const q = query(
           collection(db, "ordenes"),
@@ -53,14 +53,13 @@ export const useComprasRealizadas = () => {
         console.log("📦 Pedidos encontrados:", dataArr);
         setCompras(dataArr);
 
-        if (dataArr.length === 0) {
-          console.log("ℹ️ No se encontraron pedidos para este usuario");
-        }
+        setHasFinishedLoading(true);
+        setIsLoading(false);
       } catch (err) {
         console.error("❌ Error al obtener pedidos:", err);
         setError("Error al cargar tus pedidos. Por favor, intenta de nuevo.");
         setCompras([]);
-      } finally {
+        setHasFinishedLoading(true);
         setIsLoading(false);
       }
     },
@@ -79,21 +78,13 @@ export const useComprasRealizadas = () => {
         console.log("❌ Usuario no autenticado");
         setEmailDeSesion("");
         setCompras([]);
+        setHasFinishedLoading(true);
         setIsLoading(false);
       }
     });
 
     return () => unsubscribe();
   }, [obtenerDatos, setCompras]);
-
-  useEffect(() => {
-    console.log("📊 Estado compras:", {
-      total: compras.length,
-      isLoading,
-      emailDeSesion,
-      error,
-    });
-  }, [compras, isLoading, emailDeSesion, error]);
 
   const formatearFecha = useCallback((fecha: string | Date) => {
     if (!fecha) return "Fecha no disponible";
@@ -130,12 +121,11 @@ export const useComprasRealizadas = () => {
     emailDeSesion,
     isLoading,
     error,
-
     formatearFecha,
     getEstadoPedido,
     recargarDatos,
-
     tieneCompras: compras.length > 0,
     cantidadCompras: compras.length,
+    hasFinishedLoading,
   };
 };

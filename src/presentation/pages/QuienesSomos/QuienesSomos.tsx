@@ -1,0 +1,30 @@
+import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
+
+const styleSpan = {
+  color: "#009FE3",
+  cursor: "pointer",
+};
+
+export default function QuienesSomos() {
+  return (
+    <>
+      <CuerpoVacioFooter
+        contenedor={
+          <div>
+            <p className="texto-negro" style={{ textAlign: "center" }}>
+              Bienvenido/a a la tienda oficial de Doraemon en España y Portugal.
+              Aquí encontrarás todos los productos licenciados de Doraemon en
+              este territorio.
+            </p>
+            <p className="texto-negro" style={{ textAlign: "center" }}>
+              Esta tienda está gestionada por
+              <span style={styleSpan}>Luk Internacional</span>, la empresa
+              distribuidora y gestora de la licencia Doraemon en España y
+              Portugal.
+            </p>
+          </div>
+        }
+      />
+    </>
+  );
+}

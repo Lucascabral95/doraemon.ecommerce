@@ -10,7 +10,7 @@ import {
   SOCIAL_ICONS,
 } from "../../../../infrastructure/constants";
 import Newsletter from "../../../../Components/Opiniones/Newsletter/Newsletter";
-import DerechosReservados from "../../../../Components/DerechosReservados/DerechosReservados";
+import DerechosReservados from "../../../pages/DerechosReservados/DerechosReservados";
 
 const FooterDesktop: React.FC = () => {
   const handleExternalNavigation = (url: string): void => {

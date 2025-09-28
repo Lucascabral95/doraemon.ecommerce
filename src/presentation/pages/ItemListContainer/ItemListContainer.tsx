@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { ITEMS_PER_PAGE } from "../../../infrastructure/constants/categories.constants";
 import { ProductService } from "../../../infrastructure/services/product.service";
@@ -57,20 +57,31 @@ const ItemListContainer: React.FC = () => {
     products: sortedProducts,
   });
 
-  const displayedProducts = ProductService.paginateProducts(
-    sortedProducts,
-    currentPage,
-    ITEMS_PER_PAGE
+  const displayedProducts = React.useMemo(
+    () =>
+      ProductService.paginateProducts(
+        sortedProducts,
+        currentPage,
+        ITEMS_PER_PAGE
+      ),
+    [sortedProducts, currentPage]
   );
 
-  const breadcrumbItems = [
-    { label: "Inicio", path: "/" },
-    { label: categoria || "", isActive: true },
-  ];
+  const breadcrumbItems = React.useMemo(
+    () => [
+      { label: "Inicio", path: "/" },
+      { label: categoria || "", isActive: true },
+    ],
+    [categoria]
+  );
 
-  const handleAddToCart = (productId: number): void => {
-    addToCart(productId.toString());
-  };
+  const handleAddToCart = useCallback(
+    (productId: number): void => {
+      addToCart(productId.toString());
+    },
+    [addToCart]
+  );
+  useEffect(() => {}, [categoria, cartItemsCount]);
 
   // if (isProductsLoading) {
   //   return (

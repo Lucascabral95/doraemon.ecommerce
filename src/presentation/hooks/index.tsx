@@ -14,3 +14,4 @@ export * from "./useCheckoutFin";
 export * from "./useWishListOriginal";
 export * from "./useDatosPersonales";
 export * from "./useDetalleCompras";
+export * from "./useCurrentYear";

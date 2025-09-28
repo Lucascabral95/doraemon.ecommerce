@@ -9,12 +9,12 @@ import CuerpoVacio from "../../../Components/Login/LoginSecciones/CuerpoVacio";
 import { CartItem } from "../../components/cart/CartItem";
 import { GiftItem } from "../../components/cart/GiftItem";
 import { CartSummary } from "../../components/cart/CartSummary";
-import "./Checkout.scss";
 import {
   GIFT_PRODUCTS,
   GIFT_THRESHOLD,
   LOADING_DELAY,
 } from "../../../infrastructure/constants";
+import "./Checkout.scss";
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
@@ -83,16 +83,14 @@ const Checkout: React.FC = () => {
   }
 
   return (
-    <div
-      className="productosBuscados checkout"
-      style={{ padding: "0px 0px 0px 0px" }}
-    >
+    <div className="productosBuscados checkout">
       <div className="contenedor-card">
-        <div className="categorias">
-          <span>INICIO</span>
-        </div>
-
         <div className="contenedor-checkout">
+          <div className="categorias">
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              INICIO
+            </Link>
+          </div>
           <div className="titulo-titulo">
             <span className="titulo">CESTA DE LA COMPRA</span>
           </div>

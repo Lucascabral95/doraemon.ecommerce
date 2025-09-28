@@ -1,16 +1,19 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import "./DatosPersonales.scss";
 import { useDatosPersonales } from "../../hooks";
+import "./DatosPersonales.scss";
 
 const DatosPersonales: React.FC = () => {
   const {
     datosPersonales,
     mostrarBoton,
+    modoEdicion,
     handleChange,
     handleSubmit,
     actualizarDatos,
+    cancelarEdicion,
+    limpiarDatos,
     getInputValues,
   } = useDatosPersonales();
 
@@ -24,19 +27,29 @@ const DatosPersonales: React.FC = () => {
     }
   };
 
+  const inputsDeshabilitados = mostrarBoton && !modoEdicion;
+
   return (
     <div className="datos-personales">
       <div className="contenedor-datos-personales">
         <div className="title-title">
-          {mostrarBoton !== true ? (
-            <h2 className="title">COMPLETA TUS DATOS PERSONALES</h2>
-          ) : (
+          {mostrarBoton && !modoEdicion ? (
             <h2 className="title">TUS DATOS PERSONALES</h2>
+          ) : (
+            <h2 className="title">
+              {modoEdicion
+                ? "ACTUALIZAR TUS DATOS"
+                : "COMPLETA TUS DATOS PERSONALES"}
+            </h2>
           )}
         </div>
 
         <div className="text-texto">
-          <p className="texto">Rellená este formulario con tus datos.</p>
+          <p className="texto">
+            {modoEdicion
+              ? "Modifica los campos que desees actualizar."
+              : "Rellená este formulario con tus datos."}
+          </p>
         </div>
 
         <div
@@ -55,6 +68,12 @@ const DatosPersonales: React.FC = () => {
                   value={inputValues.nombre || ""}
                   onChange={handleChange}
                   placeholder="Ingresa tu nombre"
+                  disabled={inputsDeshabilitados}
+                  style={
+                    inputsDeshabilitados
+                      ? { backgroundColor: "#f5f5f5", color: "#666" }
+                      : {}
+                  }
                 />
               </div>
             </div>
@@ -70,6 +89,12 @@ const DatosPersonales: React.FC = () => {
                   value={inputValues.apellido || ""}
                   onChange={handleChange}
                   placeholder="Ingresa tu apellido"
+                  disabled={inputsDeshabilitados}
+                  style={
+                    inputsDeshabilitados
+                      ? { backgroundColor: "#f5f5f5", color: "#666" }
+                      : {}
+                  }
                 />
               </div>
             </div>
@@ -85,6 +110,12 @@ const DatosPersonales: React.FC = () => {
                   value={inputValues.email || ""}
                   onChange={handleChange}
                   placeholder="ejemplo@correo.com"
+                  disabled={inputsDeshabilitados}
+                  style={
+                    inputsDeshabilitados
+                      ? { backgroundColor: "#f5f5f5", color: "#666" }
+                      : {}
+                  }
                 />
               </div>
             </div>
@@ -101,6 +132,12 @@ const DatosPersonales: React.FC = () => {
                   max="100"
                   value={inputValues.edad || ""}
                   onChange={handleEdadChange}
+                  disabled={inputsDeshabilitados}
+                  style={
+                    inputsDeshabilitados
+                      ? { backgroundColor: "#f5f5f5", color: "#666" }
+                      : {}
+                  }
                   onKeyDown={(e) => {
                     if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                       const currentValue = parseInt(e.currentTarget.value) || 0;
@@ -166,21 +203,51 @@ const DatosPersonales: React.FC = () => {
 
           <div className="boton-enviar">
             <div className="contenedor-boton-enviar">
-              {mostrarBoton !== true ? (
-                <button
-                  type="button"
-                  className="boton-personalizado"
-                  onClick={handleSubmit}
-                >
-                  GUARDAR DATOS
-                </button>
-              ) : (
+              {mostrarBoton && !modoEdicion ? (
                 <button
                   onClick={actualizarDatos}
                   type="button"
                   className="boton-personalizado-actualizar"
                 >
                   ACTUALIZAR DATOS
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="boton-personalizado"
+                  onClick={handleSubmit}
+                >
+                  {modoEdicion ? "GUARDAR CAMBIOS" : "GUARDAR DATOS"}
+                </button>
+              )}
+
+              {modoEdicion && (
+                <button
+                  onClick={cancelarEdicion}
+                  type="button"
+                  className="boton-personalizado"
+                  style={{
+                    marginLeft: "10px",
+                    backgroundColor: "#6c757d",
+                    border: "1px solid #6c757d",
+                  }}
+                >
+                  CANCELAR
+                </button>
+              )}
+
+              {mostrarBoton && (
+                <button
+                  onClick={limpiarDatos}
+                  type="button"
+                  className="boton-personalizado"
+                  style={{
+                    marginLeft: "10px",
+                    backgroundColor: "#dc3545",
+                    border: "1px solid #dc3545",
+                  }}
+                >
+                  LIMPIAR DATOS
                 </button>
               )}
             </div>

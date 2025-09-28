@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -39,7 +40,6 @@ const Login: React.FC = () => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(`✅ Firebase Auth: Usuario logueado - ${user.email}`);
         setAcceso(true);
         setEmailDeInicioDeSesion(user.email);
         setUsuarioEnSesion(user.email);

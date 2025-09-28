@@ -91,18 +91,21 @@ import FooterDesktop from "../presentation/components/layout/FooterDesktop/Foote
 import HeaderDesktop from "../presentation/components/layout/HeaderDesktop/HeaderDesktop";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
+
 // const ItemListContainer = lazy(
 //   () => import("../Components/ItemListCointainer/ItemListCointaner")
 // );
 const ItemListContainer = lazy(
   () => import("../presentation/pages/ItemListContainer/ItemListContainer")
 );
+
 // const ItemDetailContainer = lazy(
 //   () => import("../Components/ItemDetailContainer/ItemDetailContainer")
 // );
 const ItemDetailContainer = lazy(
   () => import("../presentation/pages/ItemDetailContainer/ItemDetailContainer")
 );
+
 // const ProductosBuscados = lazy(
 //   () => import("../Components/ProductosBuscados/ProductosBuscados")
 // );
@@ -112,10 +115,13 @@ const ProductosBuscados = lazy(
 
 // const Login = lazy(() => import("../Components/Login/Login"));
 const Login = lazy(() => import("../presentation/components/auth/Login/Login"));
+
 //const Register = lazy(() => import("../Components/Register/Register"));
 const Register = lazy(() => import("../presentation/pages/Register/Register"));
+
 //const Checkout = lazy(() => import("../Components/Checkout/Checkout"));
 const Checkout = lazy(() => import("../presentation/pages/Checkout/Checkout"));
+
 // const CheckoutFin = lazy(() => import("../Components/Checkout/CheckoutFin"));
 const CheckoutFin = lazy(
   () => import("../presentation/pages/Checkout/CheckoutFin")
@@ -156,36 +162,61 @@ const DatosPersonales = lazy(
 //const Envios = lazy(() => import("../Components/Footer/SectionsFooter/Envios"));
 const Envios = lazy(() => import("../presentation/pages/Envios/Envios"));
 
+// const Devoluciones = lazy(
+//   () => import("../Components/Footer/SectionsFooter/CambiosDevoluciones")
+// );
 const Devoluciones = lazy(
-  () => import("../Components/Footer/SectionsFooter/CambiosDevoluciones")
+  () => import("../presentation/pages/Devoluciones/Devoluciones")
 );
 
+// const Preguntas = lazy(
+//   () => import("../Components/Footer/SectionsFooter/Preguntas")
+// );
 const Preguntas = lazy(
-  () => import("../Components/Footer/SectionsFooter/Preguntas")
+  () => import("../presentation/pages/Preguntas/Preguntas")
 );
 
+// const QuienesSomos = lazy(
+//   () => import("../Components/Footer/SectionsFooter/QuienesSomos")
+// );
 const QuienesSomos = lazy(
-  () => import("../Components/Footer/SectionsFooter/QuienesSomos")
+  () => import("../presentation/pages/QuienesSomos/QuienesSomos")
 );
 
+// const CondicionesDeUso = lazy(
+//   () => import("../Components/Footer/SectionsFooter/CondicionesDeUso")
+// );
 const CondicionesDeUso = lazy(
-  () => import("../Components/Footer/SectionsFooter/CondicionesDeUso")
+  () => import("../presentation/pages/CondicionesDeUso/CondicionesDeUso")
 );
 
+// const NotaLegal = lazy(
+//   () => import("../Components/Footer/SectionsFooter/NotaLegal")
+// );
 const NotaLegal = lazy(
-  () => import("../Components/Footer/SectionsFooter/NotaLegal")
+  () => import("../presentation/pages/NotaLegalData/NotaLegalData")
 );
 
+// const PoliticaDeCookies = lazy(
+//   () => import("../Components/Footer/SectionsFooter/PoliticaDeCookies")
+// );
 const PoliticaDeCookies = lazy(
-  () => import("../Components/Footer/SectionsFooter/PoliticaDeCookies")
+  () => import("../presentation/pages/PoliticaDeCookies/PoliticaDeCookies")
 );
 
+// const PoliticaDePrivacidad = lazy(
+//   () => import("../Components/Footer/SectionsFooter/PoliticaDePrivacidad")
+// );
 const PoliticaDePrivacidad = lazy(
-  () => import("../Components/Footer/SectionsFooter/PoliticaDePrivacidad")
+  () =>
+    import("../presentation/pages/PoliticaDePrivacidad/PoliticaDePrivacidad")
 );
 
+// const DerechosReservados = lazy(
+//   () => import("../Components/DerechosReservados/DerechosReservados")
+// );
 const DerechosReservados = lazy(
-  () => import("../Components/DerechosReservados/DerechosReservados")
+  () => import("../presentation/pages/DerechosReservados/DerechosReservados")
 );
 
 // const ComprasRealizadas = lazy(

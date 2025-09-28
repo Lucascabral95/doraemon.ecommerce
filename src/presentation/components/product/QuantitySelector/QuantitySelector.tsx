@@ -12,6 +12,17 @@ interface QuantitySelectorProps {
   disabled?: boolean;
 }
 
+const styleInput = {
+  quantityInput: {
+    border: "none",
+    color: "#009fe3",
+
+    "&:focus": {
+      outline: "none",
+    },
+  },
+};
+
 export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   quantity,
   onIncrement,
@@ -38,6 +49,7 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           max={maxQuantity}
           disabled={disabled}
           className="quantity-input"
+          style={styleInput.quantityInput}
         />
       </div>
       <div className="botones">

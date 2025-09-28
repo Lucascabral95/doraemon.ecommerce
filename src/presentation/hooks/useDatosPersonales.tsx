@@ -13,15 +13,26 @@ export const useDatosPersonales = () => {
   });
 
   const [mostrarBoton, setMostrarBoton] = useState<boolean>(false);
+  const [modoEdicion, setModoEdicion] = useState<boolean>(false); // ✅ Nuevo estado
 
+  // ✅ Debug y carga de datos mejorado
   useEffect(() => {
+    console.log("🔍 Verificando datos en store:", datosPersonaless);
+    console.log(
+      "🔍 Tipo de datos:",
+      typeof datosPersonaless,
+      Array.isArray(datosPersonaless)
+    );
+
     const esObjetoValido =
       datosPersonaless &&
       typeof datosPersonaless === "object" &&
       !Array.isArray(datosPersonaless) &&
+      datosPersonaless.email &&
       datosPersonaless.email !== "";
 
     if (esObjetoValido) {
+      console.log("✅ Datos válidos encontrados, cargando...");
       setMostrarBoton(true);
       setDatosPersonales({
         nombre: datosPersonaless.nombre || "",
@@ -30,12 +41,33 @@ export const useDatosPersonales = () => {
         edad: datosPersonaless.edad || "",
       });
     } else {
+      console.log("📭 No hay datos válidos");
       setMostrarBoton(false);
+
+      // ✅ Verificar localStorage como backup
+      try {
+        const backup = localStorage.getItem("DatosPersonalesDelUsuario");
+        if (backup) {
+          const datos = JSON.parse(backup);
+          if (
+            datos &&
+            typeof datos === "object" &&
+            !Array.isArray(datos) &&
+            datos.email
+          ) {
+            console.log("🔄 Sincronizando desde localStorage:", datos);
+            setDatosPersonaless(datos);
+          }
+        }
+      } catch (error) {
+        console.error("❌ Error al verificar localStorage:", error);
+      }
     }
-  }, [datosPersonaless]);
+  }, [datosPersonaless, setDatosPersonaless]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    console.log(`🔄 Cambiando ${name}:`, value);
     setDatosPersonales((prevState) => ({
       ...prevState,
       [name]: value,
@@ -43,32 +75,25 @@ export const useDatosPersonales = () => {
   }, []);
 
   const validateData = useCallback((data: DatosPersonalesForm) => {
-    if (!data.nombre.trim()) {
-      throw new Error("El nombre es requerido");
-    }
-    if (!data.apellido.trim()) {
-      throw new Error("El apellido es requerido");
-    }
-    if (!data.email.trim()) {
-      throw new Error("El email es requerido");
-    }
-    if (!data.edad.trim()) {
-      throw new Error("La edad es requerida");
+    console.log("🔍 Validando datos:", data);
+
+    if (!data.nombre || !data.apellido || !data.email || !data.edad) {
+      throw new Error("Por favor completa todos los campos");
     }
 
+    // ✅ Validación de email mejorada
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email.trim())) {
-      throw new Error(
-        "Por favor ingresa un email válido (ejemplo: nombre@dominio.com)"
-      );
+      throw new Error("Por favor ingresa un email válido");
     }
 
     const edadNum = parseInt(data.edad);
     if (isNaN(edadNum) || edadNum < 1 || edadNum > 100) {
+      // ✅ Cambiado a 100 como en el input
       throw new Error("Por favor ingresa una edad válida (1-100 años)");
     }
 
-    console.log("✅ Datos válidos:", data);
+    console.log("✅ Datos válidos");
     return true;
   }, []);
 
@@ -76,15 +101,21 @@ export const useDatosPersonales = () => {
     (e: React.FormEvent) => {
       e.preventDefault();
 
+      console.log("🚀 Guardando datos:", datosPersonales);
+
       try {
         validateData(datosPersonales);
-        localStorage.setItem(
-          "DatosPersonalesDelUsuario",
-          JSON.stringify(datosPersonales)
-        );
+
+        // ✅ Guardar en store (que automáticamente guarda en localStorage)
         setDatosPersonaless(datosPersonales);
 
-        alert("Datos guardados exitosamente");
+        console.log("✅ Datos guardados exitosamente");
+
+        // ✅ Actualizar estados
+        setMostrarBoton(true);
+        setModoEdicion(false); // ✅ Salir del modo edición
+
+        alert("¡Datos guardados exitosamente!");
       } catch (error) {
         console.error("❌ Error validando datos:", error);
         alert("Por favor completa todos los campos correctamente");
@@ -93,19 +124,55 @@ export const useDatosPersonales = () => {
     [datosPersonales, setDatosPersonaless, validateData]
   );
 
+  // ✅ CAMBIO PRINCIPAL: actualizarDatos ahora activa modo edición
   const actualizarDatos = useCallback(() => {
-    localStorage.removeItem("DatosPersonalesDelUsuario");
-    setMostrarBoton(false);
+    console.log("🔄 Activando modo edición");
+    setModoEdicion(true);
+  }, []);
+
+  // ✅ NUEVA: Función para cancelar edición
+  const cancelarEdicion = useCallback(() => {
+    console.log("❌ Cancelando edición");
+    setModoEdicion(false);
+
+    // ✅ Restaurar datos del store
+    if (
+      datosPersonaless &&
+      typeof datosPersonaless === "object" &&
+      !Array.isArray(datosPersonaless)
+    ) {
+      setDatosPersonales({
+        nombre: datosPersonaless.nombre || "",
+        apellido: datosPersonaless.apellido || "",
+        email: datosPersonaless.email || "",
+        edad: datosPersonaless.edad || "",
+      });
+    }
+  }, [datosPersonaless]);
+
+  // ✅ NUEVA: Función para limpiar datos
+  const limpiarDatos = useCallback(() => {
+    console.log("🗑️ Limpiando datos");
+    setDatosPersonaless({});
     setDatosPersonales({
       nombre: "",
       apellido: "",
       email: "",
       edad: "",
     });
-    setDatosPersonaless([]);
+    setMostrarBoton(false);
+    setModoEdicion(false);
+    alert("Datos eliminados exitosamente");
   }, [setDatosPersonaless]);
 
+  // ✅ MEJORADO: getInputValues con lógica de modo edición
   const getInputValues = useCallback(() => {
+    // ✅ Si está en modo edición, usar estado local (editable)
+    if (modoEdicion) {
+      return datosPersonales;
+    }
+
+    // ✅ Si tiene datos guardados y no está editando, usar store (solo lectura)
     if (mostrarBoton && datosPersonaless && !Array.isArray(datosPersonaless)) {
       return {
         nombre: datosPersonaless.nombre || "",
@@ -115,15 +182,19 @@ export const useDatosPersonales = () => {
       };
     }
 
+    // ✅ Formulario nuevo, usar estado local
     return datosPersonales;
-  }, [mostrarBoton, datosPersonaless, datosPersonales]);
+  }, [modoEdicion, mostrarBoton, datosPersonaless, datosPersonales]);
 
   return {
     datosPersonales,
     mostrarBoton,
+    modoEdicion, // ✅ Exportar modo edición
     handleChange,
     handleSubmit,
     actualizarDatos,
+    cancelarEdicion, // ✅ Nueva función
+    limpiarDatos, // ✅ Nueva función
     getInputValues,
   };
 };
