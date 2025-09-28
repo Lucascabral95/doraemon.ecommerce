@@ -1,33 +1,40 @@
 import React from "react";
-import { SvgIcon as SvgIconType } from "../../../../infrastructure/types/icons.types";
+import { IconHeaderProps } from "../../../../infrastructure/types";
 
-interface SvgIconProps extends SvgIconType {
+interface SvgIconProps extends Partial<IconHeaderProps> {
+  className?: string;
+  id?: string;
   onClick?: () => void;
   style?: React.CSSProperties;
-  id?: string;
 }
 
 const SvgIcon: React.FC<SvgIconProps> = ({
   viewBox,
   path,
-  width = 24,
-  height = 24,
-  fill = "#009FE3",
-  className = "",
+  width,
+  height,
+  fill,
+  stroke,
+  strokeWidth,
+  strokeLinecap,
+  className,
+  id,
   onClick,
   style,
 }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       className={className}
+      id={id}
+      viewBox={viewBox}
       width={width}
       height={height}
-      viewBox={viewBox}
-      fill={fill}
       onClick={onClick}
       style={style}
-      overflow="visible"
+      fill={stroke ? "none" : fill}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      strokeLinecap={strokeLinecap}
     >
       <path d={path} />
     </svg>

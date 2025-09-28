@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import storeZustand from "../../../../Components/zustand";
 
 interface QuantitySelectorProps {
   quantity: number;
@@ -11,6 +12,14 @@ interface QuantitySelectorProps {
   maxQuantity: number;
   disabled?: boolean;
 }
+
+const styleButtonAddToCart = (isAuthenticated: boolean) => {
+  const isActive = isAuthenticated;
+  return {
+    opacity: isActive ? 1 : 0.5,
+    cursor: isActive ? "pointer" : "not-allowed",
+  };
+};
 
 const styleInput = {
   quantityInput: {
@@ -38,6 +47,8 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
     onSetQuantity(newQuantity);
   };
 
+  const { acceso } = storeZustand();
+
   return (
     <div className="cantidad-numeral">
       <div className="numero">
@@ -57,6 +68,7 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           <div
             className={`icon ${!canIncrement || disabled ? "disabled" : ""}`}
             onClick={canIncrement && !disabled ? onIncrement : undefined}
+            style={styleButtonAddToCart(acceso)}
           >
             <FaArrowUp
               color={canIncrement && !disabled ? "#009FE3" : "#ccc"}
@@ -68,6 +80,7 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           <div
             className={`icon ${!canDecrement || disabled ? "disabled" : ""}`}
             onClick={canDecrement && !disabled ? onDecrement : undefined}
+            style={styleButtonAddToCart(acceso)}
           >
             <FaArrowDown
               color={canDecrement && !disabled ? "#009FE3" : "#ccc"}

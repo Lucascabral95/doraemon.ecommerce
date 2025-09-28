@@ -6,8 +6,8 @@ import ProteccionComprador from "../Components/ProteccionComprador/ProteccionCom
 import LoadingSpinner from "../presentation/components/UI/LoadingSpinner/LoadingSpinner";
 import { useScrollToTop } from "../presentation/hooks/useScrollToTop";
 import FooterDesktop from "../presentation/components/layout/FooterDesktop/FooterDesktop";
-import HeaderDesktop from "../presentation/components/layout/HeaderDesktop/HeaderDesktop";
 import MiddlewareRutasProtegidas from "../presentation/middleware/auth/rutasProtegidas.middleware";
+import HeaderDesktop from "../presentation/components/layout/HeaderDesktop/HeaderDesktop";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
 
@@ -105,6 +105,7 @@ const Body: React.FC = () => {
   return (
     <div className="app-container">
       <HeaderDesktop />
+      {/* <HeaderDesktop /> */}
 
       <main className="main-content">
         <Suspense fallback={<PageLoader />}>

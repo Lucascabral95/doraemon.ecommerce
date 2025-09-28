@@ -39,12 +39,10 @@ export default function NotFound() {
             <div className="texto-not-found">
               <h3 className="titulo-not-found"> 404 </h3>
               <span className="subtitulo-not-found">
-                {" "}
-                La página que buscas no se ha encontrado.{" "}
+                La página que buscas no se ha encontrado.
               </span>
               <span className="texto">
-                {" "}
-                Realiza una nueva búsqueda sobre tu interés{" "}
+                Realiza una nueva búsqueda sobre tu interés
               </span>
               <div className="busqueda-de-articulos">
                 <input

@@ -7,3 +7,4 @@ export * from "./product.types";
 export * from "./productDetail.types";
 export * from "./search.types";
 export * from "./register.types";
+export * from "./iconsHeader.types";

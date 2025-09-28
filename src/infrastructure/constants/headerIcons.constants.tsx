@@ -1,6 +1,6 @@
-import { IconSet } from "../types/icons.types";
+import { IconSvgSet } from "../types";
 
-export const HEADER_ICONS: IconSet = {
+export const HEADER_ICONS: IconSvgSet = {
   dropdown: {
     viewBox: "0 0 24 24",
     path: "M12 16.7L1.2 5.9c-.3-.3-.7-.3-1 0s-.3.7 0 1l11.3 11.3c.3.3.7.3 1 0L23.8 6.8c.1-.1.2-.3.2-.5s-.1-.3-.2-.4c-.3-.3-.7-.3-1 0L12 16.7z",
@@ -11,8 +11,8 @@ export const HEADER_ICONS: IconSet = {
   search: {
     viewBox: "0 0 22.4 22.4",
     path: "M22.4 21l-4.8-4.8c1.4-1.7 2.2-3.9 2.2-6.3 0-5.5-4.4-9.9-9.9-9.9S0 4.4 0 9.9s4.4 9.9 9.9 9.9c2.4 0 4.5-.8 6.3-2.2l4.8 4.8 1.4-1.4zM9.9 17.8C5.5 17.8 2 14.3 2 9.9S5.5 2 9.9 2s7.9 3.5 7.9 7.9-3.5 7.9-7.9 7.9z",
-    width: 20,
-    height: 20,
+    width: 22.4,
+    height: 22.4,
     fill: "#009FE3",
   },
   user: {
@@ -34,14 +34,20 @@ export const HEADER_ICONS: IconSet = {
     path: "M4 8 L28 8 M4 16 L28 16 M4 24 L28 24",
     width: 32,
     height: 32,
-    fill: "#009FE3",
+    stroke: "#009FE3",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
   },
   close: {
     viewBox: "0 0 32 32",
     path: "M2 30 L30 2 M30 30 L2 2",
     width: 24,
     height: 24,
-    fill: "#FFFFFF",
+    stroke: "#FFFFFF",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
   },
   language: {
     viewBox: "0 0 8.844 5.358",

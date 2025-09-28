@@ -116,19 +116,25 @@ const ProductosBuscados: React.FC = () => {
           )}
 
           {hasResults && searchResults!.totalPages > 1 && (
-            <Pagination
-              currentPage={searchResults!.currentPage}
-              totalPages={searchResults!.totalPages}
-              visiblePages={Array.from(
-                { length: Math.min(5, searchResults!.totalPages) },
-                (_, i) => i + 1
-              )}
-              canGoPrevious={searchResults!.currentPage > 1}
-              canGoNext={searchResults!.currentPage < searchResults!.totalPages}
-              onGoToPage={changePage}
-              onGoToPrevious={() => changePage(searchResults!.currentPage - 1)}
-              onGoToNext={() => changePage(searchResults!.currentPage + 1)}
-            />
+            <div className="botones-de-paginacion">
+              <Pagination
+                currentPage={searchResults!.currentPage}
+                totalPages={searchResults!.totalPages}
+                visiblePages={Array.from(
+                  { length: Math.min(5, searchResults!.totalPages) },
+                  (_, i) => i + 1
+                )}
+                canGoPrevious={searchResults!.currentPage > 1}
+                canGoNext={
+                  searchResults!.currentPage < searchResults!.totalPages
+                }
+                onGoToPage={changePage}
+                onGoToPrevious={() =>
+                  changePage(searchResults!.currentPage - 1)
+                }
+                onGoToNext={() => changePage(searchResults!.currentPage + 1)}
+              />
+            </div>
           )}
 
           {hasResults && (

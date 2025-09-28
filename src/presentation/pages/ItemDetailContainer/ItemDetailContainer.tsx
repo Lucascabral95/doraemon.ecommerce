@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import {
   useProductDetail,
   useImageGallery,
@@ -13,14 +14,27 @@ import { ImageZoomModal } from "../../components/product/ImageZoomModal/ImageZoo
 import { ProductInfoPanel } from "../../components/product/ProductInfoPanel/ProductInfoPanel";
 import { QuantitySelector } from "../../components/product/QuantitySelector/QuantitySelector";
 
-import "./ItemDetailContainer.scss";
 import { WishlistButton } from "../../components/product/WishListButton/WishListButton";
 import { RelatedProducts } from "../../components/product/RelatedProducts/RelatedProducts";
 import { ProductAdditionalInfo } from "../../components/product/ProductAdditionalInfo/ProductAdditionalInfo";
 import { SEOHead } from "../../components/UI/SEOHead/SEOHead";
+import "./ItemDetailContainer.scss";
+import storeZustand from "../../../Components/zustand";
+
+const styleButtonAddToCart = (
+  isAvailable: boolean,
+  isAuthenticated: boolean
+) => {
+  const isActive = isAvailable && isAuthenticated;
+  return {
+    opacity: isActive ? 1 : 0.5,
+    cursor: isActive ? "pointer" : "not-allowed",
+  };
+};
 
 const ItemDetailContainer: React.FC = () => {
   const { producto } = useParams<{ producto: string }>();
+  const { acceso } = storeZustand();
 
   const {
     product,
@@ -161,7 +175,13 @@ const ItemDetailContainer: React.FC = () => {
                   />
 
                   <div className="carrito" onClick={handleAddToCart}>
-                    <button disabled={!availability.isAvailable}>
+                    <button
+                      style={styleButtonAddToCart(
+                        availability.isAvailable,
+                        acceso
+                      )}
+                      disabled={!availability.isAvailable || !acceso}
+                    >
                       {availability.isAvailable
                         ? "AÑADIR AL CARRITO"
                         : "SIN STOCK"}

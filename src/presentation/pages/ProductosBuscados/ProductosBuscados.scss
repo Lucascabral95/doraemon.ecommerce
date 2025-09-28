@@ -1,9 +1,7 @@
 .productosBuscados {
-  width: 10%;
+  width: 100%;
   margin: auto;
-  // padding: 4% 4%;
-
-  padding: 10%;
+  padding: 4% 4%;
 
   .contenedor-card {
     max-width: 1520px;
@@ -21,7 +19,7 @@
 
     .filtre {
       height: 24px;
-      margin-bottom: 8px;
+      margin-bottom: 2.6rem;
 
       .boton {
         display: flex;
@@ -112,6 +110,29 @@
               font-family: "Sniglet", sans-serif;
               color: #009fe3;
             }
+          }
+        }
+      }
+    }
+
+    .botones-de-paginacion {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 147px;
+
+      .paginacion-numeros {
+        button {
+          border: none;
+          background-color: transparent;
+          color: #374151;
+          font-size: 16px;
+          margin: 0px 8px;
+          padding: 0px 8px;
+          font-weight: 600;
+          &:hover {
+            border: none;
           }
         }
       }

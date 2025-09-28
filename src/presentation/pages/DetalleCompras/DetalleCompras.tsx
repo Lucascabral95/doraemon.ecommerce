@@ -5,6 +5,15 @@ import { useDetalleCompras } from "../../hooks";
 import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import "./DetalleCompras.scss";
 
+const styleButton = {
+  padding: "10px 20px",
+  backgroundColor: "#009FE3",
+  color: "white",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+};
+
 const DetalleCompras: React.FC = () => {
   const {
     compras,
@@ -53,17 +62,7 @@ const DetalleCompras: React.FC = () => {
                 <p style={{ color: "#ff6b6b", marginBottom: "20px" }}>
                   {error}
                 </p>
-                <button
-                  onClick={recargarDatos}
-                  style={{
-                    padding: "10px 20px",
-                    backgroundColor: "#009FE3",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
+                <button onClick={recargarDatos} style={styleButton}>
                   Reintentar
                 </button>
                 <div style={{ marginTop: "20px" }}>
@@ -196,7 +195,7 @@ const DetalleCompras: React.FC = () => {
                       </div>
                       <div className="hola-dos">
                         <p>
-                          Total:{" "}
+                          Total:
                           {calcularTotalProducto(item.precio, item.cantidad)} €
                         </p>
                       </div>

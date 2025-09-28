@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import storeZustand from "../../../../Components/zustand";
 import { useHeaderNavigation } from "../../../hooks/useHeaderNavigation";
 import { useSearch } from "../../../hooks/useSearch";
 import { useCartSync } from "../../../hooks/useCartSync";
 import { Category } from "../../../../infrastructure/types";
-import SvgIcon from "../../UI/SvgIcon/SvgIcon";
 import {
   APP_CONFIG,
   HEADER_ICONS,
   MAIN_CATEGORIES,
 } from "../../../../infrastructure/constants";
 import "./HeaderDesktop.scss";
+import SvgIcon from "../../UI/SvgIcon/SvgIcon";
 
 const HeaderDesktop: React.FC = () => {
-  const { cart, cantidadArticulossss, setCantidadArticulossss } =
+  const { cart, cantidadArticulossss, setCantidadArticulossss, acceso } =
     storeZustand();
 
   const {
@@ -176,7 +177,7 @@ const HeaderDesktop: React.FC = () => {
                   {...HEADER_ICONS.cart}
                   className="carrito-login-icon"
                 />
-                {cantidadArticulossss > 0 && (
+                {cantidadArticulossss > 0 && acceso && (
                   <div className="carrito-cantidad-articulos">
                     <span>{cantidadArticulossss}</span>
                   </div>

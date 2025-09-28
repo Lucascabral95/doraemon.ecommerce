@@ -21,6 +21,17 @@ interface LocationState {
   email?: string;
 }
 
+const spanStyle = {
+  display: "inline-block",
+  width: "14px",
+  height: "14px",
+  border: "2px solid #ffffff",
+  borderRadius: "50%",
+  borderTop: "2px solid transparent",
+  animation: "spin 1s linear infinite",
+  marginRight: "8px",
+};
+
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -211,18 +222,7 @@ const Login: React.FC = () => {
           >
             {isSubmitting ? (
               <>
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: "14px",
-                    height: "14px",
-                    border: "2px solid #ffffff",
-                    borderRadius: "50%",
-                    borderTop: "2px solid transparent",
-                    animation: "spin 1s linear infinite",
-                    marginRight: "8px",
-                  }}
-                />
+                <span style={spanStyle} />
                 INICIANDO SESIÓN...
               </>
             ) : (

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { ITEMS_PER_PAGE } from "../../../infrastructure/constants/categories.constants";
 import { ProductService } from "../../../infrastructure/services/product.service";
 
-import "./ItemListContainer.scss";
 import { useProducts } from "../../hooks/useProducts";
 import { Breadcrumb } from "../../components/UI/Breadcrumb/Breadcrumb";
 import { CategoryHeader } from "../../components/category/CategoryHeader/CategoryHeader";
@@ -12,6 +11,7 @@ import { SortFilter } from "../../components/filters/SortFilter/SortFilter";
 import { ProductGrid } from "../../components/product/ProductGrid/ProductGrid";
 import { Pagination } from "../../components/UI/Pagination/Pagination";
 import { usePagination, useProductCart, useProductFilters } from "../../hooks";
+import "./ItemListContainer.scss";
 
 const ItemListContainer: React.FC = () => {
   const { categoria } = useParams<{ categoria: string }>();
