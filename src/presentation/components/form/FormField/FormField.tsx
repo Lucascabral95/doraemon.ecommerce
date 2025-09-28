@@ -1,7 +1,5 @@
 import React from "react";
 
-// import "./FormField.scss";
-
 interface FormFieldProps {
   label: string;
   error?: string;

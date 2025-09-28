@@ -121,42 +121,65 @@ const CheckoutFin = lazy(
   () => import("../presentation/pages/Checkout/CheckoutFin")
 );
 
+// const Direccion = lazy(
+//   () => import("../Components/Login/LoginSecciones/Direccion")
+// );
 const Direccion = lazy(
-  () => import("../Components/Login/LoginSecciones/Direccion")
-);
-const Cupones = lazy(
-  () => import("../Components/Login/LoginSecciones/Cupones")
-);
-const Abono = lazy(() => import("../Components/Login/LoginSecciones/Abono"));
-const Pedidos = lazy(
-  () => import("../Components/Login/LoginSecciones/Pedidos")
-);
-const Wishlist = lazy(
-  () => import("../Components/Login/LoginSecciones/Wishlist")
-);
-const DatosPersonales = lazy(
-  () => import("../Components/Login/LoginSecciones/DatosPersonajes")
+  () => import("../presentation/pages/Direccion/Direccion")
 );
 
-const Envios = lazy(() => import("../Components/Footer/SectionsFooter/Envios"));
+// const Cupones = lazy(
+//   () => import("../Components/Login/LoginSecciones/Cupones")
+// );
+const Cupones = lazy(() => import("../presentation/pages/Cupones/Cupones"));
+
+//const Abono = lazy(() => import("../Components/Login/LoginSecciones/Abono"));
+const Abono = lazy(() => import("../presentation/pages/Abono/Abono"));
+
+// const Pedidos = lazy(
+//   () => import("../Components/Login/LoginSecciones/Pedidos")
+// );
+const Pedidos = lazy(() => import("../presentation/pages/Pedidos/Pedidos"));
+
+// const Wishlist = lazy(
+//   () => import("../Components/Login/LoginSecciones/Wishlist")
+// );
+const Wishlist = lazy(() => import("../presentation/pages/WishList/WishList"));
+
+// const DatosPersonales = lazy(
+//   () => import("../Components/Login/LoginSecciones/DatosPersonajes")
+// );
+const DatosPersonales = lazy(
+  () => import("../presentation/pages/DatosPersonales/DatosPersonales")
+);
+
+//const Envios = lazy(() => import("../Components/Footer/SectionsFooter/Envios"));
+const Envios = lazy(() => import("../presentation/pages/Envios/Envios"));
+
 const Devoluciones = lazy(
   () => import("../Components/Footer/SectionsFooter/CambiosDevoluciones")
 );
+
 const Preguntas = lazy(
   () => import("../Components/Footer/SectionsFooter/Preguntas")
 );
+
 const QuienesSomos = lazy(
   () => import("../Components/Footer/SectionsFooter/QuienesSomos")
 );
+
 const CondicionesDeUso = lazy(
   () => import("../Components/Footer/SectionsFooter/CondicionesDeUso")
 );
+
 const NotaLegal = lazy(
   () => import("../Components/Footer/SectionsFooter/NotaLegal")
 );
+
 const PoliticaDeCookies = lazy(
   () => import("../Components/Footer/SectionsFooter/PoliticaDeCookies")
 );
+
 const PoliticaDePrivacidad = lazy(
   () => import("../Components/Footer/SectionsFooter/PoliticaDePrivacidad")
 );
@@ -164,11 +187,19 @@ const PoliticaDePrivacidad = lazy(
 const DerechosReservados = lazy(
   () => import("../Components/DerechosReservados/DerechosReservados")
 );
+
+// const ComprasRealizadas = lazy(
+//   () => import("../Components/Compras/ComprasRealizadas")
+// );
 const ComprasRealizadas = lazy(
-  () => import("../Components/Compras/ComprasRealizadas")
+  () => import("../presentation/pages/ComprasRealizadas/ComprasRealizadas")
 );
+
+// const DetalleCompras = lazy(
+//   () => import("../Components/Compras/DetalleCompras")
+// );
 const DetalleCompras = lazy(
-  () => import("../Components/Compras/DetalleCompras")
+  () => import("../presentation/pages/DetalleCompras/DetalleCompras")
 );
 
 const PageLoader: React.FC = () => (

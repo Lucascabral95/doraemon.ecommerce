@@ -1,7 +1,8 @@
-import "./Direccion.scss"
 import { useState } from "react";
+
 import storeZustand from "../../zustand.jsx";
 import CardDirection from "./CardDirection.jsx";
+import "./Direccion.scss"
 
 export default function Direccion() {
     const [direccionCompleta, setDireccionCompleta] = useState({

@@ -11,3 +11,6 @@ export * from "./useRegistrationForm";
 export * from "./useRegistration";
 export * from "./useCart";
 export * from "./useCheckoutFin";
+export * from "./useWishListOriginal";
+export * from "./useDatosPersonales";
+export * from "./useDetalleCompras";

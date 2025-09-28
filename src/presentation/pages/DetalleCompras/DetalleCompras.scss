@@ -39,6 +39,10 @@
     }
   }
 
+  .wishlist-deseos {
+    display: none;
+  }
+
   .hola {
     .hola-uno {
       p {
@@ -114,6 +118,14 @@
 @media (max-width: 639px) {
   .detalle-compras {
     .title-title {
+      .table {
+        display: none;
+      }
+
+      .wishlist-deseos {
+        display: block;
+      }
+
       .monto-total {
         display: flex;
         justify-content: flex-end;
