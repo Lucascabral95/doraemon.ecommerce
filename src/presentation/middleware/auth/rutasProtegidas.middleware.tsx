@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import storeZustand from "../Components/zustand";
+import storeZustand from "../../../Components/zustand";
 
 function MiddlewareRutasProtegidas() {
   const { acceso } = storeZustand();

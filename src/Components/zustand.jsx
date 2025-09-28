@@ -11,7 +11,17 @@ const storeZustand = create((set, get) => ({
   setCantidadArticulosCarrito: (cantidad) =>
     set({ cantidadArticulosCarrito: cantidad }),
 
-  acceso: null,
+  acceso: (() => {
+    try {
+      const stored = localStorage.getItem("LogueoDeSesion");
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (error) {
+      console.error("Error reading auth:", error);
+    }
+    return false;
+  })(),
   setAcceso: (newState) => {
     set({ acceso: newState });
     localStorage.setItem("LogueoDeSesion", JSON.stringify(newState));

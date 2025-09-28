@@ -7,7 +7,7 @@ import LoadingSpinner from "../presentation/components/UI/LoadingSpinner/Loading
 import { useScrollToTop } from "../presentation/hooks/useScrollToTop";
 import FooterDesktop from "../presentation/components/layout/FooterDesktop/FooterDesktop";
 import HeaderDesktop from "../presentation/components/layout/HeaderDesktop/HeaderDesktop";
-import MiddlewareRutasProtegidas from "./RutasProtegidas.middleware";
+import MiddlewareRutasProtegidas from "../presentation/middleware/auth/rutasProtegidas.middleware";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
 
