@@ -1,6 +1,6 @@
-import Categorias from "../../../Components/Categorias/Categorias.jsx";
-import SectionMenu from "../../../Components/Menu/Section-menu.jsx";
-import Menu from "../../../Components/Menu/Menu.jsx";
+import Categorias from "../../../Components/Categorias/Categorias";
+import SectionMenu from "../../../Components/Menu/Section-menu";
+import Menu from "../../../Components/Menu/Menu";
 import "./MainPage.scss";
 
 export default function MainPage() {
