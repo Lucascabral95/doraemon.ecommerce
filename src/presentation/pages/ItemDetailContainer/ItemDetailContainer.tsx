@@ -18,8 +18,8 @@ import { WishlistButton } from "../../components/product/WishListButton/WishList
 import { RelatedProducts } from "../../components/product/RelatedProducts/RelatedProducts";
 import { ProductAdditionalInfo } from "../../components/product/ProductAdditionalInfo/ProductAdditionalInfo";
 import { SEOHead } from "../../components/UI/SEOHead/SEOHead";
-import "./ItemDetailContainer.scss";
 import storeZustand from "../../../Components/zustand";
+import "./ItemDetailContainer.scss";
 
 const styleButtonAddToCart = (
   isAvailable: boolean,

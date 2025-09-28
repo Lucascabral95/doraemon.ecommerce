@@ -1,945 +1,945 @@
-.checkout {
-    background-color: white;
-    margin-bottom: 5%;
-
-    .contenedor-checkout {
-
-        .titulo-titulo {
-            margin: 0px 0px 48px;
-
-            .titulo {
-                font-size: 72px;
-                font-family: "Sniglet", sans-serif;
-                font-weight: 700;
-                color: #009FE3;
-            }
-        }
-
-        .contenedor-compra {
-            display: flex;
-            justify-content: space-between;
-
-            .contenedor-articulos {
-                background-color: white;
-                display: block;
-                width: 72%;
-
-                .articulos {
-                    background-color: #F3F4F6;
-                    padding: 24px 48px;
-                    margin: 0px 0px 4px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-
-                    .contenedor-imagen {
-                        // width: 60%;
-                        width: 50%;
-
-                        img {
-                            width: 160px;
-                            height: 160px;
-                        }
-
-                        .titulo-precio {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 160px;
-                            padding: 0px 10px;
-
-                            .separacion {
-
-                                .contenedor-titulo {
-                                    margin: 0px 0px 8px;
-
-                                    .span {
-                                        font-size: 16px;
-                                        color: #009FE3;
-
-                                        &:hover {
-                                            color: #00569C;
-                                        }
-                                    }
-                                }
-
-                                .contenedor-precio {
-                                    span {
-                                        font-size: 20px;
-                                        color: black;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .cantidad-mas-botones {
-                        margin-top: 10px;
-                        height: 48px;
-                        width: 100px;
-                        border: solid 0.3px #009fe336;
-                        background-color: white;
-                        display: flex;
-                        justify-content: center;
-
-                        .numero {
-                            width: 75%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-
-                            span {
-                                font-size: 16px;
-                                color: #009FE3;
-                            }
-                        }
-
-                        .botones {
-                            width: 25%;
-                            display: flex;
-                            align-items: center;
-                            border: solid 0.3px #009fe336;
-
-                            .bot {
-                                .boton {
-                                    height: 24;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    background-color: transparent;
-                                    border: none;
-
-                                    .arrow {
-                                        cursor: pointer;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-
-                    .total-definitivo {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border: none;
-                        background-color: transparent;
-                        transform: translateY(4px);
-                        margin-left: 12px;
-
-                        span {
-                            font-size: 16px;
-                            font-weight: 700;
-                        }
-                    }
-
-                    .cesto-de-basura {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-
-                        .cesto {
-                            cursor: pointer;
-                        }
-                    }
-                }
-
-                .boton-ver-mas-productos {
-                    width: 257.46px;
-                    height: 46px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin: 3% 0%;
-
-                    span {
-                        cursor: pointer;
-                        border-radius: 30px;
-                        padding: 12px 24px;
-                        font-size: 16px;
-                        color: white;
-                        background-color: #009FE3;
-                        font-family: "Source Code Pro", sans-serif;
-                        white-space: -0.8px;
-                        font-weight: 700;
-                        box-shadow: 4px 4px 0px #006AB0;
-                    }
-                }
-            }
-
-            .detalles {
-                background-color: #F3F4F6;
-                padding: 24px;
-                width: 25%;
-                // max-height: 460px;
-                max-height: 410px;
-
-                .articulos-transporte {
-                    margin: 2px 0px;
-
-                    .cantidad-articulos {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        .cantidad-articulos-letra {
-                            font-size: 14px;
-                        }
-
-                        .cantidad-articulos-precio {
-                            font-size: 16px;
-
-                        }
-                    }
-                }
-
-                .transporte {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin: 2px 0px;
-
-                    .transporte-letra {
-                        font-size: 14px;
-
-                    }
-
-                    .transporte-precio {
-                        font-size: 16px;
-
-                    }
-                }
-
-                .total-regalo {
-                    .total {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin: 14px 0px;
-
-                        .total-impuestos {
-                            font-size: 16px;
-                        }
-
-                        .total-precio {
-                            font-size: 20px;
-                            font-weight: 700;
-                        }
-                    }
-
-                    .regalo {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin: 14px 0px;
-
-                        .regalo-letra {
-                            font-size: 16px;
-                        }
-
-                        .total-precio2 {
-                            font-size: 16px;
-
-                        }
-                    }
-                }
-
-                .codigo-promocional {
-                    margin-bottom: 12px;
-                    cursor: pointer;
-
-                    span {
-                        font-size: 14px;
-                        color: #009FE3;
-                        font-weight: 600;
-                    }
-                }
-
-                .contenedor-input {
-                    border: none;
-                    width: 100%;
-
-                    input {
-                        border: none;
-                        width: 100%;
-                        color: #009FE3;
-                    }
-
-                    input:focus {
-                        outline: none;
-                    }
-                }
-
-                .contenedor-botones {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    margin: 26px 0px;
-
-                    .boton-cerrar {
-                        border: none;
-                        background-color: transparent;
-                        font-size: 16px;
-                        color: #009FE3;
-                        font-weight: 700;
-                        border-radius: 30px;
-                        line-height: 1.25rem;
-                        white-space: -0.6px;
-
-                        &:hover {
-                            color: #00569C;
-                        }
-                    }
-
-                    .boton-anadir {
-                        border: none;
-                        background-color: transparent;
-                        font-size: 16px;
-                        color: #009FE3;
-                        font-weight: 700;
-                        border-radius: 30px;
-                        border: solid 2px #009FE3;
-                        box-shadow: 4px 4px 0px #006AB0;
-                        width: 83.45px;
-                        height: 40px;
-                        font-family: "Source Code Pro", sans-serif;
-                        line-height: 1.25rem;
-                        margin-left: 8px;
-                        white-space: -0.8px;
-
-                        &:hover {
-                            background-color: #009FE3;
-                            color: white;
-                        }
-                    }
-                }
-
-                .contenedor-boton-comprar {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    .boton-comprar {
-                        border: none;
-                        background-color: #009FE3;
-                        font-size: 16px;
-                        color: white;
-                        font-weight: 700;
-                        border-radius: 30px;
-                        box-shadow: 4px 4px 0px #006AB0;
-                        font-family: "Source Code Pro", sans-serif;
-                        line-height: 1.25rem;
-                        width: 167.09px;
-                        height: 46px;
-                        white-space: -0.8px;
-
-                        &:hover {
-                            background-color: #00569C;
-                        }
-                    }
-
-                }
-            }
-        }
-    }
-
-    .custom-title-color {
-        color: red;
-    }
-    
-    .custom-text-color {
-        color: blue;
-    }
-}
-
-@media (max-width: 1023px) {
-    .checkout {
-        background-color: white;
-        margin-bottom: 0%;
-        padding-bottom: 12%;
-
-        .contenedor-checkout {
-
-            .titulo-titulo {
-                margin: 0px 0px 48px;
-
-                .titulo {
-                    font-size: 72px;
-                }
-            }
-
-            .contenedor-compra {
-                display: flex;
-                flex-direction: column;
-
-                .contenedor-articulos {
-                    background-color: white;
-                    display: block;
-                    width: 100%;
-
-                    .articulos {
-                        background-color: #F3F4F6;
-                        padding: 24px 48px;
-                        margin: 0px 0px 4px;
-                        display: flex;
-                        justify-content: space-between;
-
-                        .contenedor-imagen {
-                            width: 60%;
-
-                            img {
-                                width: 160px;
-                                height: 160px;
-                            }
-
-                            .titulo-precio {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 160px;
-                                padding: 0px 10px;
-
-                                .separacion {
-
-                                    .contenedor-titulo {
-                                        margin: 0px 0px 8px;
-                                    }
-
-                                    .contenedor-precio {
-                                        span {
-                                            font-size: 20px;
-                                            color: black;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        .cantidad-mas-botones {
-                            margin-top: 10px;
-                            height: 48px;
-                            width: 100px;
-                            display: flex;
-                            justify-content: center;
-
-                            .numero {
-                                width: 75%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-
-                                span {
-                                    font-size: 16px;
-                                    color: #009FE3;
-                                }
-                            }
-
-                            .botones {
-                                width: 25%;
-                                display: flex;
-                                align-items: center;
-                                border: solid 0.3px #009fe336;
-
-                                .bot {
-                                    .boton {
-                                        height: 24;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-                                        background-color: transparent;
-                                        border: none;
-
-                                        .arrow {
-                                            cursor: pointer;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .total-definitivo {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                border: none;
-                                background-color: transparent;
-                                transform: translateY(4px);
-                                margin-left: 12px;
-
-                                span {
-                                    font-size: 16px;
-                                    font-weight: 700;
-                                }
-                            }
-                        }
-
-                        .cesto-de-basura {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            cursor: pointer;
-
-                            .cesto {
-                                cursor: pointer;
-                            }
-                        }
-                    }
-
-                    .boton-ver-mas-productos {
-                        width: 257.46px;
-                        height: 46px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin: 3% 0%;
-
-                        span {
-                            padding: 12px 24px;
-                            white-space: -0.8px;
-                            box-shadow: 4px 4px 0px #006AB0;
-                        }
-                    }
-                }
-
-                .detalles {
-                    background-color: #F3F4F6;
-                    padding: 24px;
-                    width: 100%;
-                    max-height: 460px;
-
-                    .articulos-transporte {
-                        margin: 2px 0px;
-
-                        .cantidad-articulos {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                        }
-                    }
-
-                    .transporte {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin: 2px 0px;
-                    }
-
-                    .total-regalo {
-                        .total {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin: 14px 0px;
-
-                            .total-impuestos {
-                                font-size: 16px;
-                            }
-
-                            .total-precio {
-                                font-size: 20px;
-                                font-weight: 700;
-                            }
-                        }
-
-                        .regalo {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin: 14px 0px;
-
-                            .regalo-letra {
-                                font-size: 16px;
-                            }
-
-                            .total-precio2 {
-                                font-size: 16px;
-
-                            }
-                        }
-                    }
-
-                    .codigo-promocional {
-                        margin-bottom: 12px;
-                        cursor: pointer;
-
-                        span {
-                            font-size: 14px;
-                            color: #009FE3;
-                            font-weight: 600;
-                        }
-                    }
-
-                    .contenedor-input {
-
-                        input {
-                            border: none;
-                            width: 100%;
-                            color: #009FE3;
-                        }
-                    }
-
-                    .contenedor-botones {
-                        display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                        margin: 26px 0px;
-
-                        .boton-cerrar {
-                            border: none;
-                            background-color: transparent;
-                            font-size: 16px;
-                            color: #009FE3;
-                            font-weight: 700;
-                            border-radius: 30px;
-                            line-height: 1.25rem;
-                            white-space: -0.6px;
-
-                            &:hover {
-                                color: #00569C;
-                            }
-                        }
-
-                        .boton-anadir {
-                            border: none;
-                            background-color: transparent;
-                            font-size: 16px;
-                            color: #009FE3;
-                            font-weight: 700;
-                            border-radius: 30px;
-                            border: solid 2px #009FE3;
-                            box-shadow: 4px 4px 0px #006AB0;
-                            width: 83.45px;
-                            height: 40px;
-                            font-family: "Source Code Pro", sans-serif;
-                            line-height: 1.25rem;
-                            margin-left: 8px;
-                            white-space: -0.8px;
-
-                            &:hover {
-                                background-color: #009FE3;
-                                color: white;
-                            }
-                        }
-                    }
-
-                    .contenedor-boton-comprar {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                        .boton-comprar {}
-
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    .checkout {
-        background-color: white;
-        margin-bottom: 5%;
-        margin: auto;
-        
-        .contenedor-checkout {
-            padding: 0% 2%;
-
-            .titulo-titulo {
-                margin: 0px 0px 48px;
-
-                .titulo {
-                    font-size: 36px;
-                    text-align: center;
-                }
-            }
-
-            .contenedor-compra {
-                display: flex;
-                flex-direction: column;
-
-                .contenedor-articulos {
-                    background-color: white;
-                    display: block;
-                    width: 100%;
-
-                    .articulos {
-                        padding: 24px 48px;
-                        margin: 0px 0px 4px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .small {
-                            display: none;
-                        }
-
-                        .contenedor-imagen {
-                            display: flex;
-                            flex-direction: column;
-                            width: 100%;
-                            // height: 240px;
-                            margin: 0px 0px 0px 0px;
-                            padding: 0px 0px 0px 0px;
-
-                            img {
-                                width: 160px;
-                                height: 160px;
-                            }
-
-                            .titulo-precio {
-                                display: flex;
-                                justify-content: flex-start;
-                                align-items: center;
-                                height: 84px;
-                                margin: 0px 0px 0px 0px;
-                                padding: 0px 0px 0px 0px;
-
-                                .separacion {
-
-                                    .contenedor-titulo {
-                                        margin: 0px 0px 8px;
-                                    }
-
-                                    .contenedor-precio {
-                                        span {
-                                            font-size: 20px;
-                                            color: black;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        .cant {
-                            display: flex !important;
-                            width: 100%;
-
-                            .cant-2 {
-                                display: flex;
-                                justify-content: flex-start;
-                                align-items: center;
-                                width: 100%;
-                                margin-top: -8px;
-
-                                .cantidad-mas-botones {
-                                    margin-top: 10px;
-                                    height: 48px;
-                                    width: 100px;
-                                    display: flex;
-                                    justify-content: center;
-
-                                    .numero {
-                                        width: 75%;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-
-                                        span {
-                                            font-size: 16px;
-                                            color: #009FE3;
-                                        }
-                                    }
-
-                                    .botones {
-                                        width: 25%;
-                                        display: flex;
-                                        align-items: center;
-                                        border: solid 0.3px #009fe336;
-
-                                        .bot {
-                                            .boton {
-                                                height: 24;
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                background-color: transparent;
-                                                border: none;
-
-                                                .arrow {
-                                                    cursor: pointer;
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                }
-
-                                .total-definitivo {
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    border: none;
-                                    background-color: transparent;
-                                    transform: translateY(4px);
-                                    margin-left: 12px;
-
-                                    span {
-                                        font-size: 16px;
-                                        font-weight: 700;
-                                    }
-                                }
-                            }
-
-                            .cesto-de-basura {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                cursor: pointer;
-
-                                .cesto {
-                                    cursor: pointer;
-                                }
-                            }
-                        }
-                    }
-
-                    .boton-ver-mas-productos {
-                        width: 257.46px;
-                        height: 46px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin: 3% 0%;
-
-                        span {
-                            padding: 12px 24px;
-                            white-space: -0.8px;
-                            box-shadow: 4px 4px 0px #006AB0;
-                        }
-                    }
-                }
-
-                .detalles {
-                    background-color: #F3F4F6;
-                    padding: 24px;
-                    width: 100%;
-                    max-height: 460px;
-
-                    .articulos-transporte {
-                        margin: 2px 0px;
-
-                        .cantidad-articulos {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                        }
-                    }
-
-                    .transporte {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin: 2px 0px;
-                    }
-
-                    .total-regalo {
-                        .total {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin: 14px 0px;
-
-                            .total-impuestos {
-                                font-size: 16px;
-                            }
-
-                            .total-precio {
-                                font-size: 20px;
-                                font-weight: 700;
-                            }
-                        }
-
-                        .regalo {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin: 14px 0px;
-
-                            .regalo-letra {
-                                font-size: 16px;
-                            }
-
-                            .total-precio2 {
-                                font-size: 16px;
-
-                            }
-                        }
-                    }
-
-                    .codigo-promocional {
-                        margin-bottom: 12px;
-                        cursor: pointer;
-
-                        span {
-                            font-size: 14px;
-                            color: #009FE3;
-                            font-weight: 600;
-                        }
-                    }
-
-                    .contenedor-input {
-
-                        input {
-                            border: none;
-                            width: 100%;
-                            color: #009FE3;
-                        }
-                    }
-
-                    .contenedor-botones {
-                        display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                        margin: 26px 0px;
-
-                        .boton-cerrar {
-                            border: none;
-                            background-color: transparent;
-                            font-size: 16px;
-                            color: #009FE3;
-                            font-weight: 700;
-                            border-radius: 30px;
-                            line-height: 1.25rem;
-                            white-space: -0.6px;
-
-                            &:hover {
-                                color: #00569C;
-                            }
-                        }
-
-                        .boton-anadir {
-                            border: none;
-                            background-color: transparent;
-                            font-size: 16px;
-                            color: #009FE3;
-                            font-weight: 700;
-                            border-radius: 30px;
-                            border: solid 2px #009FE3;
-                            box-shadow: 4px 4px 0px #006AB0;
-                            width: 83.45px;
-                            height: 40px;
-                            font-family: "Source Code Pro", sans-serif;
-                            line-height: 1.25rem;
-                            margin-left: 8px;
-                            white-space: -0.8px;
-
-                            &:hover {
-                                background-color: #009FE3;
-                                color: white;
-                            }
-                        }
-                    }
-
-                    .contenedor-boton-comprar {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                        .boton-comprar {}
-
-                    }
-                }
-            }
-        }
-    }
-}
+// .checkout {
+//     background-color: white;
+//     margin-bottom: 5%;
+
+//     .contenedor-checkout {
+
+//         .titulo-titulo {
+//             margin: 0px 0px 48px;
+
+//             .titulo {
+//                 font-size: 72px;
+//                 font-family: "Sniglet", sans-serif;
+//                 font-weight: 700;
+//                 color: #009FE3;
+//             }
+//         }
+
+//         .contenedor-compra {
+//             display: flex;
+//             justify-content: space-between;
+
+//             .contenedor-articulos {
+//                 background-color: white;
+//                 display: block;
+//                 width: 72%;
+
+//                 .articulos {
+//                     background-color: #F3F4F6;
+//                     padding: 24px 48px;
+//                     margin: 0px 0px 4px;
+//                     display: flex;
+//                     justify-content: space-between;
+//                     align-items: center;
+
+//                     .contenedor-imagen {
+//                         // width: 60%;
+//                         width: 50%;
+
+//                         img {
+//                             width: 160px;
+//                             height: 160px;
+//                         }
+
+//                         .titulo-precio {
+//                             display: flex;
+//                             justify-content: center;
+//                             align-items: center;
+//                             height: 160px;
+//                             padding: 0px 10px;
+
+//                             .separacion {
+
+//                                 .contenedor-titulo {
+//                                     margin: 0px 0px 8px;
+
+//                                     .span {
+//                                         font-size: 16px;
+//                                         color: #009FE3;
+
+//                                         &:hover {
+//                                             color: #00569C;
+//                                         }
+//                                     }
+//                                 }
+
+//                                 .contenedor-precio {
+//                                     span {
+//                                         font-size: 20px;
+//                                         color: black;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+
+//                     .cantidad-mas-botones {
+//                         margin-top: 10px;
+//                         height: 48px;
+//                         width: 100px;
+//                         border: solid 0.3px #009fe336;
+//                         background-color: white;
+//                         display: flex;
+//                         justify-content: center;
+
+//                         .numero {
+//                             width: 75%;
+//                             display: flex;
+//                             justify-content: center;
+//                             align-items: center;
+
+//                             span {
+//                                 font-size: 16px;
+//                                 color: #009FE3;
+//                             }
+//                         }
+
+//                         .botones {
+//                             width: 25%;
+//                             display: flex;
+//                             align-items: center;
+//                             border: solid 0.3px #009fe336;
+
+//                             .bot {
+//                                 .boton {
+//                                     height: 24;
+//                                     display: flex;
+//                                     justify-content: center;
+//                                     align-items: center;
+//                                     background-color: transparent;
+//                                     border: none;
+
+//                                     .arrow {
+//                                         cursor: pointer;
+//                                     }
+//                                 }
+//                             }
+//                         }
+
+//                     }
+
+//                     .total-definitivo {
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                         border: none;
+//                         background-color: transparent;
+//                         transform: translateY(4px);
+//                         margin-left: 12px;
+
+//                         span {
+//                             font-size: 16px;
+//                             font-weight: 700;
+//                         }
+//                     }
+
+//                     .cesto-de-basura {
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                         cursor: pointer;
+
+//                         .cesto {
+//                             cursor: pointer;
+//                         }
+//                     }
+//                 }
+
+//                 .boton-ver-mas-productos {
+//                     width: 257.46px;
+//                     height: 46px;
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
+//                     margin: 3% 0%;
+
+//                     span {
+//                         cursor: pointer;
+//                         border-radius: 30px;
+//                         padding: 12px 24px;
+//                         font-size: 16px;
+//                         color: white;
+//                         background-color: #009FE3;
+//                         font-family: "Source Code Pro", sans-serif;
+//                         white-space: -0.8px;
+//                         font-weight: 700;
+//                         box-shadow: 4px 4px 0px #006AB0;
+//                     }
+//                 }
+//             }
+
+//             .detalles {
+//                 background-color: #F3F4F6;
+//                 padding: 24px;
+//                 width: 25%;
+//                 // max-height: 460px;
+//                 max-height: 410px;
+
+//                 .articulos-transporte {
+//                     margin: 2px 0px;
+
+//                     .cantidad-articulos {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+
+//                         .cantidad-articulos-letra {
+//                             font-size: 14px;
+//                         }
+
+//                         .cantidad-articulos-precio {
+//                             font-size: 16px;
+
+//                         }
+//                     }
+//                 }
+
+//                 .transporte {
+//                     display: flex;
+//                     justify-content: space-between;
+//                     align-items: center;
+//                     margin: 2px 0px;
+
+//                     .transporte-letra {
+//                         font-size: 14px;
+
+//                     }
+
+//                     .transporte-precio {
+//                         font-size: 16px;
+
+//                     }
+//                 }
+
+//                 .total-regalo {
+//                     .total {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+//                         margin: 14px 0px;
+
+//                         .total-impuestos {
+//                             font-size: 16px;
+//                         }
+
+//                         .total-precio {
+//                             font-size: 20px;
+//                             font-weight: 700;
+//                         }
+//                     }
+
+//                     .regalo {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+//                         margin: 14px 0px;
+
+//                         .regalo-letra {
+//                             font-size: 16px;
+//                         }
+
+//                         .total-precio2 {
+//                             font-size: 16px;
+
+//                         }
+//                     }
+//                 }
+
+//                 .codigo-promocional {
+//                     margin-bottom: 12px;
+//                     cursor: pointer;
+
+//                     span {
+//                         font-size: 14px;
+//                         color: #009FE3;
+//                         font-weight: 600;
+//                     }
+//                 }
+
+//                 .contenedor-input {
+//                     border: none;
+//                     width: 100%;
+
+//                     input {
+//                         border: none;
+//                         width: 100%;
+//                         color: #009FE3;
+//                     }
+
+//                     input:focus {
+//                         outline: none;
+//                     }
+//                 }
+
+//                 .contenedor-botones {
+//                     display: flex;
+//                     justify-content: flex-end;
+//                     align-items: center;
+//                     margin: 26px 0px;
+
+//                     .boton-cerrar {
+//                         border: none;
+//                         background-color: transparent;
+//                         font-size: 16px;
+//                         color: #009FE3;
+//                         font-weight: 700;
+//                         border-radius: 30px;
+//                         line-height: 1.25rem;
+//                         white-space: -0.6px;
+
+//                         &:hover {
+//                             color: #00569C;
+//                         }
+//                     }
+
+//                     .boton-anadir {
+//                         border: none;
+//                         background-color: transparent;
+//                         font-size: 16px;
+//                         color: #009FE3;
+//                         font-weight: 700;
+//                         border-radius: 30px;
+//                         border: solid 2px #009FE3;
+//                         box-shadow: 4px 4px 0px #006AB0;
+//                         width: 83.45px;
+//                         height: 40px;
+//                         font-family: "Source Code Pro", sans-serif;
+//                         line-height: 1.25rem;
+//                         margin-left: 8px;
+//                         white-space: -0.8px;
+
+//                         &:hover {
+//                             background-color: #009FE3;
+//                             color: white;
+//                         }
+//                     }
+//                 }
+
+//                 .contenedor-boton-comprar {
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
+
+//                     .boton-comprar {
+//                         border: none;
+//                         background-color: #009FE3;
+//                         font-size: 16px;
+//                         color: white;
+//                         font-weight: 700;
+//                         border-radius: 30px;
+//                         box-shadow: 4px 4px 0px #006AB0;
+//                         font-family: "Source Code Pro", sans-serif;
+//                         line-height: 1.25rem;
+//                         width: 167.09px;
+//                         height: 46px;
+//                         white-space: -0.8px;
+
+//                         &:hover {
+//                             background-color: #00569C;
+//                         }
+//                     }
+
+//                 }
+//             }
+//         }
+//     }
+
+//     .custom-title-color {
+//         color: red;
+//     }
+
+//     .custom-text-color {
+//         color: blue;
+//     }
+// }
+
+// @media (max-width: 1023px) {
+//     .checkout {
+//         background-color: white;
+//         margin-bottom: 0%;
+//         padding-bottom: 12%;
+
+//         .contenedor-checkout {
+
+//             .titulo-titulo {
+//                 margin: 0px 0px 48px;
+
+//                 .titulo {
+//                     font-size: 72px;
+//                 }
+//             }
+
+//             .contenedor-compra {
+//                 display: flex;
+//                 flex-direction: column;
+
+//                 .contenedor-articulos {
+//                     background-color: white;
+//                     display: block;
+//                     width: 100%;
+
+//                     .articulos {
+//                         background-color: #F3F4F6;
+//                         padding: 24px 48px;
+//                         margin: 0px 0px 4px;
+//                         display: flex;
+//                         justify-content: space-between;
+
+//                         .contenedor-imagen {
+//                             width: 60%;
+
+//                             img {
+//                                 width: 160px;
+//                                 height: 160px;
+//                             }
+
+//                             .titulo-precio {
+//                                 display: flex;
+//                                 justify-content: center;
+//                                 align-items: center;
+//                                 height: 160px;
+//                                 padding: 0px 10px;
+
+//                                 .separacion {
+
+//                                     .contenedor-titulo {
+//                                         margin: 0px 0px 8px;
+//                                     }
+
+//                                     .contenedor-precio {
+//                                         span {
+//                                             font-size: 20px;
+//                                             color: black;
+//                                         }
+//                                     }
+//                                 }
+//                             }
+//                         }
+
+//                         .cantidad-mas-botones {
+//                             margin-top: 10px;
+//                             height: 48px;
+//                             width: 100px;
+//                             display: flex;
+//                             justify-content: center;
+
+//                             .numero {
+//                                 width: 75%;
+//                                 display: flex;
+//                                 justify-content: center;
+//                                 align-items: center;
+
+//                                 span {
+//                                     font-size: 16px;
+//                                     color: #009FE3;
+//                                 }
+//                             }
+
+//                             .botones {
+//                                 width: 25%;
+//                                 display: flex;
+//                                 align-items: center;
+//                                 border: solid 0.3px #009fe336;
+
+//                                 .bot {
+//                                     .boton {
+//                                         height: 24;
+//                                         display: flex;
+//                                         justify-content: center;
+//                                         align-items: center;
+//                                         background-color: transparent;
+//                                         border: none;
+
+//                                         .arrow {
+//                                             cursor: pointer;
+//                                         }
+//                                     }
+//                                 }
+//                             }
+
+//                             .total-definitivo {
+//                                 display: flex;
+//                                 justify-content: center;
+//                                 align-items: center;
+//                                 border: none;
+//                                 background-color: transparent;
+//                                 transform: translateY(4px);
+//                                 margin-left: 12px;
+
+//                                 span {
+//                                     font-size: 16px;
+//                                     font-weight: 700;
+//                                 }
+//                             }
+//                         }
+
+//                         .cesto-de-basura {
+//                             display: flex;
+//                             justify-content: center;
+//                             align-items: center;
+//                             cursor: pointer;
+
+//                             .cesto {
+//                                 cursor: pointer;
+//                             }
+//                         }
+//                     }
+
+//                     .boton-ver-mas-productos {
+//                         width: 257.46px;
+//                         height: 46px;
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                         margin: 3% 0%;
+
+//                         span {
+//                             padding: 12px 24px;
+//                             white-space: -0.8px;
+//                             box-shadow: 4px 4px 0px #006AB0;
+//                         }
+//                     }
+//                 }
+
+//                 .detalles {
+//                     background-color: #F3F4F6;
+//                     padding: 24px;
+//                     width: 100%;
+//                     max-height: 460px;
+
+//                     .articulos-transporte {
+//                         margin: 2px 0px;
+
+//                         .cantidad-articulos {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                         }
+//                     }
+
+//                     .transporte {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+//                         margin: 2px 0px;
+//                     }
+
+//                     .total-regalo {
+//                         .total {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                             margin: 14px 0px;
+
+//                             .total-impuestos {
+//                                 font-size: 16px;
+//                             }
+
+//                             .total-precio {
+//                                 font-size: 20px;
+//                                 font-weight: 700;
+//                             }
+//                         }
+
+//                         .regalo {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                             margin: 14px 0px;
+
+//                             .regalo-letra {
+//                                 font-size: 16px;
+//                             }
+
+//                             .total-precio2 {
+//                                 font-size: 16px;
+
+//                             }
+//                         }
+//                     }
+
+//                     .codigo-promocional {
+//                         margin-bottom: 12px;
+//                         cursor: pointer;
+
+//                         span {
+//                             font-size: 14px;
+//                             color: #009FE3;
+//                             font-weight: 600;
+//                         }
+//                     }
+
+//                     .contenedor-input {
+
+//                         input {
+//                             border: none;
+//                             width: 100%;
+//                             color: #009FE3;
+//                         }
+//                     }
+
+//                     .contenedor-botones {
+//                         display: flex;
+//                         justify-content: flex-end;
+//                         align-items: center;
+//                         margin: 26px 0px;
+
+//                         .boton-cerrar {
+//                             border: none;
+//                             background-color: transparent;
+//                             font-size: 16px;
+//                             color: #009FE3;
+//                             font-weight: 700;
+//                             border-radius: 30px;
+//                             line-height: 1.25rem;
+//                             white-space: -0.6px;
+
+//                             &:hover {
+//                                 color: #00569C;
+//                             }
+//                         }
+
+//                         .boton-anadir {
+//                             border: none;
+//                             background-color: transparent;
+//                             font-size: 16px;
+//                             color: #009FE3;
+//                             font-weight: 700;
+//                             border-radius: 30px;
+//                             border: solid 2px #009FE3;
+//                             box-shadow: 4px 4px 0px #006AB0;
+//                             width: 83.45px;
+//                             height: 40px;
+//                             font-family: "Source Code Pro", sans-serif;
+//                             line-height: 1.25rem;
+//                             margin-left: 8px;
+//                             white-space: -0.8px;
+
+//                             &:hover {
+//                                 background-color: #009FE3;
+//                                 color: white;
+//                             }
+//                         }
+//                     }
+
+//                     .contenedor-boton-comprar {
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+
+//                         .boton-comprar {}
+
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media (max-width: 600px) {
+//     .checkout {
+//         background-color: white;
+//         margin-bottom: 5%;
+//         margin: auto;
+
+//         .contenedor-checkout {
+//             padding: 0% 2%;
+
+//             .titulo-titulo {
+//                 margin: 0px 0px 48px;
+
+//                 .titulo {
+//                     font-size: 36px;
+//                     text-align: center;
+//                 }
+//             }
+
+//             .contenedor-compra {
+//                 display: flex;
+//                 flex-direction: column;
+
+//                 .contenedor-articulos {
+//                     background-color: white;
+//                     display: block;
+//                     width: 100%;
+
+//                     .articulos {
+//                         padding: 24px 48px;
+//                         margin: 0px 0px 4px;
+//                         display: flex;
+//                         flex-direction: column;
+
+//                         .small {
+//                             display: none;
+//                         }
+
+//                         .contenedor-imagen {
+//                             display: flex;
+//                             flex-direction: column;
+//                             width: 100%;
+//                             // height: 240px;
+//                             margin: 0px 0px 0px 0px;
+//                             padding: 0px 0px 0px 0px;
+
+//                             img {
+//                                 width: 160px;
+//                                 height: 160px;
+//                             }
+
+//                             .titulo-precio {
+//                                 display: flex;
+//                                 justify-content: flex-start;
+//                                 align-items: center;
+//                                 height: 84px;
+//                                 margin: 0px 0px 0px 0px;
+//                                 padding: 0px 0px 0px 0px;
+
+//                                 .separacion {
+
+//                                     .contenedor-titulo {
+//                                         margin: 0px 0px 8px;
+//                                     }
+
+//                                     .contenedor-precio {
+//                                         span {
+//                                             font-size: 20px;
+//                                             color: black;
+//                                         }
+//                                     }
+//                                 }
+//                             }
+//                         }
+
+//                         .cant {
+//                             display: flex !important;
+//                             width: 100%;
+
+//                             .cant-2 {
+//                                 display: flex;
+//                                 justify-content: flex-start;
+//                                 align-items: center;
+//                                 width: 100%;
+//                                 margin-top: -8px;
+
+//                                 .cantidad-mas-botones {
+//                                     margin-top: 10px;
+//                                     height: 48px;
+//                                     width: 100px;
+//                                     display: flex;
+//                                     justify-content: center;
+
+//                                     .numero {
+//                                         width: 75%;
+//                                         display: flex;
+//                                         justify-content: center;
+//                                         align-items: center;
+
+//                                         span {
+//                                             font-size: 16px;
+//                                             color: #009FE3;
+//                                         }
+//                                     }
+
+//                                     .botones {
+//                                         width: 25%;
+//                                         display: flex;
+//                                         align-items: center;
+//                                         border: solid 0.3px #009fe336;
+
+//                                         .bot {
+//                                             .boton {
+//                                                 height: 24;
+//                                                 display: flex;
+//                                                 justify-content: center;
+//                                                 align-items: center;
+//                                                 background-color: transparent;
+//                                                 border: none;
+
+//                                                 .arrow {
+//                                                     cursor: pointer;
+//                                                 }
+//                                             }
+//                                         }
+//                                     }
+
+//                                 }
+
+//                                 .total-definitivo {
+//                                     display: flex;
+//                                     justify-content: center;
+//                                     align-items: center;
+//                                     border: none;
+//                                     background-color: transparent;
+//                                     transform: translateY(4px);
+//                                     margin-left: 12px;
+
+//                                     span {
+//                                         font-size: 16px;
+//                                         font-weight: 700;
+//                                     }
+//                                 }
+//                             }
+
+//                             .cesto-de-basura {
+//                                 display: flex;
+//                                 justify-content: center;
+//                                 align-items: center;
+//                                 cursor: pointer;
+
+//                                 .cesto {
+//                                     cursor: pointer;
+//                                 }
+//                             }
+//                         }
+//                     }
+
+//                     .boton-ver-mas-productos {
+//                         width: 257.46px;
+//                         height: 46px;
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                         margin: 3% 0%;
+
+//                         span {
+//                             padding: 12px 24px;
+//                             white-space: -0.8px;
+//                             box-shadow: 4px 4px 0px #006AB0;
+//                         }
+//                     }
+//                 }
+
+//                 .detalles {
+//                     background-color: #F3F4F6;
+//                     padding: 24px;
+//                     width: 100%;
+//                     max-height: 460px;
+
+//                     .articulos-transporte {
+//                         margin: 2px 0px;
+
+//                         .cantidad-articulos {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                         }
+//                     }
+
+//                     .transporte {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+//                         margin: 2px 0px;
+//                     }
+
+//                     .total-regalo {
+//                         .total {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                             margin: 14px 0px;
+
+//                             .total-impuestos {
+//                                 font-size: 16px;
+//                             }
+
+//                             .total-precio {
+//                                 font-size: 20px;
+//                                 font-weight: 700;
+//                             }
+//                         }
+
+//                         .regalo {
+//                             display: flex;
+//                             justify-content: space-between;
+//                             align-items: center;
+//                             margin: 14px 0px;
+
+//                             .regalo-letra {
+//                                 font-size: 16px;
+//                             }
+
+//                             .total-precio2 {
+//                                 font-size: 16px;
+
+//                             }
+//                         }
+//                     }
+
+//                     .codigo-promocional {
+//                         margin-bottom: 12px;
+//                         cursor: pointer;
+
+//                         span {
+//                             font-size: 14px;
+//                             color: #009FE3;
+//                             font-weight: 600;
+//                         }
+//                     }
+
+//                     .contenedor-input {
+
+//                         input {
+//                             border: none;
+//                             width: 100%;
+//                             color: #009FE3;
+//                         }
+//                     }
+
+//                     .contenedor-botones {
+//                         display: flex;
+//                         justify-content: flex-end;
+//                         align-items: center;
+//                         margin: 26px 0px;
+
+//                         .boton-cerrar {
+//                             border: none;
+//                             background-color: transparent;
+//                             font-size: 16px;
+//                             color: #009FE3;
+//                             font-weight: 700;
+//                             border-radius: 30px;
+//                             line-height: 1.25rem;
+//                             white-space: -0.6px;
+
+//                             &:hover {
+//                                 color: #00569C;
+//                             }
+//                         }
+
+//                         .boton-anadir {
+//                             border: none;
+//                             background-color: transparent;
+//                             font-size: 16px;
+//                             color: #009FE3;
+//                             font-weight: 700;
+//                             border-radius: 30px;
+//                             border: solid 2px #009FE3;
+//                             box-shadow: 4px 4px 0px #006AB0;
+//                             width: 83.45px;
+//                             height: 40px;
+//                             font-family: "Source Code Pro", sans-serif;
+//                             line-height: 1.25rem;
+//                             margin-left: 8px;
+//                             white-space: -0.8px;
+
+//                             &:hover {
+//                                 background-color: #009FE3;
+//                                 color: white;
+//                             }
+//                         }
+//                     }
+
+//                     .contenedor-boton-comprar {
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+
+//                         .boton-comprar {}
+
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

@@ -2,11 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../../../../infrastructure/types/product.types";
 import { ProductService } from "../../../../infrastructure/services/product.service";
+import storeZustand from "../../../../Components/zustand";
 
 interface ProductCardProps {
   product: Product;
   onAddToCart: () => void;
 }
+
+const styleButtonDisabled = (acceso: boolean) => {
+  if (!acceso) {
+    return {
+      opacity: 0.5,
+      cursor: "not-allowed",
+    };
+  }
+};
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
@@ -15,6 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const mainImage = ProductService.getMainImage(product);
   const formattedPrice = ProductService.formatPrice(product.precio);
   const isAvailable = ProductService.isAvailable(product);
+  const { acceso } = storeZustand();
 
   return (
     <div className="contenedor-card">
@@ -22,6 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div
           className={`icono ${!isAvailable ? "disabled" : ""}`}
           onClick={isAvailable ? onAddToCart : undefined}
+          style={styleButtonDisabled(acceso)}
         >
           <svg
             fill="#009FE3"

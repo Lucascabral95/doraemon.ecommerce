@@ -18,34 +18,34 @@ export default function CardDirection() {
 
             <div className="contenedor-card-botoness">
 
-                    <div className="contenedor-card">
-                        <div className="titulo">
-                            <h3 className="title"> {miDireccionCompleta.alias} </h3>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.nombre} {miDireccionCompleta.apellido} </span>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.ciudad} </span>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.codigoPostal} {miDireccionCompleta.ciudad} </span>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.pais} </span>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.provincia} </span>
-                        </div>
-                        <div className="dato">
-                            <span> {miDireccionCompleta.telefono} </span>
-                        </div>
-
-                        <div className="container-de-botones">
-                            <button onClick={handleEliminarDireccion}> ACTUALIZAR </button>
-                            <button onClick={handleEliminarDireccion}> ELIMINAR </button>
-                        </div>
+                <div className="contenedor-card">
+                    <div className="titulo">
+                        <h3 className="title"> {miDireccionCompleta.alias} </h3>
                     </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.nombre} {miDireccionCompleta.apellido} </span>
+                    </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.ciudad} </span>
+                    </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.codigoPostal} {miDireccionCompleta.ciudad} </span>
+                    </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.pais} </span>
+                    </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.provincia} </span>
+                    </div>
+                    <div className="dato">
+                        <span> {miDireccionCompleta.telefono} </span>
+                    </div>
+
+                    <div className="container-de-botones">
+                        <button onClick={handleEliminarDireccion}> ACTUALIZAR </button>
+                        <button onClick={handleEliminarDireccion}> ELIMINAR </button>
+                    </div>
+                </div>
 
                 <div className="boton-de-nueva-direccion" onClick={''}>
                     <button> CAMBIAR DIRECCIÓN </button>
