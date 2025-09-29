@@ -9,8 +9,8 @@ import {
   FOOTER_SECTIONS,
   SOCIAL_ICONS,
 } from "../../../../infrastructure/constants";
-import Newsletter from "../../../../Components/Opiniones/Newsletter/Newsletter";
 import DerechosReservados from "../../../pages/DerechosReservados/DerechosReservados";
+import Newsletter from "../../Opiniones/Newsletter/NewsLetter";
 
 const FooterDesktop: React.FC = () => {
   const handleExternalNavigation = (url: string): void => {

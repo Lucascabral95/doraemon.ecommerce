@@ -1,138 +1,138 @@
-.sectionMenu {
+// .sectionMenu {
 
-    .datos-tienda {
-        height: 128px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 80%;
-        margin: auto;
+//     .datos-tienda {
+//         height: 128px;
+//         display: flex;
+//         justify-content: space-evenly;
+//         align-items: center;
+//         width: 80%;
+//         margin: auto;
 
-        .contenedor {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 48px;
-            max-width: 308px;
+//         .contenedor {
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             height: 48px;
+//             max-width: 308px;
 
-            .icon {
-                width: auto;
-                height: auto;
-                margin-left: 30px;
-            }
+//             .icon {
+//                 width: auto;
+//                 height: auto;
+//                 margin-left: 30px;
+//             }
 
-            .texto-texto {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+//             .texto-texto {
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
 
-                .texto {
-                    font-family: "Source Code Pro", sans-serif;
-                    color: #006AB0;
-                    font-size: 16px;
-                    font-weight: 800;
-                    margin-left: 10px;
-                }
-            }
-        }
-    }
-}
+//                 .texto {
+//                     font-family: "Source Code Pro", sans-serif;
+//                     color: #006AB0;
+//                     font-size: 16px;
+//                     font-weight: 800;
+//                     margin-left: 10px;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 668px) and (max-width: 1279px) {
-    .sectionMenu {
-        .datos-tienda {
-            height: 194px;
-            width: 90%;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
+// @media (min-width: 668px) and (max-width: 1279px) {
+//     .sectionMenu {
+//         .datos-tienda {
+//             height: 194px;
+//             width: 90%;
+//             margin: auto;
+//             display: flex;
+//             flex-wrap: wrap;
+//             justify-content: space-around;
+//             align-items: center;
 
-            .contenedor {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 48px;
-                max-width: 300px;
+//             .contenedor {
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 height: 48px;
+//                 max-width: 300px;
 
-                .icon {
-                    width: auto;
-                    height: auto;
-                    margin-left: 30px;
-                }
+//                 .icon {
+//                     width: auto;
+//                     height: auto;
+//                     margin-left: 30px;
+//                 }
 
-                .texto-texto {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+//                 .texto-texto {
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
 
-                    .texto {
-                        display: flex;
-                        justify-content: center;
-                        align-items: ce;
-                        font-family: "Source Code Pro", sans-serif;
-                        color: #006AB0;
-                        font-size: 16px;
-                        font-weight: 800;
-                        margin-left: 10px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                     .texto {
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: ce;
+//                         font-family: "Source Code Pro", sans-serif;
+//                         color: #006AB0;
+//                         font-size: 16px;
+//                         font-weight: 800;
+//                         margin-left: 10px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width: 667px) {
-    .sectionMenu {
-        width: 100%;
+// @media (max-width: 667px) {
+//     .sectionMenu {
+//         width: 100%;
 
-        .datos-tienda {
-            background-color: #EBF8FF;
-            height: 302px;
-            width: 100%;
-            margin: auto;
-            display: grid;
-            grid-template-rows: auto;
-            justify-content: center;
-            align-items: center;
+//         .datos-tienda {
+//             background-color: #EBF8FF;
+//             height: 302px;
+//             width: 100%;
+//             margin: auto;
+//             display: grid;
+//             grid-template-rows: auto;
+//             justify-content: center;
+//             align-items: center;
 
-            .contenedor-contenedor {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
+//             .contenedor-contenedor {
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 width: 100%;
 
-                .contenedor {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
+//                 .contenedor {
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
+//                     width: 100%;
 
-                    .icon {
-                        width: auto;
-                        height: auto;
-                        margin-left: 0px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
+//                     .icon {
+//                         width: auto;
+//                         height: auto;
+//                         margin-left: 0px;
+//                         display: flex;
+//                         justify-content: center;
+//                         align-items: center;
+//                     }
 
-                    .texto-texto {
+//                     .texto-texto {
 
-                        .texto {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            font-family: "Source Code Pro", sans-serif;
-                            color: #006AB0;
-                            font-size: 16px;
-                            font-weight: 800;
-                            margin-left: 10px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+//                         .texto {
+//                             display: flex;
+//                             justify-content: center;
+//                             align-items: center;
+//                             font-family: "Source Code Pro", sans-serif;
+//                             color: #006AB0;
+//                             font-size: 16px;
+//                             font-weight: 800;
+//                             margin-left: 10px;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

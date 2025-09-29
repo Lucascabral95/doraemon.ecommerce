@@ -1,106 +1,104 @@
 .login {
-    background-color: white;
-    padding: 32px 0px 80px;
-    padding-bottom: 10%;
-    padding-top: 80px;
+  background-color: white;
+  padding: 32px 0px 80px;
+  padding-bottom: 10%;
+  padding-top: 80px;
 
-    .titulo-titulo {
-        margin: 0px 0px 48px;
+  .titulo-titulo {
+    margin: 0px 0px 48px;
 
-        .titulo {
-            text-align: center;
-            font-size: 60px;
-            font-family: "Sniglet", sans-serif;
-            font-weight: 800;
-            color: #009FE3;
+    .titulo {
+      text-align: center;
+      font-size: 60px;
+      font-family: "Sniglet", sans-serif;
+      font-weight: 800;
+      color: #009fe3;
+    }
+  }
+
+  .email-password {
+    margin: 0px 18px;
+    padding: 0px 24px;
+    max-width: 512px;
+    margin: auto;
+
+    form {
+      label {
+        margin: 0px 0px 4px;
+        color: #4b5563;
+        font-size: 11px;
+      }
+
+      .contenedor-input {
+        background-color: white;
+        border: 1px solid #4b55638a;
+        margin-bottom: 1%;
+
+        input {
+          padding-left: 6px;
+          margin-top: 6px;
+          margin-bottom: 6px;
+          width: 100%;
+          color: black;
+          user-select: none;
+          font-size: 12px;
+          border: none;
         }
+
+        input:focus {
+          outline: none;
+        }
+      }
     }
 
-    .email-password {
-        margin: 0px 18px;
-        padding: 0px 24px;
-        max-width: 512px;
-        margin: auto;
+    .olvide-password {
+      cursor: pointer;
 
-        form {
+      span {
+        font-size: 14px;
+        color: #009fe3;
 
-            label {
-                margin: 0px 0px 4px;
-                color: #4B5563;
-                font-size: 11px;
-            }
-
-            .contenedor-input {
-                background-color: white;
-                border: 1px solid #4b55638a;
-                margin-bottom: 1%;
-
-                input {
-                    padding-left: 6px;
-                    margin-top: 6px;
-                    margin-bottom: 6px;
-                    width: 100%;
-                    color: black;
-                    user-select: none;
-                    font-size: 12px;
-                    border: none;
-                }
-
-                input:focus {
-                    outline: none;
-                }
-            }
+        &:hover {
+          color: #0b71b4;
         }
-
-        .olvide-password {
-            cursor: pointer;
-
-            span {
-                font-size: 14px;
-                color: #009FE3;
-
-                &:hover {
-                    color: #0B71B4;
-                }
-            }
-        }
-
-        .contenedor-inicio-sesion {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 8px;
-
-            button {
-                background-color: #009FE3;
-                color: white;
-                font-size: 14px;
-                margin: -20px 0px 32px;
-                padding: 16px 40px;
-                box-shadow: 4px 4px #00569C;
-                font-weight: 800;
-                border: none;
-                border-radius: 30px;
-                font-family: "Source Code Pro", sans-serif;
-
-                &:hover {
-                    background-color: #0B71B4;
-                }
-            }
-        }
-
-        .creacion-cuenta {
-            cursor: pointer;
-
-            span {
-                font-size: 16px;
-                color: #009FE3;
-
-                &:hover {
-                    color: #0B71B4;
-                }
-            }
-
-        }
+      }
     }
+
+    .contenedor-inicio-sesion {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 8px;
+
+      button {
+        background-color: #009fe3;
+        color: white;
+        font-size: 14px;
+        margin: -20px 0px 32px;
+        padding: 16px 40px;
+        box-shadow: 4px 4px #00569c;
+        font-weight: 800;
+        border: none;
+        border-radius: 30px;
+        font-family: "Source Code Pro", sans-serif;
+
+        &:hover {
+          background-color: #0b71b4;
+        }
+      }
+    }
+
+    .creacion-cuenta {
+      cursor: pointer;
+
+      span {
+        font-size: 16px;
+        color: #009fe3;
+
+        &:hover {
+          color: #0b71b4;
+        }
+      }
+    }
+  }
 }

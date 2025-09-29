@@ -19,3 +19,6 @@ export * from "./privacidadData.constants";
 export * from "./cookiesData.constants";
 export * from "./notaLegalData";
 export * from "./derechosData.constants";
+export * from "./trustFeatures.constants";
+export * from "./starUrl.constants";
+export * from "./ofertas.constants";

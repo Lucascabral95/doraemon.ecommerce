@@ -6,7 +6,7 @@ export default function CuerpoVacioFooter(props) {
         <div className="cuerpoVacioFooter">
             <div className="contenedor-cuerpo-vacio-footer">
 
-                        {props.contenedor}
+                {props.contenedor}
 
             </div>
         </div>

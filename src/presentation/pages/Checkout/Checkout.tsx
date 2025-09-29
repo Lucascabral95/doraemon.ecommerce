@@ -99,7 +99,7 @@ const Checkout: React.FC = () => {
             <div className="contenedor-articulos">
               {cart.map((item, index) => (
                 <CartItem
-                  key={item.id}
+                  key={index}
                   item={item}
                   isLoading={isLoading}
                   onIncrease={increaseQuantity}
@@ -116,7 +116,7 @@ const Checkout: React.FC = () => {
 
               <div className="d-flex justify-content-center align-items-center">
                 <div className="boton-ver-mas-productos">
-                  <Link to="/">
+                  <Link to="/categoria/Pelicula">
                     <span>VER MÁS PRODUCTOS</span>
                   </Link>
                 </div>

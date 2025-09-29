@@ -1,6 +1,6 @@
-import { addDoc } from 'firebase/firestore'
-import { collection } from 'firebase/firestore'
-import { getDocs } from 'firebase/firestore'
+// import { addDoc } from 'firebase/firestore'
+// import { collection } from 'firebase/firestore'
+// import { getDocs } from 'firebase/firestore'
 // import "./DetalleCompras.scss"
 // import { useParams } from "react-router-dom"
 // import CuerpoVacioFooter from "../Footer/SectionsFooter/CuerpoVacioFooter.jsx"

@@ -1,277 +1,271 @@
-.register {
-    background-color: white;
-    padding: 32px 0px 80px;
-    // padding-top: 3%;
-    padding-bottom: 10%;
-    margin: auto;
+// .register {
+//     background-color: white;
+//     padding: 32px 0px 80px;
+//     padding-bottom: 10%;
+//     margin: auto;
 
-    .contenedor-register {
-        // width: 88%;
-        width: 80%;
-        max-width: 1488px;
-        margin: auto;
+//     .contenedor-register {
+//         width: 80%;
+//         max-width: 1488px;
+//         margin: auto;
 
-        .titulo-titulo {
-            margin: 0px 0px 48px;
+//         .titulo-titulo {
+//             margin: 0px 0px 48px;
 
-            .titulo {
-                text-align: center;
-                font-size: 72px;
-                font-family: "Sniglet", sans-serif;
-                font-weight: 800;
-                color: #009FE3;
-            }
-        }
+//             .titulo {
+//                 text-align: center;
+//                 font-size: 72px;
+//                 font-family: "Sniglet", sans-serif;
+//                 font-weight: 800;
+//                 color: #009FE3;
+//             }
+//         }
 
-        .cuenta-datos {
-            display: block;
+//         .cuenta-datos {
+//             display: block;
 
-            .cont-datos {
-                margin: 0px 0px 12px;
+//             .cont-datos {
+//                 margin: 0px 0px 12px;
 
-                span {
-                    font-size: 16px;
-                    // font-family: "Source Code Pro", sans-serif;
-                    padding: 0px 0px 12px
-                }
+//                 span {
+//                     font-size: 16px;
+//                     padding: 0px 0px 12px
+//                 }
 
-                .inicia-sesion {
-                    font-size: 16px;
-                    // font-family: "Source Code Pro", sans-serif;
-                    color: #009FE3;
-                    cursor: pointer;
+//                 .inicia-sesion {
+//                     font-size: 16px;
+//                     color: #009FE3;
+//                     cursor: pointer;
 
-                    &:hover {
-                        color: #00569C;
-                    }
-                }
-            }
-        }
+//                     &:hover {
+//                         color: #00569C;
+//                     }
+//                 }
+//             }
+//         }
 
-        .email-password {
-            form {
-                width: 100%;
-                margin: auto;
-                display: flex;
-                flex-wrap: wrap;
+//         .email-password {
+//             form {
+//                 width: 100%;
+//                 margin: auto;
+//                 display: flex;
+//                 flex-wrap: wrap;
 
-                .contenedor-label-input {
-                    padding-right: 12px;
-                    width: 33%;
-                    // max-width: 505px;
+//                 .contenedor-label-input {
+//                     padding-right: 12px;
+//                     width: 33%;
 
-                    label {
-                        font-size: 11px;
-                        color: #4B5563;
-                        margin: 0px 0px 4px;
-                    }
+//                     label {
+//                         font-size: 11px;
+//                         color: #4B5563;
+//                         margin: 0px 0px 4px;
+//                     }
 
-                    .contenedor-input {
-                        background-color: white;
-                        border: 1px solid #4b556352;
-                        margin-bottom: 1%;
+//                     .contenedor-input {
+//                         background-color: white;
+//                         border: 1px solid #4b556352;
+//                         margin-bottom: 1%;
 
-                        input {
-                            padding-left: 6px;
-                            margin-top: 6px;
-                            margin-bottom: 6px;
-                            width: 100%;
-                            color: black;
-                            user-select: none;
-                            font-size: 12px;
-                            border: none;
-                        }
+//                         input {
+//                             padding-left: 6px;
+//                             margin-top: 6px;
+//                             margin-bottom: 6px;
+//                             width: 100%;
+//                             color: black;
+//                             user-select: none;
+//                             font-size: 12px;
+//                             border: none;
+//                         }
 
-                        input:focus {
-                            outline: none;
-                        }
-                    }
-                }
-            }
-        }
+//                         input:focus {
+//                             outline: none;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
 
-        .condiciones {
-            margin: 0px 12px 16px;
-            cursor: pointer;
+//         .condiciones {
+//             margin: 0px 12px 16px;
+//             cursor: pointer;
 
-            span {
-                font-size: 14px;
+//             span {
+//                 font-size: 14px;
 
-                &:hover {
-                    color: #00569C;
-                }
-            }
-        }
+//                 &:hover {
+//                     color: #00569C;
+//                 }
+//             }
+//         }
 
-        .contenedor-checks {
-            .check-check {
-                span {
-                    font-size: 12px;
-                    color: #4B5563;
-                }
+//         .contenedor-checks {
+//             .check-check {
+//                 span {
+//                     font-size: 12px;
+//                     color: #4B5563;
+//                 }
 
-                .condicioness {
-                    cursor: pointer;
-                    font-size: 12px;
-                    color: #009FE3;
+//                 .condicioness {
+//                     cursor: pointer;
+//                     font-size: 12px;
+//                     color: #009FE3;
 
-                    &:hover {
-                        color: #00569C;
-                    }
-                }
-            }
-        }
+//                     &:hover {
+//                         color: #00569C;
+//                     }
+//                 }
+//             }
+//         }
 
-        .boton-registro {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 8px;
+//         .boton-registro {
+//             display: flex;
+//             justify-content: flex-end;
+//             align-items: center;
+//             margin-top: 8px;
 
-            button {
-                background-color: #009FE3;
-                color: white;
-                font-size: 14px;
-                padding: 16px 40px;
-                box-shadow: 4px 4px #00569C;
-                font-weight: 800;
-                border: none;
-                border-radius: 30px;
-                font-family: "Source Code Pro", sans-serif;
+//             button {
+//                 background-color: #009FE3;
+//                 color: white;
+//                 font-size: 14px;
+//                 padding: 16px 40px;
+//                 box-shadow: 4px 4px #00569C;
+//                 font-weight: 800;
+//                 border: none;
+//                 border-radius: 30px;
+//                 font-family: "Source Code Pro", sans-serif;
 
-                &:hover {
-                    background-color: #0B71B4;
-                }
-            }
-        }
-    }
-}
+//                 &:hover {
+//                     background-color: #0B71B4;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width: 767px) {
-    .register {
-        background-color: white;
-        padding: 32px 0px 80px;
-        padding-top: 5%;
-        padding-bottom: 10%;
+// @media (max-width: 767px) {
+//     .register {
+//         background-color: white;
+//         padding: 32px 0px 80px;
+//         padding-top: 5%;
+//         padding-bottom: 10%;
 
-        .contenedor-register {
-            margin: auto;
-            // width: 96%;
-            width: 92%;
+//         .contenedor-register {
+//             margin: auto;
+//             width: 92%;
 
-            .titulo-titulo {
-                margin: 0px 0px 48px;
-                padding: 32px 0px 0px;
+//             .titulo-titulo {
+//                 margin: 0px 0px 48px;
+//                 padding: 32px 0px 0px;
 
-                .titulo {
-                    text-align: center;
-                    font-size: 72px;
-                    font-family: "Sniglet", sans-serif;
-                }
-            }
+//                 .titulo {
+//                     text-align: center;
+//                     font-size: 72px;
+//                     font-family: "Sniglet", sans-serif;
+//                 }
+//             }
 
-            .cuenta-datos {
-                display: block;
-                padding: 0px 12px;
+//             .cuenta-datos {
+//                 display: block;
+//                 padding: 0px 12px;
 
-                .cont-datos {
-                    margin: 0px 0px 12px;
+//                 .cont-datos {
+//                     margin: 0px 0px 12px;
 
-                    span {
-                        font-size: 16px;
-                        padding: 0px 0px 12px
-                    }
+//                     span {
+//                         font-size: 16px;
+//                         padding: 0px 0px 12px
+//                     }
 
-                    .inicia-sesion {
-                        font-size: 16px;
-                    }
-                }
-            }
+//                     .inicia-sesion {
+//                         font-size: 16px;
+//                     }
+//                 }
+//             }
 
-            .email-password {
-                form {
-                    width: 100%;
-                    margin: auto;
-                    display: block;
+//             .email-password {
+//                 form {
+//                     width: 100%;
+//                     margin: auto;
+//                     display: block;
 
-                    .contenedor-label-input {
-                        padding-right: 12px;
-                        width: 100%;
-                        margin: auto;
-                        max-width: 1000px;
-                        margin: 0px 12px;
+//                     .contenedor-label-input {
+//                         padding-right: 12px;
+//                         width: 100%;
+//                         margin: auto;
+//                         max-width: 1000px;
+//                         margin: 0px 12px;
 
-                        label {}
+//                         label {}
 
-                        .contenedor-input {
-                            background-color: white;
-                            border: 1px solid #4b556352;
-                            margin-bottom: 1%;
+//                         .contenedor-input {
+//                             background-color: white;
+//                             border: 1px solid #4b556352;
+//                             margin-bottom: 1%;
 
-                            input {
-                                padding-left: 6px;
-                                margin-top: 6px;
-                                margin-bottom: 6px;
-                            }
-                        }
-                    }
-                }
-            }
+//                             input {
+//                                 padding-left: 6px;
+//                                 margin-top: 6px;
+//                                 margin-bottom: 6px;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
 
-            .condiciones {
-                margin: 0px 12px 16px;
+//             .condiciones {
+//                 margin: 0px 12px 16px;
 
-                span {
-                    font-size: 14px;
-                }
-            }
+//                 span {
+//                     font-size: 14px;
+//                 }
+//             }
 
-            .contenedor-checks {
-                padding: 0px 12px;
+//             .contenedor-checks {
+//                 padding: 0px 12px;
 
-                .check-check {
-                    span {
-                        font-size: 12px;
-                        color: #4B5563;
-                    }
+//                 .check-check {
+//                     span {
+//                         font-size: 12px;
+//                         color: #4B5563;
+//                     }
 
-                    .condiciones {
-                        font-size: 12px;
-                        color: #009FE3;
-                    }
-                }
-            }
+//                     .condiciones {
+//                         font-size: 12px;
+//                         color: #009FE3;
+//                     }
+//                 }
+//             }
 
-            .boton-registro {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                margin-top: 8px;
-            }
-        }
-    }
-}
+//             .boton-registro {
+//                 display: flex;
+//                 justify-content: flex-end;
+//                 align-items: center;
+//                 margin-top: 8px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width: 636px) {
-    .register {
+// @media (max-width: 636px) {
+//     .register {
 
-        .contenedor-register {
-            
-            .titulo-titulo {
-                padding: 32px 0px 0px;
-                margin: 0px 0px 48px;
+//         .contenedor-register {
 
-                .titulo {
-                    text-align: center;
-                    font-size: 36px;
-                }
-            }
+//             .titulo-titulo {
+//                 padding: 32px 0px 0px;
+//                 margin: 0px 0px 48px;
 
-            .cuenta-datos {
-                display: block;
-                padding: 0px 12px;
-                padding-top: 20px;
-            }
-        }
-    }
-}
+//                 .titulo {
+//                     text-align: center;
+//                     font-size: 36px;
+//                 }
+//             }
+
+//             .cuenta-datos {
+//                 display: block;
+//                 padding: 0px 12px;
+//                 padding-top: 20px;
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,816 @@
+.cats {
+  .categorias-contenedor {
+    width: 100%;
+    margin: auto;
+    background-color: #ebf8ff;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0% 0.75%;
+
+    .contenedor-de-contenedores {
+      height: 19.7%;
+      width: 19.7%;
+      padding: 24px 48px;
+      border-radius: 30px;
+      border: solid 0.4px white;
+      background-color: white;
+
+      .contenedor-imagen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .contenedor-boton {
+        border: solid 2px #009fe3;
+        border-radius: 50px;
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 4px 4px 0 0 #009fe3;
+
+        span {
+          font-size: 14px;
+          color: #009fe3;
+          font-family: "Source Code Pro", sans-serif;
+          font-weight: 700;
+        }
+
+        &:hover {
+          background-color: #009fe3;
+
+          span {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .section-start {
+    margin-top: 1.2%;
+
+    .img-img {
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        max-height: auto;
+      }
+    }
+  }
+
+  .destacados {
+    background-color: white;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: -3%;
+    padding-bottom: 2.4%;
+
+    .titulo {
+      font-family: "Sniglet", sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      text-align: center;
+      color: #009fe3;
+    }
+
+    .destacados-contenedor {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .contenedor-de-contenedores {
+        padding: 24px;
+        border: solid 1.6px #ebf8ff;
+        border-radius: 30px;
+        padding: 24px;
+        height: 450px;
+        width: 372px;
+
+        .img-img {
+          padding: 24px;
+          display: flex;
+          width: 322px;
+          height: 322px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            margin: 10% 0%;
+          }
+
+          .icon {
+            position: absolute;
+            transform: translate(274px, -20px);
+          }
+
+          &:hover {
+            cursor: pointer;
+            color: #006ab0;
+          }
+        }
+
+        .texto-titulo {
+          .texto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 0px 16px;
+            cursor: pointer;
+
+            span {
+              font-size: 16px;
+              color: #4b5563;
+              font-family: "Sniglet", sans-serif;
+            }
+
+            &:hover {
+              span {
+                color: #00569c;
+              }
+            }
+          }
+
+          .precio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+              font-size: 24px;
+              color: #009fe3;
+              font-family: "Sniglet", sans-serif;
+            }
+          }
+        }
+      }
+    }
+
+    .paginacion {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      // margin-top: 6%;
+      // margin-bottom: 7%;
+      margin-top: 2%;
+      margin-bottom: 4%;
+    }
+
+    .regalo-lapiz {
+      margin-bottom: 2%;
+      width: 100%;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .contenedor-ofertas {
+      background-image: url("https://doraemon.lukinternacional.com/themes/doraemon_theme/assets/css/bg-home-specials.jpg");
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 0.01%;
+      padding-bottom: 2%;
+
+      .ofertas-ofertas {
+        margin-bottom: 5%;
+        margin-top: 5%;
+
+        .ofertas {
+          .titulo {
+            .ofertas-titulo {
+              text-align: center;
+              font-size: 96px;
+              color: white;
+              font-family: "Sniglet", sans-serif;
+              font-weight: 700;
+            }
+          }
+
+          .img-img {
+            display: flex;
+            justify-content: center;
+            align-items: center img {
+              width: 265px;
+              height: 275px;
+            }
+          }
+        }
+      }
+
+      .contenedor-de-contenedores {
+        .card {
+          background-color: white;
+          width: 360px;
+          height: 450px;
+          border-radius: 30px;
+          border: solid 0.5px white;
+          display: flex;
+          justify-content: center;
+
+          .img-img {
+            padding: 24px;
+
+            .descuento {
+              position: absolute;
+
+              .descuento-porcentaje {
+                padding: 0;
+                width: 46px;
+                height: 46px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-size: 16px;
+                color: white;
+                font-family: "Sniglet", sans-serif;
+                background-color: #ef4444;
+                transform: rotate(-12deg);
+              }
+            }
+
+            .icon {
+              position: absolute;
+              transform: translate(280px);
+
+              &:hover {
+                cursor: pointer;
+                color: red;
+              }
+            }
+
+            .img-producto {
+              width: 310px;
+              height: 310px;
+              padding: 24px;
+
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+
+          .texto-titulo {
+            .texto {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 8px 0px 16px;
+            }
+
+            .texto {
+              span {
+                font-size: 16px;
+                color: #4b5563;
+                font-family: "Sniglet", sans-serif;
+              }
+            }
+
+            .precio {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .precio-anterior {
+                font-size: 24px;
+                color: #4b5563;
+                font-family: "Sniglet", sans-serif;
+                padding: 0px 5px;
+              }
+
+              .precio-actual {
+                font-size: 24px;
+                color: #ef4444;
+                font-family: "Sniglet", sans-serif;
+                padding: 0px 5px;
+              }
+            }
+          }
+        }
+
+        .ver-mas {
+          width: 100%;
+          margin: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .boton {
+            width: 160px;
+            height: 46px;
+            cursor: pointer;
+            border-radius: 30px;
+            padding: 12px 36px;
+            background-color: #009fe3;
+            box-shadow: 4px 4px 0 0 #006ab0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .link-redireccion {
+              font-family: "Source Code Pro", sans-serif;
+              font-size: 16px;
+              color: white;
+            }
+
+            &:hover {
+              background-color: #00569c;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 638px) and (max-width: 1280px) {
+  .cats {
+    .categorias-contenedor {
+      width: 100%;
+
+      .contenedor-de-contenedores {
+        height: 48%;
+        width: 48%;
+        padding: 24px 48px;
+        border-radius: 30px;
+        margin: 1px;
+
+        .contenedor-boton {
+          border: solid 2px #009fe3;
+          border-radius: 50px;
+          padding: 16px;
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1278px) and (max-width: 1535px) {
+  .cats {
+    .destacados {
+      .contenedor-ofertas {
+        .ofertas-ofertas {
+          .contenedor-de-contenedores {
+            .card {
+              width: 308px;
+              height: 408px;
+              position: absolute;
+              transform: translateY(-40%);
+
+              .img-img {
+                padding: 24px;
+
+                .descuento {
+                  position: absolute;
+
+                  .descuento-porcentaje {
+                    width: 46px;
+                    height: 46px;
+                    font-size: 16px;
+                  }
+                }
+
+                .icon {
+                  position: absolute;
+                  transform: translate(280px);
+                }
+
+                .img-producto {
+                  width: 258px;
+                  height: 258px;
+                  padding: 24px;
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+
+              .texto-titulo {
+                .texto {
+                  text-align: center;
+                  margin: 0px 12px;
+                  padding: 8px 0px 16px;
+                }
+
+                .texto {
+                  span {
+                    font-size: 16px;
+                  }
+                }
+
+                .precio {
+                  .precio-anterior {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+
+                  .precio-actual {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+                }
+              }
+            }
+
+            .ver-mas {
+              padding-top: 20%;
+
+              .boton {
+                width: 160px;
+                height: 46px;
+                border-radius: 30px;
+                padding: 12px 36px;
+
+                .link-redireccion {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1277px) {
+  .cats {
+    .destacados {
+      .contenedor-ofertas {
+        .ofertas-ofertas {
+          .contenedor-de-contenedores {
+            .card {
+              width: 244px;
+              height: 344px;
+              position: absolute;
+              transform: translateY(-40%);
+
+              .img-img {
+                padding: 24px;
+
+                .descuento {
+                  position: absolute;
+
+                  .descuento-porcentaje {
+                    width: 46px;
+                    height: 46px;
+                    font-size: 16px;
+                  }
+                }
+
+                .icon {
+                  position: absolute;
+                  transform: translate(280px);
+                }
+
+                .img-producto {
+                  width: 194px;
+                  height: 194px;
+                  padding: 24px;
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+
+              .texto-titulo {
+                .texto {
+                  text-align: center;
+                  margin: 0px 12px;
+                  padding: 8px 0px 16px;
+                }
+
+                .texto {
+                  span {
+                    font-size: 16px;
+                  }
+                }
+
+                .precio {
+                  .precio-anterior {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+
+                  .precio-actual {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+                }
+              }
+            }
+
+            .ver-mas {
+              padding-top: 28%;
+
+              .boton {
+                width: 160px;
+                height: 46px;
+                border-radius: 30px;
+                padding: 12px 36px;
+
+                .link-redireccion {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cats {
+    .destacados {
+      .contenedor-ofertas {
+        .contenedor-de-contenedores {
+          .ver-mas {
+            .boton {
+              margin-top: 8%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .cats {
+    .destacados {
+      .contenedor-ofertas {
+        .ofertas-ofertas {
+          .ofertas {
+            .titulo {
+              .ofertas-titulo {
+                font-size: 60px;
+              }
+            }
+
+            .img-img {
+              img {
+                padding-bottom: 6%;
+              }
+            }
+          }
+
+          .contenedor-de-contenedores {
+            .card {
+              width: 296px;
+              height: 396px;
+              position: absolute;
+              transform: translateY(-40%);
+
+              .img-img {
+                padding: 24px;
+
+                .descuento {
+                  position: absolute;
+
+                  .descuento-porcentaje {
+                    width: 46px;
+                    height: 46px;
+                    font-size: 16px;
+                  }
+                }
+
+                .icon {
+                  position: absolute;
+                  transform: translate(280px);
+                }
+
+                .img-producto {
+                  width: 246px;
+                  height: 246px;
+                  padding: 24px;
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+
+              .texto-titulo {
+                .texto {
+                  text-align: center;
+                  margin: 0px 12px;
+                  padding: 8px 0px 16px;
+                }
+
+                .texto {
+                  span {
+                    font-size: 16px;
+                  }
+                }
+
+                .precio {
+                  .precio-anterior {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+
+                  .precio-actual {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+                }
+              }
+            }
+
+            .ver-mas {
+              padding-top: 40vw;
+              padding-bottom: 4%;
+
+              .boton {
+                width: 160px;
+                height: 46px;
+                border-radius: 30px;
+                padding: 12px 36px;
+
+                .link-redireccion {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .cats {
+    .destacados {
+      .titulo {
+        font-size: 36px;
+      }
+
+      .contenedor-ofertas {
+        width: 100%;
+        margin: auto;
+        margin: 0%;
+        padding: 0% 5%;
+
+        .ofertas-ofertas {
+          margin: auto;
+          padding: 0;
+          margin: 0;
+
+          .ofertas {
+            .titulo {
+              .ofertas-titulo {
+                font-size: 60px;
+              }
+            }
+          }
+
+          .contenedor-de-contenedores {
+            .card {
+              width: 90%;
+              height: auto;
+              position: absolute;
+              transform: translateY(-40%);
+
+              .img-img {
+                padding: 24px;
+
+                .descuento {
+                  position: absolute;
+                  .descuento-porcentaje {
+                    width: 46px;
+                    height: 46px;
+                    font-size: 16px;
+                  }
+                }
+
+                .icon {
+                  display: none;
+                }
+
+                .img-producto {
+                  width: 100%;
+                  height: 100%;
+                  padding: 24px;
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+
+              .texto-titulo {
+                .texto {
+                  text-align: center;
+                  margin: 0px 12px;
+                  padding: 8px 0px 16px;
+                }
+
+                .texto {
+                  span {
+                    font-size: 16px;
+                  }
+                }
+
+                .precio {
+                  .precio-anterior {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+
+                  .precio-actual {
+                    font-size: 24px;
+                    padding: 0px 5px;
+                  }
+                }
+              }
+            }
+
+            .ver-mas {
+              padding-top: 84%;
+              padding-bottom: 6%;
+
+              .boton {
+                width: 160px;
+                height: 46px;
+                border-radius: 30px;
+                padding: 12px 36px;
+
+                .link-redireccion {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 637px) {
+  .cats {
+    .categorias-contenedor {
+      width: 100%;
+
+      .contenedor-de-contenedores {
+        height: 92%;
+        width: 92%;
+        padding: 24px 48px;
+        border-radius: 30px;
+        margin-bottom: 4.5%;
+
+        .contenedor-boton {
+          border: solid 2px #009fe3;
+          border-radius: 50px;
+          padding: 16px;
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .cats {
+    .destacados {
+      .contenedor-ofertas {
+        .contenedor-de-contenedores {
+          .ver-mas {
+            .boton {
+              margin-top: 8%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

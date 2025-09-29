@@ -68,6 +68,30 @@ export const CartItem: React.FC<CartItemProps> = ({
         </div>
       </div>
 
+      <div className="distribucion-cantidad-basura__mobile">
+        <div className="small cantidad-mas-botones">
+          <div className="numero">
+            <span>{item.cantidad}</span>
+          </div>
+          <div className="botones">
+            <div className="bot">
+              <button className="boton" onClick={() => onIncrease(item.id)}>
+                <FaArrowUp className="arrow" color="#009FE3" size={14} />
+              </button>
+              <button className="boton" onClick={() => onDecrease(item.id)}>
+                <FaArrowDown className="arrow" color="#009FE3" size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className="small cesto-de-basura"
+          onClick={() => onRemove(item.id)}
+        >
+          <FaRegTrashAlt color="black" size={22} className="small cesto" />
+        </div>
+      </div>
+
       <div className="small cantidad-mas-botones">
         <div className="numero">
           <span>{item.cantidad}</span>
@@ -83,13 +107,11 @@ export const CartItem: React.FC<CartItemProps> = ({
           </div>
         </div>
       </div>
-
       <div className="small total-definitivo">
         <span className="small">
           {(item.precio * item.cantidad).toFixed(2)}€
         </span>
       </div>
-
       <div className="small cesto-de-basura" onClick={() => onRemove(item.id)}>
         <FaRegTrashAlt color="black" size={22} className="small cesto" />
       </div>

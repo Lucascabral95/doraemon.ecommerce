@@ -1,3 +1,5 @@
+$bp-md: 768px;
+
 .productosBuscados {
   width: 100%;
   margin: auto;
@@ -20,6 +22,9 @@
     .filtre {
       height: 24px;
       margin-bottom: 2.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       .boton {
         display: flex;
@@ -31,6 +36,38 @@
           background-color: transparent;
           color: black;
           font-size: 16px;
+        }
+
+        .sort-dropdown {
+          width: 224px;
+          height: auto;
+          background-color: #ffffff;
+          margin: 8px 0px 0px;
+          position: absolute;
+          transform: translateY(20px);
+          z-index: 1001;
+          border-radius: 0.25rem;
+          box-sizing: border-box;
+          border: 0 solid #e5e7eb;
+          padding: 20px 28px;
+
+          .sort-option {
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 12px;
+
+            &:hover {
+              color: #00569c;
+            }
+          }
+        }
+      }
+
+      @media (max-width: $bp-md) {
+        display: block;
+
+        .boton {
+          margin-top: 8px;
         }
       }
     }

@@ -1,374 +1,374 @@
-.menu {
-    width: 100%;
-    background-color: #ECF8FF;
+// .menu {
+//     width: 100%;
+//     background-color: #ECF8FF;
 
-    .menu-img {
-        .img {
-            width: 100%;
-            height: auto;
-        }
-    }
+//     .menu-img {
+//         .img {
+//             width: 100%;
+//             height: auto;
+//         }
+//     }
 
-    .bienvenida {
-        z-index: 900;
-        position: absolute;
-        left: 60vw;
-        top: 14vw;
+//     .bienvenida {
+//         z-index: 900;
+//         position: absolute;
+//         left: 60vw;
+//         top: 14vw;
 
-        .menu-bienvenida-texto {
-            width: 484px;
-            display: flex;
-            align-items: flex-end;
+//         .menu-bienvenida-texto {
+//             width: 484px;
+//             display: flex;
+//             align-items: flex-end;
 
-            .bienvenida-texto {
-                font-size: 16px;
-                color: white;
-                font-weight: 700;
-                font-family: "Source Code Pro", sans-serif;
-            }
-        }
+//             .bienvenida-texto {
+//                 font-size: 16px;
+//                 color: white;
+//                 font-weight: 700;
+//                 font-family: "Source Code Pro", sans-serif;
+//             }
+//         }
 
-        .menu-bienvenida-titulo {
-            width: 484px;
-            display: flex;
-            align-items: flex-start;
+//         .menu-bienvenida-titulo {
+//             width: 484px;
+//             display: flex;
+//             align-items: flex-start;
 
-            .bienvenida-titulo {
-                font-family: "Sniglet", sans-serif;
-                color: white;
-                font-size: 68.8px;
-                font-weight: 900;
-            }
-        }
-    }
-}
+//             .bienvenida-titulo {
+//                 font-family: "Sniglet", sans-serif;
+//                 color: white;
+//                 font-size: 68.8px;
+//                 font-weight: 900;
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 924px) and (max-width: 1280px) {
-    .menu {
+// @media (min-width: 924px) and (max-width: 1280px) {
+//     .menu {
 
-        .menu-img {
-            .img {
-                width: 100%;
-                height: auto;
-            }
-        }
+//         .menu-img {
+//             .img {
+//                 width: 100%;
+//                 height: auto;
+//             }
+//         }
 
-        .bienvenida {
-            z-index: 900;
-            position: absolute;
-            left: 45vw;
-            height: 100%;
+//         .bienvenida {
+//             z-index: 900;
+//             position: absolute;
+//             left: 45vw;
+//             height: 100%;
 
-            .menu-bienvenida-texto {
-                max-width: 650px;
-                display: flex;
-                align-items: flex-end;
+//             .menu-bienvenida-texto {
+//                 max-width: 650px;
+//                 display: flex;
+//                 align-items: flex-end;
 
-                .bienvenida-texto {
-                    font-size: 16px;
-                    color: white;
-                    font-weight: 700;
-                    font-family: "Source Code Pro", sans-serif;
-                }
-            }
+//                 .bienvenida-texto {
+//                     font-size: 16px;
+//                     color: white;
+//                     font-weight: 700;
+//                     font-family: "Source Code Pro", sans-serif;
+//                 }
+//             }
 
-            .menu-bienvenida-titulo {
-                max-width: 460px;
-                display: flex;
-                align-items: flex-start;
+//             .menu-bienvenida-titulo {
+//                 max-width: 460px;
+//                 display: flex;
+//                 align-items: flex-start;
 
-                .bienvenida-titulo {
-                    font-family: "Sniglet", sans-serif;
-                    color: white;
-                    font-size: 42px;
-                    font-weight: 900;
-                }
-            }
-        }
-    }
-}
+//                 .bienvenida-titulo {
+//                     font-family: "Sniglet", sans-serif;
+//                     color: white;
+//                     font-size: 42px;
+//                     font-weight: 900;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 768px) and (max-width: 923px) {
-    .menu {
+// @media (min-width: 768px) and (max-width: 923px) {
+//     .menu {
 
-        .bienvenida {
-            z-index: 900;
-            position: absolute;
-            height: 100%;
-            left: 48.2vw;
-            top: 18.5vw;
+//         .bienvenida {
+//             z-index: 900;
+//             position: absolute;
+//             height: 100%;
+//             left: 48.2vw;
+//             top: 18.5vw;
 
-            .menu-bienvenida-texto {
-                max-width: 300px;
-                display: flex;
-                align-items: flex-end;
+//             .menu-bienvenida-texto {
+//                 max-width: 300px;
+//                 display: flex;
+//                 align-items: flex-end;
 
-                .bienvenida-texto {
-                    font-size: 16px;
-                    color: white;
-                    font-weight: 700;
-                    font-family: "Source Code Pro", sans-serif;
-                }
-            }
+//                 .bienvenida-texto {
+//                     font-size: 16px;
+//                     color: white;
+//                     font-weight: 700;
+//                     font-family: "Source Code Pro", sans-serif;
+//                 }
+//             }
 
-            .menu-bienvenida-titulo {
-                max-width: 300px;
-                display: flex;
-                align-items: flex-start;
+//             .menu-bienvenida-titulo {
+//                 max-width: 300px;
+//                 display: flex;
+//                 align-items: flex-start;
 
-                .bienvenida-titulo {
-                    font-family: "Sniglet", sans-serif;
-                    color: white;
-                    font-size: 42px;
-                    font-weight: 900;
-                }
-            }
-        }
-    }
-}
+//                 .bienvenida-titulo {
+//                     font-family: "Sniglet", sans-serif;
+//                     color: white;
+//                     font-size: 42px;
+//                     font-weight: 900;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 668px) and (max-width: 1279px) {
-    .menu {
+// @media (min-width: 668px) and (max-width: 1279px) {
+//     .menu {
 
-        // .datos-tienda {
-        //     height: 194px;
-        //     width: 90%;
-        //     margin: auto;
-        //     display: flex;
-        //     flex-wrap: wrap;
-        //     justify-content: space-around;
-        //     align-items: center;
+//         // .datos-tienda {
+//         //     height: 194px;
+//         //     width: 90%;
+//         //     margin: auto;
+//         //     display: flex;
+//         //     flex-wrap: wrap;
+//         //     justify-content: space-around;
+//         //     align-items: center;
 
-        //     .contenedor {
-        //         display: flex;
-        //         justify-content: center;
-        //         align-items: center;
-        //         height: 48px;
-        //         max-width: 300px;
+//         //     .contenedor {
+//         //         display: flex;
+//         //         justify-content: center;
+//         //         align-items: center;
+//         //         height: 48px;
+//         //         max-width: 300px;
 
-        //         .icon {
-        //             width: auto;
-        //             height: auto;
-        //             margin-left: 30px;
-        //         }
+//         //         .icon {
+//         //             width: auto;
+//         //             height: auto;
+//         //             margin-left: 30px;
+//         //         }
 
-        //         .texto-texto {
-        //             display: flex;
-        //             justify-content: center;
-        //             align-items: center;
+//         //         .texto-texto {
+//         //             display: flex;
+//         //             justify-content: center;
+//         //             align-items: center;
 
-        //             .texto {
-        //                 display: flex;
-        //                 justify-content: center;
-        //                 align-items: ce;
-        //                 font-family: "Source Code Pro", sans-serif;
-        //                 color: #006AB0;
-        //                 font-size: 16px;
-        //                 font-weight: 800;
-        //                 margin-left: 10px;
-        //             }
-        //         }
-        //     }
-        // }
-    }
-}
+//         //             .texto {
+//         //                 display: flex;
+//         //                 justify-content: center;
+//         //                 align-items: ce;
+//         //                 font-family: "Source Code Pro", sans-serif;
+//         //                 color: #006AB0;
+//         //                 font-size: 16px;
+//         //                 font-weight: 800;
+//         //                 margin-left: 10px;
+//         //             }
+//         //         }
+//         //     }
+//         // }
+//     }
+// }
 
-@media (max-width: 640px) {
-    .menu {
-        .bienvenida {
-            z-index: 900;
-            position: absolute;
-            height: 100%;
-            left: 3vw;
-            top: 42vw;
+// @media (max-width: 640px) {
+//     .menu {
+//         .bienvenida {
+//             z-index: 900;
+//             position: absolute;
+//             height: 100%;
+//             left: 3vw;
+//             top: 42vw;
 
-            .menu-bienvenida-texto {
-                max-width: 700px;
-                display: flex;
-                align-items: flex-end;
+//             .menu-bienvenida-texto {
+//                 max-width: 700px;
+//                 display: flex;
+//                 align-items: flex-end;
 
-                .bienvenida-texto {
-                    font-size: 16px;
-                    color: white;
-                    font-weight: 700;
-                    font-family: "Source Code Pro", sans-serif;
-                }
-            }
+//                 .bienvenida-texto {
+//                     font-size: 16px;
+//                     color: white;
+//                     font-weight: 700;
+//                     font-family: "Source Code Pro", sans-serif;
+//                 }
+//             }
 
-            .menu-bienvenida-titulo {
-                max-width: 700px;
-                display: flex;
-                align-items: flex-start;
+//             .menu-bienvenida-titulo {
+//                 max-width: 700px;
+//                 display: flex;
+//                 align-items: flex-start;
 
-                .bienvenida-titulo {
-                    font-family: "Sniglet", sans-serif;
-                    color: white;
-                    font-size: 36px;
-                    font-weight: 900;
-                }
-            }
-        }
-    }
-}
+//                 .bienvenida-titulo {
+//                     font-family: "Sniglet", sans-serif;
+//                     color: white;
+//                     font-size: 36px;
+//                     font-weight: 900;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 548px) and (max-width: 1023px) {
-    .menu {
+// @media (min-width: 548px) and (max-width: 1023px) {
+//     .menu {
 
-        .bienvenida {
-            z-index: 900;
-            position: absolute;
-            height: 100%;
-            left: 3vw;
-            top: 42vw;
+//         .bienvenida {
+//             z-index: 900;
+//             position: absolute;
+//             height: 100%;
+//             left: 3vw;
+//             top: 42vw;
 
-            .menu-bienvenida-texto {
-                max-width: 700px;
-                display: flex;
-                align-items: flex-end;
+//             .menu-bienvenida-texto {
+//                 max-width: 700px;
+//                 display: flex;
+//                 align-items: flex-end;
 
-                .bienvenida-texto {
-                    font-size: 16px;
-                    color: white;
-                    font-weight: 700;
-                    font-family: "Source Code Pro", sans-serif;
-                }
-            }
+//                 .bienvenida-texto {
+//                     font-size: 16px;
+//                     color: white;
+//                     font-weight: 700;
+//                     font-family: "Source Code Pro", sans-serif;
+//                 }
+//             }
 
-            .menu-bienvenida-titulo {
-                max-width: 700px;
-                display: flex;
-                align-items: flex-start;
+//             .menu-bienvenida-titulo {
+//                 max-width: 700px;
+//                 display: flex;
+//                 align-items: flex-start;
 
-                .bienvenida-titulo {
-                    font-family: "Sniglet", sans-serif;
-                    color: white;
-                    font-size: 36px;
-                    font-weight: 900;
-                }
-            }
-        }
+//                 .bienvenida-titulo {
+//                     font-family: "Sniglet", sans-serif;
+//                     color: white;
+//                     font-size: 36px;
+//                     font-weight: 900;
+//                 }
+//             }
+//         }
 
-        .menu-img {
-            .img {
-                width: 100%;
-                height: auto;
-                display: none;
-            }
+//         .menu-img {
+//             .img {
+//                 width: 100%;
+//                 height: auto;
+//                 display: none;
+//             }
 
-            .img-intermedia {
-                width: 100%;
-                height: auto;
-                display: block !important;
-            }
-        }
-    }
-}
+//             .img-intermedia {
+//                 width: 100%;
+//                 height: auto;
+//                 display: block !important;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width: 547px) {
-    .menu {
-        position: relative;
+// @media (max-width: 547px) {
+//     .menu {
+//         position: relative;
 
-        .bienvenida {
-            z-index: 900;
-            width: 90vw;
-            position: absolute;
-            top: 66vw;
+//         .bienvenida {
+//             z-index: 900;
+//             width: 90vw;
+//             position: absolute;
+//             top: 66vw;
 
-            position: absolute;
+//             position: absolute;
 
-            .menu-bienvenida-texto {
-                max-width: 100%;
-                display: flex;
-                align-items: flex-end;
+//             .menu-bienvenida-texto {
+//                 max-width: 100%;
+//                 display: flex;
+//                 align-items: flex-end;
 
-                .bienvenida-texto {
-                    font-size: 16px;
-                    color: white;
-                    font-weight: 700;
-                    font-family: "Source Code Pro", sans-serif;
-                }
-            }
+//                 .bienvenida-texto {
+//                     font-size: 16px;
+//                     color: white;
+//                     font-weight: 700;
+//                     font-family: "Source Code Pro", sans-serif;
+//                 }
+//             }
 
-            .menu-bienvenida-titulo {
-                max-width: 100%;
-                display: flex;
-                align-items: flex-start;
+//             .menu-bienvenida-titulo {
+//                 max-width: 100%;
+//                 display: flex;
+//                 align-items: flex-start;
 
-                .bienvenida-titulo {
-                    font-family: "Sniglet", sans-serif;
-                    color: white;
-                    font-size: 36px;
-                    font-weight: 900;
-                }
-            }
-        }
+//                 .bienvenida-titulo {
+//                     font-family: "Sniglet", sans-serif;
+//                     color: white;
+//                     font-size: 36px;
+//                     font-weight: 900;
+//                 }
+//             }
+//         }
 
-        .menu-img {
-            .img {
-                display: none;
-            }
+//         .menu-img {
+//             .img {
+//                 display: none;
+//             }
 
-            .img-intermedia {
-                display: none;
-            }
+//             .img-intermedia {
+//                 display: none;
+//             }
 
-            .img-pequeña {
-                display: block !important;
-                max-width: 100%;
-            }
-        }
-    }
-}
+//             .img-pequeña {
+//                 display: block !important;
+//                 max-width: 100%;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width: 667px) {
-    .menu {
+// @media (max-width: 667px) {
+//     .menu {
 
-        // .datos-tienda {
-        //     background-color: #EBF8FF;
-        //     height: 302px;
-        //     width: 100% !important;
-        //     margin: auto;
-        //     display: grid;
-        //     grid-template-rows: auto;
-        //     justify-content: center;
-        //     align-items: center;
+//         // .datos-tienda {
+//         //     background-color: #EBF8FF;
+//         //     height: 302px;
+//         //     width: 100% !important;
+//         //     margin: auto;
+//         //     display: grid;
+//         //     grid-template-rows: auto;
+//         //     justify-content: center;
+//         //     align-items: center;
 
-        //     .contenedor-contenedor {
-        //         display: flex;
-        //         justify-content: center;
-        //         align-items: center;
-        //         width: 100%;
+//         //     .contenedor-contenedor {
+//         //         display: flex;
+//         //         justify-content: center;
+//         //         align-items: center;
+//         //         width: 100%;
 
-        //         .contenedor {
-        //             display: flex;
-        //             justify-content: center;
-        //             align-items: center;
-        //             width: 100%;
+//         //         .contenedor {
+//         //             display: flex;
+//         //             justify-content: center;
+//         //             align-items: center;
+//         //             width: 100%;
 
-        //             .icon {
-        //                 width: auto;
-        //                 height: auto;
-        //                 margin-left: 0px;
-        //                 display: flex;
-        //                 justify-content: center;
-        //                 align-items: center;
-        //             }
+//         //             .icon {
+//         //                 width: auto;
+//         //                 height: auto;
+//         //                 margin-left: 0px;
+//         //                 display: flex;
+//         //                 justify-content: center;
+//         //                 align-items: center;
+//         //             }
 
-        //             .texto-texto {
+//         //             .texto-texto {
 
-        //                 .texto {
-        //                     display: flex;
-        //                     justify-content: center;
-        //                     align-items: center;
-        //                     font-family: "Source Code Pro", sans-serif;
-        //                     color: #006AB0;
-        //                     font-size: 16px;
-        //                     font-weight: 800;
-        //                     margin-left: 10px;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-    }
-}
+//         //                 .texto {
+//         //                     display: flex;
+//         //                     justify-content: center;
+//         //                     align-items: center;
+//         //                     font-family: "Source Code Pro", sans-serif;
+//         //                     color: #006AB0;
+//         //                     font-size: 16px;
+//         //                     font-weight: 800;
+//         //                     margin-left: 10px;
+//         //                 }
+//         //             }
+//         //         }
+//         //     }
+//         // }
+//     }
+// }

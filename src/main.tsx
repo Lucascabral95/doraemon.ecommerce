@@ -1,33 +1,12 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import './index.css'
-// import { BrowserRouter } from 'react-router-dom'
-// import Body from './Routes/RutasPrivadas.jsx'
-// "bootstrap/scss/bootstrap";
-// 'react-select/dist/react-select.css'
-// import 'react-loading-skeleton/dist/skeleton.css'
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-
-//     <BrowserRouter>
-
-//       <Body />
-
-//     </BrowserRouter>
-
-//   </React.StrictMode>,
-// )
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import "./infrastructure/config/firebase.config";
 ("bootstrap/scss/bootstrap");
 ("react-select/dist/react-select.css");
 import "react-loading-skeleton/dist/skeleton.css";
-
-import Body from "./Routes/RutasPrivadas";
+import AppRoutes from "./Routes/AppRoutes";
+import "./index.css";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 
@@ -42,7 +21,7 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Body />
+      <AppRoutes />
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -3,11 +3,10 @@ export const LOADING_DELAY = 1000;
 
 export const GIFT_PRODUCTS = {
   lapiz: {
-    texto: "Lápiz Shizuka",
-    imagen:
-      "https://doraemon.lukinternacional.com/1571-cart_default/DO-GADGET-015.jpg",
+    texto: "Lápiz Dorami",
+    imagen: "/img/lapiz-dorami.jpg",
     precio: 0.0,
-    descripcion: "Lápiz Shizuka",
+    descripcion: "Lápiz Dorami",
   },
   gorrocoptero: {
     texto: "Regalo Gorrocóptero Doraemon",

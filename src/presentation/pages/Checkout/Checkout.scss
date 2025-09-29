@@ -666,15 +666,10 @@
             display: flex;
             flex-direction: column;
 
-            .small {
-              display: none;
-            }
-
             .contenedor-imagen {
               display: flex;
               flex-direction: column;
               width: 100%;
-              // height: 240px;
               margin: 0px 0px 0px 0px;
               padding: 0px 0px 0px 0px;
 
@@ -706,71 +701,51 @@
               }
             }
 
-            .cant {
+            .distribucion-cantidad-basura__mobile {
               display: flex !important;
               width: 100%;
+              justify-content: space-between;
+              align-items: center;
+              margin: 6px 0 0px 0;
 
-              .cant-2 {
+              .cantidad-mas-botones {
+                margin-top: 10px;
+                height: 48px;
+                width: 100px;
+                justify-content: center;
                 display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                width: 100%;
-                margin-top: -8px;
 
-                .cantidad-mas-botones {
-                  margin-top: 10px;
-                  height: 48px;
-                  width: 100px;
-                  display: flex;
-                  justify-content: center;
-
-                  .numero {
-                    width: 75%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    span {
-                      font-size: 16px;
-                      color: #009fe3;
-                    }
-                  }
-
-                  .botones {
-                    width: 25%;
-                    display: flex;
-                    align-items: center;
-                    border: solid 0.3px #009fe336;
-
-                    .bot {
-                      .boton {
-                        height: 24;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: transparent;
-                        border: none;
-
-                        .arrow {
-                          cursor: pointer;
-                        }
-                      }
-                    }
-                  }
-                }
-
-                .total-definitivo {
+                .numero {
+                  width: 75%;
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  border: none;
-                  background-color: transparent;
-                  transform: translateY(4px);
-                  margin-left: 12px;
 
                   span {
                     font-size: 16px;
-                    font-weight: 700;
+                    color: #009fe3;
+                  }
+                }
+
+                .botones {
+                  width: 25%;
+                  display: flex;
+                  align-items: center;
+                  border: solid 0.3px #009fe336;
+
+                  .bot {
+                    .boton {
+                      height: 24;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      background-color: transparent;
+                      border: none;
+
+                      .arrow {
+                        cursor: pointer;
+                      }
+                    }
                   }
                 }
               }
@@ -786,151 +761,222 @@
                 }
               }
             }
-          }
 
-          .boton-ver-mas-productos {
-            width: 257.46px;
-            height: 46px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 3% 0%;
+            .cantidad-mas-botones {
+              margin-top: 10px;
+              height: 48px;
+              width: 100px;
+              justify-content: center;
+              // display: flex;
+              display: none;
 
-            span {
-              padding: 12px 24px;
-              white-space: -0.8px;
-              box-shadow: 4px 4px 0px #006ab0;
-            }
-          }
-        }
+              .numero {
+                width: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-        .detalles {
-          background-color: #f3f4f6;
-          padding: 24px;
-          width: 100%;
-          max-height: 460px;
-
-          .articulos-transporte {
-            margin: 2px 0px;
-
-            .cantidad-articulos {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            }
-          }
-
-          .transporte {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 2px 0px;
-          }
-
-          .total-regalo {
-            .total {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin: 14px 0px;
-
-              .total-impuestos {
-                font-size: 16px;
+                span {
+                  font-size: 16px;
+                  color: #009fe3;
+                }
               }
 
-              .total-precio {
-                font-size: 20px;
+              .botones {
+                width: 25%;
+                display: flex;
+                align-items: center;
+                border: solid 0.3px #009fe336;
+
+                .bot {
+                  .boton {
+                    height: 24;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: transparent;
+                    border: none;
+
+                    .arrow {
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+            }
+
+            .total-definitivo {
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              border: none;
+              background-color: transparent;
+              transform: translateY(4px);
+              margin-left: 12px;
+
+              span {
+                font-size: 16px;
                 font-weight: 700;
               }
             }
 
-            .regalo {
-              display: flex;
-              justify-content: space-between;
+            .cesto-de-basura {
+              // display: flex;
+              display: none;
+              justify-content: center;
               align-items: center;
-              margin: 14px 0px;
+              cursor: pointer;
 
-              .regalo-letra {
-                font-size: 16px;
-              }
-
-              .total-precio2 {
-                font-size: 16px;
+              .cesto {
+                cursor: pointer;
               }
             }
           }
+        }
+      }
 
-          .codigo-promocional {
-            margin-bottom: 12px;
-            cursor: pointer;
+      .boton-ver-mas-productos {
+        width: 257.46px;
+        height: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3% 0%;
 
-            span {
-              font-size: 14px;
-              color: #009fe3;
-              font-weight: 600;
-            }
+        span {
+          padding: 12px 24px;
+          white-space: -0.8px;
+          box-shadow: 4px 4px 0px #006ab0;
+        }
+      }
+    }
+
+    .detalles {
+      background-color: #f3f4f6;
+      padding: 24px;
+      width: 100%;
+      max-height: 460px;
+
+      .articulos-transporte {
+        margin: 2px 0px;
+
+        .cantidad-articulos {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      .transporte {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2px 0px;
+      }
+
+      .total-regalo {
+        .total {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 14px 0px;
+
+          .total-impuestos {
+            font-size: 16px;
           }
 
-          .contenedor-input {
-            input {
-              border: none;
-              width: 100%;
-              color: #009fe3;
-            }
+          .total-precio {
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+
+        .regalo {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 14px 0px;
+
+          .regalo-letra {
+            font-size: 16px;
           }
 
-          .contenedor-botones {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin: 26px 0px;
-
-            .boton-cerrar {
-              border: none;
-              background-color: transparent;
-              font-size: 16px;
-              color: #009fe3;
-              font-weight: 700;
-              border-radius: 30px;
-              line-height: 1.25rem;
-              white-space: -0.6px;
-
-              &:hover {
-                color: #00569c;
-              }
-            }
-
-            .boton-anadir {
-              border: none;
-              background-color: transparent;
-              font-size: 16px;
-              color: #009fe3;
-              font-weight: 700;
-              border-radius: 30px;
-              border: solid 2px #009fe3;
-              box-shadow: 4px 4px 0px #006ab0;
-              width: 83.45px;
-              height: 40px;
-              font-family: "Source Code Pro", sans-serif;
-              line-height: 1.25rem;
-              margin-left: 8px;
-              white-space: -0.8px;
-
-              &:hover {
-                background-color: #009fe3;
-                color: white;
-              }
-            }
+          .total-precio2 {
+            font-size: 16px;
           }
+        }
+      }
 
-          .contenedor-boton-comprar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+      .codigo-promocional {
+        margin-bottom: 12px;
+        cursor: pointer;
 
-            .boton-comprar {
-            }
+        span {
+          font-size: 14px;
+          color: #009fe3;
+          font-weight: 600;
+        }
+      }
+
+      .contenedor-input {
+        input {
+          border: none;
+          width: 100%;
+          color: #009fe3;
+        }
+      }
+
+      .contenedor-botones {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 26px 0px;
+
+        .boton-cerrar {
+          border: none;
+          background-color: transparent;
+          font-size: 16px;
+          color: #009fe3;
+          font-weight: 700;
+          border-radius: 30px;
+          line-height: 1.25rem;
+          white-space: -0.6px;
+
+          &:hover {
+            color: #00569c;
           }
+        }
+
+        .boton-anadir {
+          border: none;
+          background-color: transparent;
+          font-size: 16px;
+          color: #009fe3;
+          font-weight: 700;
+          border-radius: 30px;
+          border: solid 2px #009fe3;
+          box-shadow: 4px 4px 0px #006ab0;
+          width: 83.45px;
+          height: 40px;
+          font-family: "Source Code Pro", sans-serif;
+          line-height: 1.25rem;
+          margin-left: 8px;
+          white-space: -0.8px;
+
+          &:hover {
+            background-color: #009fe3;
+            color: white;
+          }
+        }
+      }
+
+      .contenedor-boton-comprar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .boton-comprar {
         }
       }
     }
