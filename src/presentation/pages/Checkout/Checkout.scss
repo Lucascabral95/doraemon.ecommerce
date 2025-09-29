@@ -38,7 +38,6 @@
           align-items: center;
 
           .contenedor-imagen {
-            // width: 60%;
             width: 50%;
 
             img {
@@ -75,6 +74,10 @@
                 }
               }
             }
+          }
+
+          .distribucion-cantidad-basura__mobile {
+            display: none;
           }
 
           .cantidad-mas-botones {
@@ -175,7 +178,6 @@
         background-color: #f3f4f6;
         padding: 24px;
         width: 25%;
-        // max-height: 460px;
         max-height: 410px;
 
         .articulos-transporte {

@@ -7,9 +7,9 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import LoginHecho from "../../../../Components/Login/LoginHecho";
 import storeZustand from "../../../../Components/zustand";
 import "./Login.scss";
+import LoginHecho from "./LoginHecho";
 
 interface LoginFormData {
   email: string;
@@ -126,10 +126,6 @@ const Login: React.FC = () => {
         localStorage.setItem("datosMios", JSON.stringify(datosPersonales));
 
         setIsSubmitting(false);
-
-        console.log(
-          "🎉 Login completado, onAuthStateChanged manejará el estado"
-        );
       })
       .catch((error) => {
         console.error("❌ Error en login:", error);

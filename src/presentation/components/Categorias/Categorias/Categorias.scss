@@ -250,9 +250,10 @@
             .icon {
               position: absolute;
               transform: translate(280px);
+              cursor: pointer;
+              z-index: 10001;
 
               &:hover {
-                cursor: pointer;
                 color: red;
               }
             }
@@ -295,6 +296,8 @@
                 color: #4b5563;
                 font-family: "Sniglet", sans-serif;
                 padding: 0px 5px;
+                text-decoration: line-through;
+                margin-right: 8px;
               }
 
               .precio-actual {

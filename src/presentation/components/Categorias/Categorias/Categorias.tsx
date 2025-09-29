@@ -10,8 +10,10 @@ import {
   IMAGE_DORAEMON,
   ofertasData,
 } from "../../../../infrastructure/constants";
-import "./Categorias.scss";
 import storeZustand from "../../../../Components/zustand";
+import { useProductCart } from "../../../hooks";
+import { Product } from "../../../../infrastructure/types";
+import "./Categorias.scss";
 
 interface PaginationState {
   paginaActual: number;
@@ -60,6 +62,14 @@ const Categorias: React.FC = () => {
     [currentPage.paginaActual]
   );
 
+  const { addToCart } = useProductCart({
+    products: [...destacadosData, ofertasData],
+  });
+
+  const handleAddToCart = (product: Product): void => {
+    addToCart(product.id.toString());
+  };
+
   return (
     <div className="cats">
       <div className="categorias-contenedor">
@@ -90,21 +100,25 @@ const Categorias: React.FC = () => {
           {destacadosData.map((item, index) => (
             <div className="contenedor-de-contenedores" key={index}>
               <div className="img-img">
-                <div className="icon">
+                <div
+                  className="icon"
+                  onClick={() => handleAddToCart(item)}
+                  style={styleButtonUnauthorized(acceso)}
+                >
                   <CartIcon />
                 </div>
-                <Link to={item.link}>
+                <Link to={`/detalle/${item.texto}`}>
                   <img src={item.imagen} alt={item.descripcion} />
                 </Link>
               </div>
               <div className="texto-titulo">
-                <Link to={item.link}>
+                <Link to={`/detalle/${item.texto}`}>
                   <div className="texto">
                     <span>{item.texto}</span>
                   </div>
                 </Link>
                 <div className="precio">
-                  <span>{item.precio}</span>
+                  <span>€ {item.precio}</span>
                 </div>
               </div>
             </div>
@@ -133,29 +147,35 @@ const Categorias: React.FC = () => {
 
             <div className="contenedor-de-contenedores">
               <div className="card">
-                <Link to={ofertasData.link} className="img-img">
+                <Link to={`/detalle/${ofertasData.texto}`} className="img-img">
                   <div className="descuento">
-                    <span className="descuento-porcentaje">
-                      {ofertasData.descuento}
-                    </span>
+                    <span className="descuento-porcentaje">-30%</span>
                   </div>
-                  {/* <div className="icon" style={styleButtonUnauthorized(acceso)}>
+                  <div
+                    className="icon"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleAddToCart(ofertasData);
+                    }}
+                    style={styleButtonUnauthorized(acceso)}
+                  >
                     <CartIcon />
-                  </div> */}
+                  </div>
                   <div className="img-producto">
                     <img src={ofertasData.imagen} alt="Artículo en oferta" />
                   </div>
                 </Link>
                 <div className="texto-titulo">
                   <div className="texto">
-                    <span>{ofertasData.titulo}</span>
+                    <span>{ofertasData.texto}</span>
                   </div>
                   <div className="precio">
                     <span className="precio-anterior">
-                      {ofertasData.precioAnterior}
+                      € {ofertasData.precio}
                     </span>
                     <span className="precio-actual">
-                      {ofertasData.precioActual}
+                      € {((ofertasData.precio / 100) * 70).toFixed(2)}
                     </span>
                   </div>
                 </div>

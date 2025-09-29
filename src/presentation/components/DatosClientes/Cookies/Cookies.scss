@@ -1,0 +1,251 @@
+.cookies {
+    margin: 8px;
+    padding: 2% 2.5%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    z-index: 3100;
+    border: solid 1.4px #0B71B4;
+
+    .contenedor-cookies {
+        margin: 0px 12px;
+
+        .title-title {
+            display: flex;
+            align-items: center;
+            margin: 0px 0px 8px;
+
+            .title {
+                font-size: 22px;
+                font-weight: 500;
+                color: black;
+            }
+
+            .icon-close {
+                cursor: pointer;
+                transform: translateY(-4px);
+                margin-left: 4px;
+                color: #4b55639a;
+            }
+        }
+
+        .contenedor-subtitulo {
+            margin: 0px 0px 12px;
+
+            .subtitulo {
+                font-size: 16px;
+                font-weight: 700;
+                color: black;
+            }
+
+            .texto {
+                font-size: 16px;
+                color: black;
+
+            }
+
+            .subtitulo-cookie {
+                font-size: 15px;
+                color: black;
+                font-weight: 600;
+            }
+
+            .formulario {
+                display: flex;
+                align-items: center;
+
+                input {
+                    transform: translateY(-7px);
+                    margin-right: 6px;
+                }
+
+                input[type=checkbox]:checked {
+                    background-image: url('https://static.vecteezy.com/system/resources/previews/010/976/985/non_2x/neon-red-square-banner-neon-square-png.png');
+                }
+
+                input[type=checkbox],
+                input[type=radio] {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    border-width: 0;
+                    flex-shrink: 0;
+                    height: 1rem;
+                    margin-bottom: 0;
+                    margin-right: 0.5rem;
+                    padding: 0;
+                    width: 1rem;
+                    border: solid 1.8px #4b55635b;
+                }
+
+                .texto-cookie {
+                    font-size: 12px;
+                    color: #4B5563;
+                }
+            }
+        }
+
+        .politica-priv {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+
+            .texto {
+                cursor: pointer;
+                color: #009FE3;
+                font-size: 16px;
+
+                &:hover {
+                    color: #0B71B4;
+                }
+            }
+
+
+            button {
+                box-shadow: 4px 4px #0B71B4;
+                border: solid 2.8px #009FE3;
+                background-color: #009FE3;
+                border-radius: 30px;
+                cursor: pointer;
+                color: white;
+                font-size: 15px;
+                font-weight: 800;
+                font-family: "Source Code Pro", sans-serif;
+                
+                margin-bottom: 24px;
+                margin-left: 5px;
+                margin-right: 5px;
+                padding: 10px 40px;
+                
+                &:hover {
+                    background-color: #0B71B4;
+                    box-shadow: 4px 4px #0B71B4;
+                    border: solid 2.8px #0B71B4;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .cookies {
+        margin: 8px;
+        padding: 2% 2.5%;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        z-index: 3100;
+        border: solid 1.4px #0B71B4;
+    
+        .contenedor-cookies {
+            margin: 0px 12px;
+    
+            .title-title {
+                display: flex;
+                align-items: center;
+                margin: 0px 0px 8px;
+    
+                .title {
+                    font-size: 22px;
+                    font-weight: 500;
+                    color: black;
+                }
+    
+                .icon-close {
+                    cursor: pointer;
+                    transform: translateY(-4px);
+                    margin-left: 4px;
+                    color: #4b55639a;
+                }
+            }
+    
+            .contenedor-subtitulo {
+                margin: 0px 0px 12px;
+    
+                .subtitulo {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: black;
+                }
+    
+                .texto {
+                    font-size: 16px;
+                    color: black;
+    
+                }
+    
+                .subtitulo-cookie {
+                    font-size: 15px;
+                    color: black;
+                    font-weight: 600;
+                }
+    
+                .formulario {
+                    display: flex;
+                    align-items: center;
+    
+                    input {
+                        transform: translateY(-7px);
+                        margin-right: 6px;
+                    }
+    
+                    input[type=checkbox]:checked {
+                        background-image: url('https://static.vecteezy.com/system/resources/previews/010/976/985/non_2x/neon-red-square-banner-neon-square-png.png');
+                    }
+    
+                    input[type=checkbox],
+                    input[type=radio] {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        border-width: 0;
+                        flex-shrink: 0;
+                        height: 1rem;
+                        margin-bottom: 0;
+                        margin-right: 0.5rem;
+                        padding: 0;
+                        width: 1rem;
+                        border: solid 1.8px #4b55635b;
+                    }
+    
+                    .texto-cookie {
+                        font-size: 12px;
+                        color: #4B5563;
+                    }
+                }
+            }
+    
+            .politica-priv {
+                display: block;
+                height: 64px;
+                margin-bottom: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .texto {
+                    cursor: pointer;
+                    color: #009FE3;
+                    font-size: 16px;
+    
+                    &:hover {
+                        color: #0B71B4;
+                    }
+                }
+    
+    
+                button {
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    padding: 7px 20px;
+                }
+            }
+        }
+    }
+}

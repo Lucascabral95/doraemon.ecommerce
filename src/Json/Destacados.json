@@ -1,58 +1,186 @@
 [
-    {
-        "texto": "Mochila Doraemon 3D preescolar",
-        "imagen": "https://doraemon.lukinternacional.com/1442-home_default/mochila-preescolar-doraemon.jpg",
-        "descripcion": "Mochila Doraemon 3D",
-        "precio": "19,95 €",
-        "link": "/detalle/Mochila Doraemon 3D preescolar"
-    },
-    {
-        "texto": "Peluche velboa 40 cm Doraemon Dorayaki",
-        "imagen": "https://doraemon.lukinternacional.com/1582-home_default/peluche-velboa-40-cm-doraemon-dorayaki.jpg",
-        "descripcion": "Peluche velboa 40 cm",
-        "precio": "22,95 €",
-        "link": "/detalle/Peluche velboa 40 cm Doraemon Dorayaki"
-    },
-    {
-        "texto": "Peluche velboa 28 cm Doraemon Gorrocóptero",
-        "imagen": "https://doraemon.lukinternacional.com/1585-home_default/peluche-doraemon-28-cm-gorrocoptero.jpg",
-        "descripcion": "Peluche velboa 28 cm",
-        "precio": "16,95 €",
-        "link": "/detalle/Peluche velboa 28 cm Doreemon Gorrocóptero"
-    },
-    {
-        "texto": "Juego de mesa Glutton Doraemon Game",
-        "imagen": "https://doraemon.lukinternacional.com/1176-home_default/juego-mesa-doraemon-gloton.jpg",
-        "descripcion": "Mochila Doraemon 3D",
-        "precio": "36,95 €",
-        "link": "/detalle/Juego de mesa Glutton Doraemon Game"
-    },
-    {
-        "texto": "Juego Doraemon Wall Game",
-        "imagen": "https://doraemon.lukinternacional.com/1451-home_default/juguete-doraemon-wall-game.jpg",
-        "descripcion": "Wall Game Doraemon",
-        "precio": "25,95 €",
-        "link": "/detalle/Juego Doraemon Wall Game"
-    },
-    {
-        "texto": "Aquabeads Doraemon",
-        "imagen": "https://doraemon.lukinternacional.com/1348-home_default/aquabeads-doraemon.jpg",
-        "descripcion": "Aquabeads Doraemon",
-        "precio": "16,95 €",
-        "link": "/detalle/Aquabeads Doraemon"
-    },
-    {
-        "texto": "Pack de 3 tazas Doraemon",
-        "imagen": "https://doraemon.lukinternacional.com/1123-home_default/pack-3-tazas-doraemon.jpg",
-        "descripcion": "Pack de 3 tazas Doraemon",
-        "precio": "29,95 €",
-        "link": "/detalle/Pack de 3 tazas Doraemon"
-    },
-    {
-        "texto": "Disfraz Kids Doraemon",
-        "imagen": "https://doraemon.lukinternacional.com/1298-home_default/disfraz-kids-doraemon.jpg",
-        "descripcion": "Disfraz Kids Doraemon",
-        "precio": "24,95 €",
-        "link": "/detalle/Disfraz Kids Doraemon"
-    }
+  {
+    "texto": "Mochila Doraemon 3D preescolar",
+    "imagen": "https://doraemon.lukinternacional.com/1442-home_default/mochila-preescolar-doraemon.jpg",
+    "precio": 19.95,
+    "descripcion": "Mochila Doraemon 3D preescolar ",
+    "detalles": "Mochila escolar azul con diseño de Doraemon con volumen 3D. Dispone de espalda acolchada, tirantes ajustables, ergonómicos y acolchados e interior forrado. Tiene un cascabel de Doraemon a modo de cremallera. Esta mochila oficial de Doraemon, por su tamaño, es ideal como mochila para el cole para niños y niñas en edad preescolar. \n\nMedidas: 25 cm x 32 cm x 10 cm",
+    "informacion": "",
+    "codigo": "A0107",
+    "stock": 20,
+    "id": 118,
+    "categoria": "Escolar",
+    "subcategoria": "Mochila",
+    "subcategoria4": "Regalo",
+    "edades": "DE 3 A 5 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1442-home_default/mochila-preescolar-doraemon.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1443-home_default/mochila-preescolar-doraemon.jpg",
+        "imagen3": ""
+      }
+    ]
+  },
+  {
+    "texto": "DVD Doraemon Animal Planet",
+    "imagen": "https://doraemon.lukinternacional.com/103-home_default/dvd-doraemon-animal-planet.jpg",
+    "precio": 5.95,
+    "descripcion": "DVD Doraemon Animal Planet",
+    "detalles": "DATOS TÉCNICOS \n- País: Japón \n- Año: 1990 \n- Duración: 100 min. \n- Audio: Castellano, Catalán, Euskera y Gallego \n- Género: Animación \n- Clasificación: Todos los Públicos",
+    "informacion": "SINOPSIS \nNuestros amigos luchan contra el cambio climático en un mundo fascinante habitado por animales que hablan y se comportan como nosotros: Animal Planet, un lugar en el que la defensa del medio ambiente es primordial.  \n\nDoraemon, Nobita y el resto de la pandilla viajan hasta allí, tras atravesar una misteriosa nube de gas rosado que han encontrado en el bosque. En la ciudad de los animales se cuida del entorno natural, se reciclan los residuos y el uso de las energías renovables está al orden del día.  \n\nNobita y sus amigos conocen al joven Chippo, un muchacho-perro entusiasta y fantasioso decidido a desentrañar los grandes misterios de su civilización. Ante ellos se abre una emocionante aventura ya que descubrirán que una terrible amenaza se cierne sobre Animal Planet: una raza alienígena pretende invadirles y usar todos sus recursos naturales, causando la destrucción total. \n\nVestidos con sus gorros especiales de animal y armados de sus habituales dosis de valentía y determinación la pandilla acude en ayuda de Chippo y el resto de habitantes del mundo de los animales. ¡Juntos defenderán la naturaleza contra el peligro inminente!",
+    "codigo": "A0062",
+    "stock": 100,
+    "id": 74,
+    "categoria": "Pelicula",
+    "subcategoria": "DVD",
+    "subcategoria4": "Regalo",
+    "edades": "",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/103-home_default/dvd-doraemon-animal-planet.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/589-home_default/dvd-doraemon-animal-planet.jpg",
+        "imagen3": ""
+      }
+    ]
+  },
+  {
+    "texto": "Peluche velboa 28 cm Doraemon Gorrocóptero",
+    "imagen": "https://doraemon.lukinternacional.com/1585-home_default/peluche-doraemon-28-cm-gorrocoptero.jpg",
+    "precio": 16.95,
+    "descripcion": "Peluche velboa 28 cm Doraemon Gorrocóptero",
+    "detalles": "Peluche Doraemon Tacto super suave \n\n Modelo: Gorrocoptero \n\n Medidas: 28cm \n\n Material: Velboa con acabados de alta calidad",
+    "informacion": "Peluche Velboa 28 cm Doraemon Gorrocoptero",
+    "codigo": "A0047",
+    "stock": 20,
+    "id": 48,
+    "categoria": "Juguete",
+    "subcategoria": "Peluche",
+    "subcategoria4": "Regalo",
+    "edades": "DE 1 A 3 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1585-home_default/peluche-doraemon-28-cm-gorrocoptero.jpg",
+        "imagen2": "",
+        "imagen3": ""
+      }
+    ]
+  },
+  {
+    "texto": "Juego de mesa Glutton Doraemon Game",
+    "imagen": "https://doraemon.lukinternacional.com/1176-home_default/juego-mesa-doraemon-gloton.jpg",
+    "precio": 36.95,
+    "descripcion": "Glutton Doraemon",
+    "detalles": "Lanza dorayakis a Doraemon mientras abre y cierra la boca y va girando. ¡Tendrás que acertar dentro de su boca!\n\nEl Glutton Doraemon Game tiene 5 juegos en 1:\n- Dorayaki Munch\n- Snack Time\n- Gobble Up\n- Best Server\n- Dorayaki Score\n\nPueden jugar hasta 4 niños a la vez.",
+    "informacion": "Advertencia. \n- No es recomendable para niños menores de 3 años. Contiene piezas pequeñas.",
+    "codigo": "A0001",
+    "stock": 100,
+    "id": 1,
+    "categoria": "Juguete",
+    "subcategoria": "Juego",
+    "subcategoria4": "Regalo",
+    "edades": "DE 3 A 5 AÑOS",
+    "edadesCio": "DE 5 A 8 AÑOS",
+    "edadesoo": "DE 8 A 11 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1176-home_default/juego-mesa-doraemon-gloton.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1177-home_default/juego-mesa-doraemon-gloton.jpg",
+        "imagen3": "https://doraemon.lukinternacional.com/1178-home_default/juego-mesa-doraemon-gloton.jpg"
+      }
+    ]
+  },
+  {
+    "texto": "Juego Doraemon Wall Game",
+    "imagen": "https://doraemon.lukinternacional.com/1451-home_default/juguete-doraemon-wall-game.jpg",
+    "precio": 25.95,
+    "descripcion": "Doraemon Wall Game",
+    "detalles": "Doraemon Wall Game es un juego de habilidad, en el que hay que construir un muro con los bloques de colores y con el cañón de aire sacar de uno en uno dichos bloques, pero ¡ten cuidado! no dejes caer a Doraemon. \n\n¿Conseguirás mantener a Doraemon en pie? \n\nEl Doraemon Wall Game tiene 3 juegos en 1 (reglas de los juegos dentro de la caja). \n\nContiene: \n-1 Marco del muro \n-1 Figura de Doraemon \n-1 Cañón de aire \n-32 Bloques amarillos \n-12 Bloques rojos \n\nPueden jugar hasta 4 niños (mayores de 4 años) \n\nDimensiones de la caja: 24 x 20 x 8 cm",
+    "informacion": "Hay tres tipos de juegos: \n\nJuego 1 \n- Por turnos, saca bloques de uno en uno con el cañón de aire. \n- ¡El jugador que tire a Doraemon pierde! \n\nJuego 2 \n- El jugador que empieza la partida saca un bloque con el cañón de aire y lo apila sobre la parte superior del muro. A continuación, los siguientes jugadores deben apilar los bloques que saquen sobre la pila de bloques, formando una torre. Si un jugador saca 2 o más bloques en un turno, todos los bloques deben apilarse sobre la torre. \n- El jugador que tire a Doraemon pierde. \n\nJuego 3 \n- Esparce los bloques y coloca a Doraemon sobre uno de ellos. Este es el bloque de inicio. \n- Por turnos, coge el bloque o los bloques donde esté Doraemon y añade bloques a la parte inferior de la torre para hacer una torre lo más alta posible. \n- Coloca los bloques de forma oblicua para ponérselo difícil a tus oponentes. \n- El jugador que tire a Doraemon o a la torre pierde.",
+    "codigo": "A0002",
+    "stock": 20,
+    "id": 2,
+    "categoria": "Juguete",
+    "subcategoria": "Juego",
+    "subcategoria4": "Regalo",
+    "edades": "DE 5 A 8 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1451-home_default/juguete-doraemon-wall-game.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1452-home_default/juguete-doraemon-wall-game.jpg",
+        "imagen3": "https://doraemon.lukinternacional.com/1455-home_default/juguete-doraemon-wall-game.jpg"
+      }
+    ]
+  },
+  {
+    "texto": "Aquabeads Doraemon",
+    "imagen": "https://doraemon.lukinternacional.com/1348-home_default/aquabeads-doraemon.jpg",
+    "precio": 16.95,
+    "descripcion": "Aquabeads Doraemon",
+    "detalles": "Doraemon Aquabeads es un juego de manualidades que consiste en formar figuras con perlas de colores. En este kit encontrarás las plantillas de Doraemon, Dorami, un dorayaki, el gorrocóptero y la linterna minimizadora, que podrás formar colocando los abalorios de colores en la plantilla. Luego, solo con pulverizarlo con agua y dejarlo secar conseguirás que los abalorios se peguen entre ellos y tendrás tu figura ya lista. \n\nContiene: \n- 4 Plantillas (2 Doraemon, 1 Dorami y 5 inventos/elementos de la serie) \n- 1 Soporte para los abalorios \n- 1 Pulverizador \n- 2 Llaveros azules \n- 1 Llavero rosa \n- Abalorios de diferentes colores \nInstrucciones de como jugar \n\nPara mayores de 4 años ",
+    "informacion": "Todos los productos de Aquabeads™ están fabricados con materiales seguros y no tóxicos que cumplen con los estándares de protección para juguetes de todo el mundo, incluyendo EN71 y ASTM F963. \n\nAdvertencia: \n- No recomendable para niños/as menores de 3 años. \n- Contien piezas pequenas. Peligro de atragantamiento ",
+    "codigo": "A0004",
+    "stock": 100,
+    "id": 5,
+    "categoria": "Juguete",
+    "subcategoria": "Juego",
+    "subcategoria4": "Regalo",
+    "edades": "DE 5 A 8 AÑOS",
+    "edadesoo": "DE 8 A 11 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1348-home_default/aquabeads-doraemon.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1177-home_default/juego-mesa-doraemon-gloton.jpg",
+        "imagen3": "https://doraemon.lukinternacional.com/1178-home_default/juego-mesa-doraemon-gloton.jpg"
+      }
+    ]
+  },
+  {
+    "texto": "Pack 3 tazas Doraemon",
+    "imagen": "https://doraemon.lukinternacional.com/1123-home_default/pack-3-tazas-doraemon.jpg",
+    "precio": 29.95,
+    "descripcion": "Pack 3 tazas Doraemon ",
+    "detalles": "Pack 3 tazas Doraemon. \n\nProducto exclusivo de Japón. Solo disponible en la tienda online oficial de Doraemon. \n\nMedidas: 8,7 cm de diámetro \n\nAltura 9,2 cm",
+    "informacion": "",
+    "codigo": "A0092",
+    "stock": 20,
+    "id": 103,
+    "categoria": "Hogar",
+    "subcategoria": "Taza",
+    "subcategoria4": "Regalo",
+    "edades": "DE 3 A 5 AÑOS",
+    "edadesCio": "DE 5 A 8 AÑOS",
+    "edadesoo": "DE 8 A 11 AÑOS",
+    "adulto": "ADULTOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1123-home_default/pack-3-tazas-doraemon.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1124-home_default/pack-3-tazas-doraemon.jpg",
+        "imagen3": ""
+      }
+    ]
+  },
+  {
+    "texto": "Disfraz Kids Doraemon",
+    "imagen": "https://doraemon.lukinternacional.com/1298-home_default/disfraz-kids-doraemon.jpg",
+    "precio": 24.95,
+    "descripcion": "Disfraz Kids Doraemon",
+    "detalles": "Disfraz infantil de Doraemon tipo mono, con capucha y bolsillo. \n\n Disponible en varias tallas. \n\nComposición: 100% Poliéster \n\n Lavar a mano \n\nEl tallaje es grande. Por favor revisa las medidas indicadas más abajo para escoger tu talla.",
+    "informacion": "",
+    "codigo": "A0170",
+    "stock": 20,
+    "id": 181,
+    "categoria": "Moda",
+    "subcategoria": "Disfraz",
+    "subcategoria4": "Regalo",
+    "edades": "DE 3 A 5 AÑOS",
+    "edadesCio": "DE 5 A 8 AÑOS",
+    "edadesoo": "DE 8 A 11 AÑOS",
+    "otrasImagenes": [
+      {
+        "imagen1": "https://doraemon.lukinternacional.com/1298-home_default/disfraz-kids-doraemon.jpg",
+        "imagen2": "https://doraemon.lukinternacional.com/1313-home_default/disfraz-kids-doraemon.jpg",
+        "imagen3": ""
+      }
+    ]
+  }
 ]

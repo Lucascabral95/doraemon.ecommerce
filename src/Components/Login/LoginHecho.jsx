@@ -1,101 +1,97 @@
-import "./LoginHecho.scss"
-import { signOut, getAuth } from "firebase/auth";
-import { Link } from "react-router-dom";
-import Cookies from "./LoginSecciones/Cookies.jsx";
-import storeZustand from "../zustand.jsx";
+// import { Link } from "react-router-dom";
+// import { signOut, getAuth } from "firebase/auth";
 
-export default function LoginHecho() {
-    const { acceso, setActiveModal, EmailDeInicioDeSesion } = storeZustand()
+// import Cookies from "./LoginSecciones/Cookies.jsx";
+// import storeZustand from "../zustand.jsx";
+// import "./LoginHecho.scss"
 
-    const cerrarSesion = (e) => {
-        e.preventDefault();
-        const auth = getAuth();
-        signOut(auth)
-            .then(() => {
-                localStorage.setItem("LogueoDeSesion", false)
-                localStorage.removeItem("datosMios")
+// export default function LoginHecho() {
+//     const { acceso, setActiveModal, EmailDeInicioDeSesion } = storeZustand()
 
-                localStorage.removeItem("carritoDoraemon")
+//     const cerrarSesion = (e) => {
+//         e.preventDefault();
+//         const auth = getAuth();
+//         signOut(auth)
+//             .then(() => {
+//                 localStorage.setItem("LogueoDeSesion", false)
+//                 localStorage.removeItem("datosMios")
 
-                console.log("Deslogueo exitoso.");
-            })
-            .catch((error) => {
-                console.log("Error en cierre de sesión:", error.message);
-            });
-    };
+//                 localStorage.removeItem("carritoDoraemon")
 
-    const abrirModal = () => {
-        setActiveModal(true)
-    }
+//                 console.log("Deslogueo exitoso.");
+//             })
+//             .catch((error) => {
+//                 console.log("Error en cierre de sesión:", error.message);
+//             });
+//     };
 
-    return (
-        <>
-            {acceso === true ? (
-                <div className="login-hecho">
-                    <div className="contenedor-de-botones-de-inicio">
+//     const abrirModal = () => {
+//         setActiveModal(true)
+//     }
 
-                        <div className="tituloo-tituloo">
-                            <h2 className="titulo"> TU CUENTA </h2>
-                        </div>
+//     return (
+//         <>
+//             {acceso === true ? (
+//                 <div className="login-hecho">
+//                     <div className="contenedor-de-botones-de-inicio">
 
-                        <div className="cont">
-                            <Link to={"/datos/personales"} className="boton-info-personal">
-                                <div>
-                                    <span> DATOS PERSONALES </span>
-                                </div>
-                            </Link>
+//                         <div className="tituloo-tituloo">
+//                             <h2 className="titulo"> TU CUENTA </h2>
+//                         </div>
 
-                            <Link to={"/direccion"} className="boton-info-personal">
-                                <div>
-                                    <span> AÑADIR PRIMERA DIRECCIÓN </span>
-                                </div>
-                            </Link>
+//                         <div className="cont">
+//                             <Link to={"/datos/personales"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> DATOS PERSONALES </span>
+//                                 </div>
+//                             </Link>
 
-                            <Link to={"/comprasrealizadas"} className="boton-info-personal">
-                                <div>
-                                    <span> MIS PEDIDOS </span>
-                                </div>
-                            </Link>
+//                             <Link to={"/direccion"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> AÑADIR PRIMERA DIRECCIÓN </span>
+//                                 </div>
+//                             </Link>
 
-                            <Link to={"/abono"} className="boton-info-personal">
-                                <div>
-                                    <span> FACTURAS POR ABONO </span>
-                                </div>
-                            </Link>
+//                             <Link to={"/comprasrealizadas"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> MIS PEDIDOS </span>
+//                                 </div>
+//                             </Link>
 
-                            <Link to={"/cupones"} className="boton-info-personal">
-                                <div>
-                                    <span> CUPONES DE DESCUENTO  </span>
-                                </div>
-                            </Link>
+//                             <Link to={"/abono"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> FACTURAS POR ABONO </span>
+//                                 </div>
+//                             </Link>
 
-                            <div className="boton-info-personal" onClick={abrirModal}>
-                                <span> TU CONFIGURACIÓN DE COOKIES </span>
-                            </div>
+//                             <Link to={"/cupones"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> CUPONES DE DESCUENTO  </span>
+//                                 </div>
+//                             </Link>
 
-                            <Link to={"/wishlist"} className="boton-info-personal">
-                                <div>
-                                    <span> LISTA DE DESEOS  </span>
-                                </div>
-                            </Link>
+//                             <div className="boton-info-personal" onClick={abrirModal}>
+//                                 <span> TU CONFIGURACIÓN DE COOKIES </span>
+//                             </div>
 
-                            <div className="boton-info-personal" onClick={cerrarSesion}>
-                                <span> CERRAR SESIÓN  </span>
-                            </div>
-                        </div>
+//                             <Link to={"/wishlist"} className="boton-info-personal">
+//                                 <div>
+//                                     <span> LISTA DE DESEOS  </span>
+//                                 </div>
+//                             </Link>
 
-                    </div>
-                </div>
-            ) : (
-                <Login />
-            )}
+//                             <div className="boton-info-personal" onClick={cerrarSesion}>
+//                                 <span> CERRAR SESIÓN  </span>
+//                             </div>
+//                         </div>
 
-            <Cookies />
-        </>
-    )
-}
+//                     </div>
+//                 </div>
+//             ) : (
+//                 <Login />
+//             )}
 
-
-
-{/* <span className="texto-negro-resaltado"> </span>
-<p className="texto-sub">  </p> */}
+//             <Cookies />
+//         </>
+//     )
+// }
