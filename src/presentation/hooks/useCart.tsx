@@ -14,7 +14,6 @@ export const useCart = () => {
   const { cantidadArticulossss, setCantidadArticulossss } = storeZustand();
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  // Cargar carrito inicial
   useEffect(() => {
     const storedCart = localStorage.getItem("carritoDoraemon");
     if (storedCart) {
@@ -28,24 +27,20 @@ export const useCart = () => {
     }
   }, [cantidadArticulossss]);
 
-  // Actualizar localStorage
   const updateCartInStorage = useCallback((updatedCart: CartItem[]) => {
     localStorage.setItem("carritoDoraemon", JSON.stringify(updatedCart));
     setCart(updatedCart);
   }, []);
 
-  // Calcular totales
   const cartTotals = {
     total: cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0),
     itemCount: cart.reduce((acc, item) => acc + item.cantidad, 0),
   };
 
-  // Actualizar cantidad en Zustand
   useEffect(() => {
     setCantidadArticulossss(cartTotals.itemCount);
   }, [cartTotals.itemCount, setCantidadArticulossss]);
 
-  // Funciones del carrito
   const increaseQuantity = useCallback(
     (id: number) => {
       const updatedCart = cart.map((item) =>

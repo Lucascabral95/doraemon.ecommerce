@@ -1,39 +1,36 @@
-import "./Compras.scss"
-import { app } from "../Firebase-config.jsx"
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
-export default function Compras() {
-    const [orders, setOrders] = useState([]);
+// import { app } from "../Firebase-config.jsx"
 
-    useEffect(() => {
-        const fetchOrders = async () => {
-            // Obtén la referencia a la colección "ordenes" en Firestore
-            const ordersRef = firebase.firestore().collection('ordenes');
+// export default function Compras() {
+//     const [orders, setOrders] = useState([]);
 
-            // Realiza la consulta para obtener todos los documentos en la colección
-            const snapshot = await ordersRef.get();
+//     useEffect(() => {
+//         const fetchOrders = async () => {
+//             const ordersRef = firebase.firestore().collection('ordenes');
 
-            // Mapea los datos de los documentos y guárdalos en el estado
-            const ordersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setOrders(ordersData);
-        };
+//             const snapshot = await ordersRef.get();
 
-        fetchOrders();
-    }, [])
+//             const ordersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+//             setOrders(ordersData);
+//         };
 
-    return (
-        <div className="compras">
+//         fetchOrders();
+//     }, [])
 
-            <h2>Órdenes</h2>
-            <ul>
-                {orders.map(order => (
-                    <li key={order.id}>
-                        <p>ID de orden: {order.id}</p>
-                        <p>Descripción: {order.descripcion}</p>
-                    </li>
-                ))}
-            </ul>
+//     return (
+//         <div className="compras">
 
-        </div>
-    )
-}
+//             <h2>Órdenes</h2>
+//             <ul>
+//                 {orders.map(order => (
+//                     <li key={order.id}>
+//                         <p>ID de orden: {order.id}</p>
+//                         <p>Descripción: {order.descripcion}</p>
+//                     </li>
+//                 ))}
+//             </ul>
+
+//         </div>
+//     )
+// }

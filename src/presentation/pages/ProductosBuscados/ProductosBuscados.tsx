@@ -5,11 +5,12 @@ import { useProductSearch } from "../../hooks/useProductSearch";
 import { SearchResultCard } from "../../components/search/SearchResultCard/SearchResultCard";
 import { SearchSortFilter } from "../../components/search/SearchSortFilter/SearchSortFilter";
 import { useProductCart } from "../../hooks";
-import NotFound from "../../../Components/NotFound/NotFound";
+// import NotFound from "../../../Components/NotFound/NotFound";
 import { SEOHead } from "../../components/UI/SEOHead/SEOHead";
 import { Breadcrumb } from "../../components/UI/Breadcrumb/Breadcrumb";
 import { Pagination } from "../../components/UI/Pagination/Pagination";
 import "./ProductosBuscados.scss";
+import NotFound from "../../components/UI/NotFound/NotFound";
 
 const ProductosBuscados: React.FC = () => {
   const { producto } = useParams<{ producto: string }>();
@@ -80,6 +81,7 @@ const ProductosBuscados: React.FC = () => {
   if (noResults) {
     return <NotFound />;
   }
+
   if (!hasSearched) {
     return null;
   }

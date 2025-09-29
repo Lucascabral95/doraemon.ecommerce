@@ -13,9 +13,8 @@ export const useDatosPersonales = () => {
   });
 
   const [mostrarBoton, setMostrarBoton] = useState<boolean>(false);
-  const [modoEdicion, setModoEdicion] = useState<boolean>(false); // ✅ Nuevo estado
+  const [modoEdicion, setModoEdicion] = useState<boolean>(false);
 
-  // ✅ Debug y carga de datos mejorado
   useEffect(() => {
     console.log("🔍 Verificando datos en store:", datosPersonaless);
     console.log(
@@ -44,7 +43,6 @@ export const useDatosPersonales = () => {
       console.log("📭 No hay datos válidos");
       setMostrarBoton(false);
 
-      // ✅ Verificar localStorage como backup
       try {
         const backup = localStorage.getItem("DatosPersonalesDelUsuario");
         if (backup) {
@@ -81,7 +79,6 @@ export const useDatosPersonales = () => {
       throw new Error("Por favor completa todos los campos");
     }
 
-    // ✅ Validación de email mejorada
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email.trim())) {
       throw new Error("Por favor ingresa un email válido");
@@ -89,7 +86,6 @@ export const useDatosPersonales = () => {
 
     const edadNum = parseInt(data.edad);
     if (isNaN(edadNum) || edadNum < 1 || edadNum > 100) {
-      // ✅ Cambiado a 100 como en el input
       throw new Error("Por favor ingresa una edad válida (1-100 años)");
     }
 
@@ -106,14 +102,12 @@ export const useDatosPersonales = () => {
       try {
         validateData(datosPersonales);
 
-        // ✅ Guardar en store (que automáticamente guarda en localStorage)
         setDatosPersonaless(datosPersonales);
 
         console.log("✅ Datos guardados exitosamente");
 
-        // ✅ Actualizar estados
         setMostrarBoton(true);
-        setModoEdicion(false); // ✅ Salir del modo edición
+        setModoEdicion(false);
 
         alert("¡Datos guardados exitosamente!");
       } catch (error) {
@@ -124,18 +118,15 @@ export const useDatosPersonales = () => {
     [datosPersonales, setDatosPersonaless, validateData]
   );
 
-  // ✅ CAMBIO PRINCIPAL: actualizarDatos ahora activa modo edición
   const actualizarDatos = useCallback(() => {
     console.log("🔄 Activando modo edición");
     setModoEdicion(true);
   }, []);
 
-  // ✅ NUEVA: Función para cancelar edición
   const cancelarEdicion = useCallback(() => {
     console.log("❌ Cancelando edición");
     setModoEdicion(false);
 
-    // ✅ Restaurar datos del store
     if (
       datosPersonaless &&
       typeof datosPersonaless === "object" &&
@@ -150,7 +141,6 @@ export const useDatosPersonales = () => {
     }
   }, [datosPersonaless]);
 
-  // ✅ NUEVA: Función para limpiar datos
   const limpiarDatos = useCallback(() => {
     console.log("🗑️ Limpiando datos");
     setDatosPersonaless({});
@@ -165,14 +155,11 @@ export const useDatosPersonales = () => {
     alert("Datos eliminados exitosamente");
   }, [setDatosPersonaless]);
 
-  // ✅ MEJORADO: getInputValues con lógica de modo edición
   const getInputValues = useCallback(() => {
-    // ✅ Si está en modo edición, usar estado local (editable)
     if (modoEdicion) {
       return datosPersonales;
     }
 
-    // ✅ Si tiene datos guardados y no está editando, usar store (solo lectura)
     if (mostrarBoton && datosPersonaless && !Array.isArray(datosPersonaless)) {
       return {
         nombre: datosPersonaless.nombre || "",
@@ -182,19 +169,18 @@ export const useDatosPersonales = () => {
       };
     }
 
-    // ✅ Formulario nuevo, usar estado local
     return datosPersonales;
   }, [modoEdicion, mostrarBoton, datosPersonaless, datosPersonales]);
 
   return {
     datosPersonales,
     mostrarBoton,
-    modoEdicion, // ✅ Exportar modo edición
+    modoEdicion,
     handleChange,
     handleSubmit,
     actualizarDatos,
-    cancelarEdicion, // ✅ Nueva función
-    limpiarDatos, // ✅ Nueva función
+    cancelarEdicion,
+    limpiarDatos,
     getInputValues,
   };
 };

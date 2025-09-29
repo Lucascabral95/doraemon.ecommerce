@@ -13,7 +13,6 @@ export const useCheckoutFin = () => {
   const [comentarioEnvio, setComentarioEnvio] = useState<string>("");
   const [emailDeSesion, setEmailDeSesion] = useState<any>("");
 
-  // ✅ MANTENER exactamente igual que original
   const [cancelacionCompra, setCancelacionCompra] = useState<boolean>(false);
   const [direccionCompleta, setDireccionCompleta] = useState({
     nombre: "",
@@ -27,7 +26,6 @@ export const useCheckoutFin = () => {
     telefono: "",
   });
 
-  // ✅ Calcular total
   const total = useMemo(() => {
     return (
       cart?.reduce(
@@ -37,7 +35,6 @@ export const useCheckoutFin = () => {
     );
   }, [cart]);
 
-  // ✅ Producto regalo
   const desicionRegalo = useMemo(() => {
     const gorrocoptero = {
       texto: "Regalo Gorrocóptero Doraemon",

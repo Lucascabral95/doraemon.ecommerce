@@ -1,0 +1,184 @@
+.notFound {
+    margin-bottom: 4%;
+    background-color: white;
+
+    .contenedor-not-found {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        padding: 1% 1%;
+        margin: 1% 1%;
+        
+        .cont {
+            display: flex;
+            justify-content: space-evenly;
+            align-self: center;
+
+            .imagen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0px 50px;
+
+                img {
+                    width: 192px;
+                    height: 228.47px;
+                }
+            }
+
+            .texto-not-found {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0px 50px;
+
+                .titulo-not-found {
+                    font-family: "Sniglet", sans-serif;
+                    font-size: 128px;
+                    color: black;
+                    font-size: 800;
+                }
+                
+                .subtitulo-not-found {
+                    font-family: "Sniglet", sans-serif;
+                    font-size: 24px;
+                    color: black;
+                    font-size: 800;
+                }
+
+                .texto {
+                    font-family: "Sniglet", sans-serif;
+                    font-size: 16px;
+                    margin: 0px 0px 12px;
+                    color: black;
+                }
+
+                .busqueda-de-articulos{
+                    border: solid 2.8px #009FE3;
+                    border-radius: 50px;
+                    height: 42px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-left: 1vw;
+                    background-color: white;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: 22px;
+                    padding-bottom: 24.4px;
+                    
+                    input {
+                        border: none;
+                        outline: none;
+                        width: 140px;
+                        color: #009FE3;
+                    }
+        
+                    input::placeholder {
+                        color: #009FE3;
+                        font-size: 14px
+                    }
+
+                    .con-lupa {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .notFound {
+    
+        .contenedor-not-found {
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            padding: 1% 1%;
+            margin: 1% 1%;
+            
+            .cont {
+                display: block;
+                // justify-content: space-evenly;
+                // align-self: center;
+    
+                .imagen {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0px 50px;
+    
+                    img {
+                        width: 192px;
+                        height: 228.47px;
+                    }
+                }
+    
+                .texto-not-found {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0px 50px;
+    
+                    .titulo-not-found {
+                        font-family: "Sniglet", sans-serif;
+                        font-size: 128px;
+                        color: black;
+                        font-size: 800;
+                    }
+                    
+                    .subtitulo-not-found {
+                        font-family: "Sniglet", sans-serif;
+                        font-size: 24px;
+                        color: black;
+                        font-size: 800;
+                    }
+    
+                    .texto {
+                        font-family: "Sniglet", sans-serif;
+                        font-size: 16px;
+                        margin: 0px 0px 12px;
+                        color: black;
+                    }
+    
+                    .busqueda-de-articulos{
+                        border: solid 2.8px #009FE3;
+                        border-radius: 50px;
+                        height: 42px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-left: 1vw;
+                        background-color: white;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        padding-top: 22px;
+                        padding-bottom: 24.4px;
+                        
+                        input {
+                            border: none;
+                            outline: none;
+                            width: 140px;
+                        }
+            
+                        input::placeholder {
+                            color: #009FE3;
+                            font-size: 14px
+                        }
+    
+                        .con-lupa {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

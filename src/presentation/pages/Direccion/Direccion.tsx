@@ -1,9 +1,9 @@
 import React from "react";
 
 import { useDireccion } from "../../hooks/useDireccion";
-import CardDirection from "../../../Components/Login/LoginSecciones/CardDirection";
 import { AddressForm } from "../../components/Direccion/Form/AddressForm";
 import "./Direccion.scss";
+import CardDirection from "../../components/Direccion/Card/CardDirection";
 
 const Direccion: React.FC = () => {
   const {

@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaTimesCircle } from "react-icons/fa";
 
-import "./Wishlist.scss";
 import { useWishlistOriginal } from "../../hooks";
 import CuerpoVacio from "../../../Components/Login/LoginSecciones/CuerpoVacio";
 import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import { Articulo } from "../../../infrastructure/Interfaces";
+import "./Wishlist.scss";
 
 const Wishlist: React.FC = () => {
   const {

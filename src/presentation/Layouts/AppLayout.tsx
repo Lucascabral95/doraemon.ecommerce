@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
+
 import HeaderDesktop from "../components/layout/HeaderDesktop/HeaderDesktop";
 import FooterDesktop from "../components/layout/FooterDesktop/FooterDesktop";
-import ProteccionComprador from "../../Components/ProteccionComprador/ProteccionComprador";
+import ProteccionComprador from "../components/DatosClientes/ProteccionComprador/ProteccionComprador";
 
 export default function AppLayout() {
   return (
