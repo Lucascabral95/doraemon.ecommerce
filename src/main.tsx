@@ -7,6 +7,7 @@ import "./infrastructure/config/firebase.config";
 import "react-loading-skeleton/dist/skeleton.css";
 import AppRoutes from "./Routes/AppRoutes";
 import "./index.css";
+import CustomToaster from "./presentation/components/UI/Toasters/ToasterAddToCart";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 
@@ -21,6 +22,7 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <CustomToaster />
       <AppRoutes />
     </BrowserRouter>
   </React.StrictMode>

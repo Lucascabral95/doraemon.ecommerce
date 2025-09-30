@@ -169,22 +169,48 @@ const DetalleCompras: React.FC = () => {
             </table>
 
             {compras?.carrito?.map((item, index) => (
-              <div className="shadow-sm wishlist-deseos" key={item.id || index}>
+              <div
+                className="shadow-sm wishlist-deseos"
+                key={item.id || index}
+                style={{ marginBottom: "2.5vw", paddingBottom: "2vw" }}
+              >
                 <div className="contenedor-wishlist">
                   <div className="img-img">
                     <img
+                      style={{ width: "100%", height: "auto" }}
                       src={item.imagen}
                       alt={item.descripcion || item.texto}
                     />
                   </div>
 
                   <div className="caracteristicas">
-                    <div className="texto-texto">
-                      <p className="texto">{item.texto}</p>
+                    <div
+                      className="texto-texto"
+                      style={{ marginBottom: "-1.5vw" }}
+                    >
+                      <p
+                        className="texto"
+                        style={{
+                          textAlign: "center",
+                          fontSize: "16px",
+                          fontFamily: "sniglet",
+                        }}
+                      >
+                        {item.texto}
+                      </p>
                     </div>
 
                     <div className="precio-precio">
-                      <p className="precio" style={{ marginBottom: "4px" }}>
+                      <p
+                        className="precio"
+                        style={{
+                          marginBottom: "4px",
+                          textAlign: "center",
+                          fontSize: "24px",
+                          fontFamily: "sniglet",
+                          color: "#009FE3",
+                        }}
+                      >
                         {item.precio.toFixed(2)} €
                       </p>
                     </div>
