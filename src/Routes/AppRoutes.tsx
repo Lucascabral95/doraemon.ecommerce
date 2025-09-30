@@ -1,10 +1,11 @@
 "bootstrap/scss/bootstrap.scss";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useScrollToTop } from "../presentation/hooks/useScrollToTop";
 import MiddlewareRutasProtegidas from "../presentation/middleware/auth/rutasProtegidas.middleware";
 import AppLayout from "../presentation/Layouts/AppLayout";
 import PageLoader from "../presentation/components/UI/PageLoader/PageLoader";
+import { useProductStore } from "../store/useProductStore";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
 const ItemListContainer = lazy(
@@ -67,6 +68,11 @@ const DetalleCompras = lazy(
 
 const AppRoutes: React.FC = () => {
   useScrollToTop();
+  const initializeProducts = useProductStore((state) => state.initializeProducts);
+
+  useEffect(() => {
+    initializeProducts();
+  }, [initializeProducts]);
 
   return (
     <Suspense fallback={<PageLoader />}>

@@ -1,10 +1,10 @@
 import React from "react";
 
 import { PREGUNTAS_DATA } from "../../../infrastructure/constants/preguntasData.constants";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import ContactoTexto from "../../components/DatosClientes/PreguntasFrecuentes/ContactoTexto";
 import Pregunta from "../../components/DatosClientes/PreguntasFrecuentes/Pregunta";
 import DatosContacto from "../../components/DatosClientes/PreguntasFrecuentes/DatosContacto";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const Preguntas: React.FC = () => {
   const { plazos, avisos } = PREGUNTAS_DATA;

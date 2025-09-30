@@ -1,13 +1,13 @@
 import React from "react";
 
 import { COOKIES_DATA } from "../../../infrastructure/constants";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import {
   PuntoConFlecha,
   Seccion,
 } from "../../components/DatosClientes/CondicionesDeUso";
 import { NavegadorPasos } from "../../components/DatosClientes/PoliticaDeCookies/PoliticaDeCookies";
 import { TablaCookies } from "../../components/DatosClientes/PoliticaDeCookies/TablaCookies";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const PoliticaDeCookies: React.FC = () => {
   const { navegadores } = COOKIES_DATA;

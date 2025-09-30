@@ -1,13 +1,13 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { CONDICIONES_DATA } from "../../../infrastructure/constants";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import {
   ContactoCliente,
   DatosEmpresa,
   PuntoConFlecha,
   Seccion,
 } from "../../components/DatosClientes/CondicionesDeUso";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const CondicionesDeUso: React.FC = () => {
   const { empresa, contacto, plazos, avisos, envio, enlaces } =

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useDetalleCompras } from "../../hooks";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import "./DetalleCompras.scss";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const styleButton = {
   padding: "10px 20px",

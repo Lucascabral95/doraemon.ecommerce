@@ -1,65 +1,15 @@
 import React from "react";
 
 import { NOTA_LEGAL_DATA } from "../../../infrastructure/constants";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import {
   DatosIdentificativos,
   SeccionNumerada,
   Subseccion,
 } from "../../components/DatosClientes/NotaLegalData/NotaLegalData";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const NotaLegal: React.FC = () => {
   const { empresa, legislacion } = NOTA_LEGAL_DATA;
-
-  //   const DatosIdentificativos: React.FC = () => (
-  //     <>
-  //       <p className="texto-negro">
-  //         Nombre de dominio: {empresa.dominios.join(" y ")}
-  //       </p>
-  //       <p style={{ marginBottom: "0px" }} className="texto-negro">
-  //         Nombre comercial: {empresa.nombreComercial}
-  //       </p>
-  //       <p style={{ marginBottom: "0px" }} className="texto-negro">
-  //         Denominación social: {empresa.denominacionSocial}
-  //       </p>
-  //       <p className="texto-negro">NIF: {empresa.nif}</p>
-  //       <p style={{ marginBottom: "0px" }} className="texto-negro">
-  //         Domicilio social: {empresa.domicilio}
-  //       </p>
-  //       <p style={{ marginBottom: "0px" }} className="texto-negro">
-  //         Teléfono: {empresa.telefono}
-  //       </p>
-  //       <p style={{ marginBottom: "0px" }} className="texto-negro">
-  //         e-mail: <a href={empresa.emailLink}>{empresa.email}</a>
-  //       </p>
-  //       <p className="texto-negro" style={{ marginBottom: "48px" }}>
-  //         Inscrita en el Registro (Mercantil / Público): {empresa.registro}
-  //       </p>
-  //     </>
-  //   );
-
-  //   const SeccionNumerada: React.FC<{
-  //     numero: string;
-  //     titulo: string;
-  //     children: React.ReactNode;
-  //   }> = ({ numero, titulo, children }) => (
-  //     <>
-  //       <p className="texto-negro-resaltado">
-  //         {numero}. {titulo}
-  //       </p>
-  //       {children}
-  //     </>
-  //   );
-
-  //   const Subseccion: React.FC<{
-  //     titulo: string;
-  //     children: React.ReactNode;
-  //   }> = ({ titulo, children }) => (
-  //     <>
-  //       <p className="texto-negro-resaltado">{titulo}</p>
-  //       {children}
-  //     </>
-  //   );
 
   return (
     <CuerpoVacioFooter

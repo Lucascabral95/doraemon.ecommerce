@@ -86,17 +86,8 @@ const ItemListContainer: React.FC = () => {
   useEffect(() => {}, [categoria, cartItemsCount]);
 
   if (isProductsLoading) {
-    return (
-      <div className="itemListContainer">
-        <div className="loading-container">
-          <p>Cargando productos...</p>
-        </div>
-      </div>
-    );
+    return <PageLoader />;
   }
-  // if (isProductsLoading) {
-  //   return <PageLoader />;
-  // }
 
   if (!hasProducts) {
     return (
@@ -136,7 +127,7 @@ const ItemListContainer: React.FC = () => {
 
           <ProductGrid
             products={displayedProducts}
-            isLoading={isProductsLoading}
+            isLoading={false}
             onAddToCart={handleAddToCart}
             cartItemsCount={cartItemsCount}
           />

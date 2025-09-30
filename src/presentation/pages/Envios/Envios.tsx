@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import { ENVIOS_CONFIG } from "../../../infrastructure/constants";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const Envios: React.FC = () => {
   const { avisos, envios } = ENVIOS_CONFIG;

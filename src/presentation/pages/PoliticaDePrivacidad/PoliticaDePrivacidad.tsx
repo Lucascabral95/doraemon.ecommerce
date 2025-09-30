@@ -1,12 +1,12 @@
 import React from "react";
 
 import { PRIVACIDAD_DATA } from "../../../infrastructure/constants";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import {
   DatosEmpresa,
   PuntoConFlecha,
   Seccion,
 } from "../../components/DatosClientes/CondicionesDeUso";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const PoliticaDePrivacidad: React.FC = () => {
   const { empresa, plazos, formularios, enlaces } = PRIVACIDAD_DATA;

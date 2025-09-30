@@ -1,4 +1,6 @@
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
+// import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
+
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const styleSpan = {
   color: "#009FE3",

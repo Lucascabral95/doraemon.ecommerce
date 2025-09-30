@@ -5,13 +5,14 @@ import {
   ProductWithDetails,
 } from "../../infrastructure/types/productDetail.types";
 import { ProductDetailService } from "../../infrastructure/services/productDetail.service";
-import { productDataManager } from "../../infrastructure/data/productData";
+import { useProductStore } from "../../store/useProductStore";
 
 interface UseProductDetailProps {
   productName?: string;
 }
 
 export const useProductDetail = ({ productName }: UseProductDetailProps) => {
+  const { products, isLoaded } = useProductStore();
   const [state, setState] = useState<ProductDetailState>({
     product: null,
     relatedProducts: [],
@@ -32,11 +33,15 @@ export const useProductDetail = ({ productName }: UseProductDetailProps) => {
         return;
       }
 
+      if (!isLoaded) {
+        setState((prev) => ({ ...prev, isLoading: true }));
+        return;
+      }
+
       setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
       try {
-        await productDataManager.loadData();
-        const allProducts = productDataManager.getAllProducts();
+        const allProducts = products;
 
         const foundProduct = ProductDetailService.findProductByName(
           allProducts,
@@ -78,9 +83,8 @@ export const useProductDetail = ({ productName }: UseProductDetailProps) => {
       }
     };
 
-    const timer = setTimeout(loadProductDetail, 100);
-    return () => clearTimeout(timer);
-  }, [productName]);
+    loadProductDetail();
+  }, [productName, products, isLoaded]);
 
   const enrichedProduct = useMemo<ProductWithDetails | null>(() => {
     if (!state.product) return null;

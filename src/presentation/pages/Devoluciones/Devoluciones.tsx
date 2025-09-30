@@ -1,7 +1,7 @@
 import React from "react";
 
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import { DEVOLUCIONES_DATA } from "../../../infrastructure/constants";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const Devoluciones: React.FC = () => {
   const { contacto, direccion, plazos, enlaces } = DEVOLUCIONES_DATA;

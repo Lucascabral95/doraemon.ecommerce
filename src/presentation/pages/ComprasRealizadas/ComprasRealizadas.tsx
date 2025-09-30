@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useComprasRealizadas } from "../../hooks/useComprasRealizadas";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
+// import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import Pedidos from "../../../Components/Login/LoginSecciones/Pedidos";
 import "./ComprasRealizadas.scss";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const styleButton = {
   padding: "10px 20px",

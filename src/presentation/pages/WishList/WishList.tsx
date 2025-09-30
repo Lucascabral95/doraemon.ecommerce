@@ -4,9 +4,10 @@ import { FaTimesCircle } from "react-icons/fa";
 
 import { useWishlistOriginal } from "../../hooks";
 import CuerpoVacio from "../../../Components/Login/LoginSecciones/CuerpoVacio";
-import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
+// import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import { Articulo } from "../../../infrastructure/Interfaces";
 import "./Wishlist.scss";
+import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
 const Wishlist: React.FC = () => {
   const {

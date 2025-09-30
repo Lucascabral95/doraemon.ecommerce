@@ -5,7 +5,7 @@ import {
   SearchSortOption,
 } from "../../infrastructure/types/search.types";
 import { SearchService } from "../../infrastructure/services/search.service";
-import { productDataManager } from "../../infrastructure/data/productData";
+import { useProductStore } from "../../store/useProductStore";
 import { Product } from "../../infrastructure/types/product.types";
 
 interface UseProductSearchProps {
@@ -19,6 +19,7 @@ export const useProductSearch = ({
   initialSortBy = "relevance",
   itemsPerPage = 20,
 }: UseProductSearchProps) => {
+  const { products: allProducts } = useProductStore();
   const [state, setState] = useState<SearchState>({
     query: {
       term: searchTerm,
@@ -32,26 +33,11 @@ export const useProductSearch = ({
     hasSearched: false,
   });
 
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        await productDataManager.loadData();
-        setAllProducts(productDataManager.getAllProducts());
-      } catch (error) {
-        console.error("Error loading products for search:", error);
-      }
-    };
-
-    loadProducts();
-  }, []);
-
   useEffect(() => {
     if (searchTerm && searchTerm.trim() && allProducts.length > 0) {
       performSearch(searchTerm);
     }
-  }, [searchTerm, allProducts]);
+  }, [searchTerm, allProducts.length]);
 
   const performSearch = useCallback(
     async (term: string, options?: Partial<SearchQuery>) => {
