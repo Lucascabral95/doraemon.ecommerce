@@ -26,7 +26,8 @@ const storeZustand = create((set) => ({
     set({ cart: newCart });
   },
 
-  setCantidadArticulosCarrito: (cantidad) => set({ cantidadArticulosCarrito: cantidad }),
+  setCantidadArticulosCarrito: (cantidad) =>
+    set({ cantidadArticulosCarrito: cantidad }),
 
   setAcceso: (newState) => {
     set({ acceso: newState });

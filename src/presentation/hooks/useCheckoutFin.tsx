@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
@@ -9,18 +9,18 @@ import storeZustand from "../../Components/zustand";
 import { useCart } from "./useCart";
 
 export const useCheckoutFin = () => {
-  const { cantidadArticulossss, cart, miDireccionCompleta, datosPersonaless } =
-    storeZustand();
+  const cart = storeZustand((state) => state.cart);
+  const cantidadArticulossss = storeZustand(
+    (state) => state.cantidadArticulossss
+  );
+  const datosPersonaless = storeZustand((state) => state.datosPersonaless);
 
   const navigate = useNavigate();
+  const { clearCart } = useCart();
 
   const [collapseSelected, setCollapseSelected] = useState<number>(1);
   const [comentarioEnvio, setComentarioEnvio] = useState<string>("");
-  const [emailDeSesion, setEmailDeSesion] = useState<any>("");
 
-  const { clearCart } = useCart();
-
-  const [cancelacionCompra, setCancelacionCompra] = useState<boolean>(false);
   const [direccionCompleta, setDireccionCompleta] = useState({
     nombre: "",
     apellido: "",
@@ -32,6 +32,8 @@ export const useCheckoutFin = () => {
     provincia: "Buenos Aires",
     telefono: "",
   });
+
+  const [direccionValidada, setDireccionValidada] = useState<boolean>(false);
 
   const total = useMemo(() => {
     return (
@@ -56,28 +58,32 @@ export const useCheckoutFin = () => {
     return total <= 50 ? lapizShizuka : gorrocoptero;
   }, [total]);
 
-  useEffect(() => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    setEmailDeSesion(user);
-  });
+  const validarDireccion = useCallback((direccion: any): boolean => {
+    const camposObligatorios = [
+      "nombre",
+      "apellido",
+      "direccion",
+      "codigoPostal",
+      "ciudad",
+      "pais",
+      "provincia",
+      "telefono",
+    ];
 
-  useEffect(() => {
-    if (
-      datosPersonaless.email !== "" &&
-      miDireccionCompleta &&
-      Object.values(miDireccionCompleta).some(
-        (value) => value !== null && value !== ""
-      )
-    ) {
-      setCancelacionCompra(true);
-    }
-  }, [
-    cancelacionCompra,
-    direccionCompleta,
-    datosPersonaless.email,
-    miDireccionCompleta,
-  ]);
+    return camposObligatorios.every((campo) => {
+      const valor = direccion[campo];
+      return valor && valor.toString().trim() !== "";
+    });
+  }, []);
+
+  const cancelacionCompra = useMemo(() => {
+    const tieneDatosPersonales =
+      datosPersonaless?.email && datosPersonaless?.nombre;
+    const tieneDireccionValida = direccionValidada;
+    const tieneProductos = cart && cart.length > 0;
+
+    return tieneDatosPersonales && tieneDireccionValida && tieneProductos;
+  }, [datosPersonaless, direccionValidada, cart]);
 
   const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -85,22 +91,97 @@ export const useCheckoutFin = () => {
         ...direccionCompleta,
         [e.target.name]: e.target.value,
       });
+      setDireccionValidada(false);
     },
     [direccionCompleta]
   );
 
-  const handleEnviarDireccion = useCallback(() => {
-    console.log(direccionCompleta);
-  }, [direccionCompleta]);
+  const handleConfirmarDireccion = useCallback(() => {
+    if (!validarDireccion(direccionCompleta)) {
+      Swal.fire({
+        icon: "error",
+        title: "Campos incompletos",
+        html: `
+          <p>Por favor, completa <strong>todos</strong> los campos obligatorios:</p>
+          <ul style="text-align: left; margin: 15px auto; display: inline-block;">
+            <li>Nombre y apellido</li>
+            <li>Dirección completa</li>
+            <li>Código postal y ciudad</li>
+            <li>País y provincia</li>
+            <li>Teléfono de contacto</li>
+          </ul>
+        `,
+        confirmButtonText: "OK",
+      });
+      return;
+    }
 
-  const usoCollapse = useCallback((id: number) => {
-    setCollapseSelected(id);
+    setDireccionValidada(true);
+
+    Swal.fire({
+      icon: "success",
+      title: "¡Dirección confirmada!",
+      text: "Puedes continuar con tu compra",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+    setCollapseSelected(3);
+  }, [direccionCompleta, validarDireccion]);
+
+  const handleLimpiarDireccion = useCallback(() => {
+    Swal.fire({
+      icon: "question",
+      title: "¿Limpiar dirección?",
+      text: "Tendrás que volver a ingresarla",
+      showCancelButton: true,
+      confirmButtonText: "Sí, limpiar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setDireccionCompleta({
+          nombre: "",
+          apellido: "",
+          empresa: "",
+          direccion: "",
+          codigoPostal: "",
+          ciudad: "",
+          pais: "Argentina",
+          provincia: "Buenos Aires",
+          telefono: "",
+        });
+        setDireccionValidada(false);
+        setCollapseSelected(2);
+      }
+    });
   }, []);
 
-  const handleEliminarDireccion = useCallback(() => {
-    window.location.reload();
-    localStorage.removeItem("miDireccionCompleta");
-  }, []);
+  const usoCollapse = useCallback(
+    (id: number) => {
+      if (id === 3 && !direccionValidada) {
+        Swal.fire({
+          icon: "warning",
+          title: "Dirección requerida",
+          text: "Debes confirmar tu dirección de envío antes de continuar",
+          confirmButtonText: "Entendido",
+        });
+        return;
+      }
+
+      if (id === 4 && !cancelacionCompra) {
+        Swal.fire({
+          icon: "warning",
+          title: "Completa los pasos anteriores",
+          text: "Debes completar todos los datos antes de proceder al pago",
+          confirmButtonText: "Entendido",
+        });
+        return;
+      }
+
+      setCollapseSelected(id);
+    },
+    [direccionValidada, cancelacionCompra]
+  );
 
   const handleComentario = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -110,125 +191,149 @@ export const useCheckoutFin = () => {
   );
 
   const comentario = useCallback(() => {
-    console.log(comentarioEnvio);
+    console.log("Comentario:", comentarioEnvio);
   }, [comentarioEnvio]);
 
-  const handleCerrarSesion = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        console.log("Error en cierre de sesión:", error.message);
-      });
-  }, []);
+  const handleCerrarSesion = useCallback(
+    async (e: React.MouseEvent) => {
+      e.preventDefault();
 
-  const handleGuardarDireccion = useCallback(() => {
-    if (
-      direccionCompleta &&
-      !Object.values(direccionCompleta).some(
-        (value) => value === null || value === ""
-      )
-    ) {
-      setDireccionCompleta(direccionCompleta);
-      localStorage.setItem(
-        "miDireccionCompleta",
-        JSON.stringify(direccionCompleta)
-      );
-      window.location.reload();
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Por favor, completa todos los campos antes de guardar la dirección",
-        confirmButtonText: "OK",
+      const result = await Swal.fire({
+        icon: "warning",
+        title: "¿Cerrar sesión?",
+        text: "Perderás los datos de dirección ingresados",
+        showCancelButton: true,
+        confirmButtonText: "Sí, cerrar",
+        cancelButtonText: "Cancelar",
       });
-    }
-  }, [direccionCompleta]);
+
+      if (!result.isConfirmed) return;
+
+      const auth = getAuth();
+      await signOut(auth);
+      navigate("/login");
+    },
+    [navigate]
+  );
 
   const handleOrden = useCallback(async () => {
-    if (cancelacionCompra === true) {
+    if (!cancelacionCompra) {
+      const errores: string[] = [];
+
+      if (!datosPersonaless?.email || !datosPersonaless?.nombre) {
+        errores.push("• Completa tus datos personales (Paso 1)");
+      }
+
+      if (!direccionValidada) {
+        errores.push("• Confirma tu dirección de envío (Paso 2)");
+      }
+
+      if (!cart || cart.length === 0) {
+        errores.push("• Agrega productos al carrito");
+      }
+
+      Swal.fire({
+        icon: "error",
+        title: "No se puede completar la compra",
+        html: `
+          <p style="margin-bottom: 15px;"><strong>Faltan los siguientes datos:</strong></p>
+          <div style="text-align: left; margin: 0 auto; display: inline-block;">
+            ${errores.join("<br>")}
+          </div>
+        `,
+        confirmButtonText: "Entendido",
+      });
+      return;
+    }
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: "No autenticado",
+        text: "Debes iniciar sesión para completar la compra",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    try {
       const ordersRef = collection(db, "ordenes");
 
       const datosPersonales = {
-        nombre: datosPersonaless?.nombre || "Nombre no proporcionado",
-        apellido: datosPersonaless?.apellido || "Apellido no proporcionado",
-        email: emailDeSesion?.email || "Email no proporcionado",
-        edad: datosPersonaless?.edad || "Edad no proporcionada",
-        telefono: miDireccionCompleta?.telefono || "Teléfono no proporcionado",
+        nombre: datosPersonaless.nombre,
+        apellido: datosPersonaless.apellido,
+        email: user.email,
+        edad: datosPersonaless.edad || "No proporcionada",
+        telefono: direccionCompleta.telefono,
       };
 
       const direccionDeEnvio = {
-        ciudad: miDireccionCompleta?.ciudad || "Ciudad no proporcionada",
-        codigoPostal:
-          miDireccionCompleta?.codigoPostal || "Código Postal no proporcionado",
-        direccion:
-          miDireccionCompleta?.direccion || "Dirección no proporcionada",
-        pais: miDireccionCompleta?.pais || "País no proporcionado",
-        provincia:
-          miDireccionCompleta?.provincia || "Provincia no proporcionada",
+        nombre: direccionCompleta.nombre,
+        apellido: direccionCompleta.apellido,
+        empresa: direccionCompleta.empresa || "",
+        ciudad: direccionCompleta.ciudad,
+        codigoPostal: direccionCompleta.codigoPostal,
+        direccion: direccionCompleta.direccion,
+        pais: direccionCompleta.pais,
+        provincia: direccionCompleta.provincia,
+        telefono: direccionCompleta.telefono,
       };
 
-      const fecha = new Date();
-
       const contenido = {
+        userId: user.uid,
         direccionEnvio: direccionDeEnvio,
         datosPersonales: datosPersonales,
         carrito: cart,
-        fecha: fecha.toLocaleString(),
+        fecha: new Date().toISOString(),
         comentarioDeLaOrden: comentarioEnvio || "Sin comentarios",
-        cantidadDeArticulos: cantidadArticulossss || 0,
-        totalDeLaCompra: total ? total.toFixed(2) : "0.00",
+        cantidadDeArticulos: cantidadArticulossss,
+        totalDeLaCompra: total.toFixed(2),
+        estado: "pendiente",
       };
 
-      try {
-        const doc = await addDoc(ordersRef, contenido);
-        console.log(doc.id);
-        Swal.fire({
-          icon: "success",
-          title: "Compra exitosa",
-          timer: 1500,
-          text: "¡Tu compra ha sido procesada exitosamente!",
-          confirmButtonText: "OK",
-        });
+      const docRef = await addDoc(ordersRef, contenido);
 
-        setTimeout(() => {
-          navigate(`/detalle/compra/${doc.id}`);
-        }, 1600);
+      await clearCart();
 
-        clearCart();
-      } catch (error) {
-        console.error("Error al agregar el documento: ", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error al realizar la compra",
-          text: "Hubo un problema al procesar tu compra. Inténtalo de nuevo.",
-          confirmButtonText: "OK",
-        });
-      }
-    } else {
+      await Swal.fire({
+        icon: "success",
+        title: "¡Compra exitosa!",
+        text: "Tu pedido ha sido procesado correctamente",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      navigate(`/detalle/compra/${docRef.id}`);
+    } catch (error) {
+      console.error("Error al agregar el documento:", error);
       Swal.fire({
         icon: "error",
-        title: "Error al realizar la compra",
-        text: "Para realizar la compra debe completar tus datos personales y cargar una dirección",
+        title: "Error al procesar la compra",
+        text: "Hubo un problema al procesar tu compra. Inténtalo de nuevo.",
         confirmButtonText: "OK",
       });
     }
   }, [
     cancelacionCompra,
     datosPersonaless,
-    emailDeSesion,
-    miDireccionCompleta,
+    direccionCompleta,
+    direccionValidada,
     cart,
     comentarioEnvio,
     cantidadArticulossss,
     total,
+    clearCart,
+    navigate,
   ]);
 
   return {
     collapseSelected,
     comentarioEnvio,
     direccionCompleta,
+    direccionValidada,
     cancelacionCompra,
 
     cart,
@@ -236,16 +341,14 @@ export const useCheckoutFin = () => {
     desicionRegalo,
     cantidadArticulossss,
     datosPersonaless,
-    miDireccionCompleta,
 
     handleInput,
-    handleEnviarDireccion,
     usoCollapse,
-    handleEliminarDireccion,
+    handleLimpiarDireccion,
     handleComentario,
     comentario,
     handleCerrarSesion,
-    handleGuardarDireccion,
+    handleConfirmarDireccion,
     handleOrden,
   };
 };

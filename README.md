@@ -439,13 +439,11 @@ El store global de Zustand maneja todo el estado de la aplicación:
 - **`setMiDireccionCompleta(direction)`**: Guarda direcciones
 - **`setWishList(data)`**: Actualiza wishlist
 - **`setCompras(data)`**: Actualiza historial de compras
-- **`setUsuarioEnSesion(email)`**: Establece usuario activo
 - **`reset()`**: Resetea todo el estado
-- **`logoutLocal()`**: Cierra sesión y te desloguea de Firebase Auth
 
 #### Persistencia
 
-El store sincroniza automáticamente con `localStorage`:
+El store sincroniza automáticamente con `Firestore`:
 
 - `carritoDoraemon`: Carrito de compras
 - `LogueoDeSesion`: Estado de autenticación
@@ -482,8 +480,8 @@ const {
 - Validación de formularios en tiempo real
 - Integración con Firebase Authentication
 - Manejo de errores con SweetAlert2
-- Persistencia segura en localStorage
-- Listener de cambios de estado de autenticación
+- Persistencia segura en Firestore
+- Listener de cambios de estado de autenticación por medio de Firestore Authentication
 
 #### `useLogout`
 
@@ -507,7 +505,7 @@ const {
 
 **Características:**
 
-- Sincronización automática con localStorage
+- Sincronización automática con Firestore
 - Cálculo de totales en tiempo real
 - Actualización de contador global en Zustand
 

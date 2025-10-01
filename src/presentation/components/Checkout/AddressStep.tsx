@@ -3,22 +3,22 @@ import React from "react";
 import { PROVINCES } from "../../../infrastructure/constants";
 
 interface AddressStepProps {
-  miDireccionCompleta: any;
   direccionCompleta: any;
+  direccionValidada: boolean;
   onInputChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  onSaveAddress: () => void;
-  onRemoveAddress: () => void;
+  onConfirmarDireccion: () => void;
+  onLimpiarDireccion: () => void;
   onContinue: () => void;
 }
 
 export const AddressStep: React.FC<AddressStepProps> = ({
-  miDireccionCompleta,
   direccionCompleta,
+  direccionValidada,
   onInputChange,
-  onSaveAddress,
-  onRemoveAddress,
+  onConfirmarDireccion,
+  onLimpiarDireccion,
   onContinue,
 }) => {
   const getProvincesForCountry = (country: string) => {
@@ -33,10 +33,10 @@ export const AddressStep: React.FC<AddressStepProps> = ({
         Indícanos a qué dirección quieres recibir tu pedido.
       </p>
 
-      {miDireccionCompleta.length === 0 ? (
+      {!direccionValidada ? (
         <div className="englobador">
           <div className="contenedor-input-datos">
-            <label htmlFor="nombre">NOMBRE(S)</label>
+            <label htmlFor="nombre">NOMBRE(S) *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
@@ -44,12 +44,13 @@ export const AddressStep: React.FC<AddressStepProps> = ({
                 value={direccionCompleta.nombre}
                 type="text"
                 required
+                placeholder="Ingresa tu nombre"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="apellido">APELLIDO(S)</label>
+            <label htmlFor="apellido">APELLIDO(S) *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
@@ -57,25 +58,26 @@ export const AddressStep: React.FC<AddressStepProps> = ({
                 value={direccionCompleta.apellido}
                 type="text"
                 required
+                placeholder="Ingresa tu apellido"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="empresa">EMPRESA</label>
+            <label htmlFor="empresa">EMPRESA (Opcional)</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
                 name="empresa"
                 value={direccionCompleta.empresa}
                 type="text"
-                required
+                placeholder="Nombre de tu empresa"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="direccion">DIRECCIÓN</label>
+            <label htmlFor="direccion">DIRECCIÓN *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
@@ -83,12 +85,13 @@ export const AddressStep: React.FC<AddressStepProps> = ({
                 value={direccionCompleta.direccion}
                 type="text"
                 required
+                placeholder="Calle, número, piso, dpto"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="codigoPostal">CÓDIGO POSTAL</label>
+            <label htmlFor="codigoPostal">CÓDIGO POSTAL *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
@@ -96,12 +99,13 @@ export const AddressStep: React.FC<AddressStepProps> = ({
                 value={direccionCompleta.codigoPostal}
                 required
                 type="text"
+                placeholder="Ej: 1234"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="ciudad">CIUDAD</label>
+            <label htmlFor="ciudad">CIUDAD *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
@@ -109,12 +113,13 @@ export const AddressStep: React.FC<AddressStepProps> = ({
                 value={direccionCompleta.ciudad}
                 type="text"
                 required
+                placeholder="Ingresa tu ciudad"
               />
             </div>
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="pais">País</label>
+            <label htmlFor="pais">PAÍS *</label>
             <div className="cont-input">
               <select
                 value={direccionCompleta.pais}
@@ -132,7 +137,7 @@ export const AddressStep: React.FC<AddressStepProps> = ({
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="provincia">PROVINCIA</label>
+            <label htmlFor="provincia">PROVINCIA *</label>
             <div className="cont-input">
               <select
                 name="provincia"
@@ -150,13 +155,15 @@ export const AddressStep: React.FC<AddressStepProps> = ({
           </div>
 
           <div className="contenedor-input-datos">
-            <label htmlFor="telefono">TELEFONO</label>
+            <label htmlFor="telefono">TELÉFONO *</label>
             <div className="cont-input">
               <input
                 onChange={onInputChange}
                 name="telefono"
                 value={direccionCompleta.telefono}
-                type="text"
+                type="tel"
+                required
+                placeholder="Ej: +54 11 1234-5678"
               />
             </div>
           </div>
@@ -165,59 +172,89 @@ export const AddressStep: React.FC<AddressStepProps> = ({
             <div className="cont-input" style={{ border: "none" }}>
               <div className="handle-enviar">
                 <button
-                  onClick={onSaveAddress}
-                  type="submit"
+                  onClick={onConfirmarDireccion}
+                  type="button"
                   className="boton-guardar"
                 >
-                  GUARDAR
+                  CONFIRMAR DIRECCIÓN
                 </button>
               </div>
             </div>
           </div>
+
+          <div
+            style={{
+              backgroundColor: "#fff3cd",
+              padding: "15px",
+              borderRadius: "8px",
+              marginTop: "15px",
+              border: "1px solid #ffc107",
+            }}
+          >
+            <p style={{ margin: 0, color: "#856404" }}>
+              ℹ️ Esta dirección solo se usará para esta compra y no se guardará.
+            </p>
+          </div>
         </div>
       ) : (
-        // ✅ Dirección guardada exactamente igual que original
         <div className="englobador-dos">
           <div className="contenedor-card">
             <div className="mi-direccion">
-              <h3 className="mi-direccion-title">MI DIRECCIÓN</h3>
-            </div>
-            <div className="titulo">
-              <h3 className="title">{miDireccionCompleta.alias}</h3>
+              <h3 className="mi-direccion-title">DIRECCIÓN CONFIRMADA ✓</h3>
             </div>
             <div className="dato">
+              <strong>Nombre:</strong>{" "}
               <span>
-                {miDireccionCompleta.nombre} {miDireccionCompleta.apellido}
+                {direccionCompleta.nombre} {direccionCompleta.apellido}
               </span>
             </div>
+            {direccionCompleta.empresa && (
+              <div className="dato">
+                <strong>Empresa:</strong>{" "}
+                <span>{direccionCompleta.empresa}</span>
+              </div>
+            )}
             <div className="dato">
-              <span>{miDireccionCompleta.ciudad}</span>
+              <strong>Dirección:</strong>{" "}
+              <span>{direccionCompleta.direccion}</span>
             </div>
             <div className="dato">
-              <span>
-                {miDireccionCompleta.codigoPostal} {miDireccionCompleta.ciudad}
-              </span>
+              <strong>Código Postal:</strong>{" "}
+              <span>{direccionCompleta.codigoPostal}</span>
             </div>
             <div className="dato">
-              <span>{miDireccionCompleta.pais}</span>
+              <strong>Ciudad:</strong> <span>{direccionCompleta.ciudad}</span>
             </div>
             <div className="dato">
-              <span>{miDireccionCompleta.provincia}</span>
+              <strong>Provincia:</strong>{" "}
+              <span>{direccionCompleta.provincia}</span>
             </div>
             <div className="dato">
-              <span>{miDireccionCompleta.telefono}</span>
+              <strong>País:</strong> <span>{direccionCompleta.pais}</span>
+            </div>
+            <div className="dato">
+              <strong>Teléfono:</strong>{" "}
+              <span>{direccionCompleta.telefono}</span>
             </div>
 
             <div className="container-de-botones">
-              <button onClick={onRemoveAddress}>ACTUALIZAR</button>
-              <button onClick={onRemoveAddress}>ELIMINAR</button>
+              <button onClick={onLimpiarDireccion}>MODIFICAR DIRECCIÓN</button>
             </div>
           </div>
         </div>
       )}
 
       <div className="contenedor-button" style={{ marginTop: "2%" }}>
-        <button onClick={onContinue}>CONTINUAR</button>
+        <button
+          onClick={onContinue}
+          disabled={!direccionValidada}
+          style={{
+            opacity: direccionValidada ? 1 : 0.5,
+            cursor: direccionValidada ? "pointer" : "not-allowed",
+          }}
+        >
+          CONTINUAR
+        </button>
       </div>
     </div>
   );

@@ -11,22 +11,22 @@ const CheckoutFin: React.FC = () => {
     collapseSelected,
     comentarioEnvio,
     direccionCompleta,
+    direccionValidada,
+    cancelacionCompra,
 
     cart,
     total,
     desicionRegalo,
     cantidadArticulossss,
     datosPersonaless,
-    miDireccionCompleta,
 
     handleInput,
-    handleEnviarDireccion,
     usoCollapse,
-    handleEliminarDireccion,
+    handleLimpiarDireccion,
     handleComentario,
     comentario,
     handleCerrarSesion,
-    handleGuardarDireccion,
+    handleConfirmarDireccion,
     handleOrden,
   } = useCheckoutFin();
 
@@ -37,6 +37,17 @@ const CheckoutFin: React.FC = () => {
           <div className="contenedor-datos" onClick={() => usoCollapse(1)}>
             <div className="datos">
               <p className="textito">1. TUS DATOS PERSONALES</p>
+              {datosPersonaless?.email && (
+                <span
+                  style={{
+                    color: "#28a745",
+                    marginLeft: "10px",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  ✓ Completado
+                </span>
+              )}
             </div>
             <div className="contenedor-modificar">
               <p className="modificar">Modificar</p>
@@ -54,6 +65,17 @@ const CheckoutFin: React.FC = () => {
           <div className="contenedor-datos" onClick={() => usoCollapse(2)}>
             <div className="datos">
               <p className="textito">2. DIRECCIÓN</p>
+              {direccionValidada && (
+                <span
+                  style={{
+                    color: "#28a745",
+                    marginLeft: "10px",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  ✓ Confirmada
+                </span>
+              )}
             </div>
             <div className="contenedor-modificar">
               <p className="modificar">Modificar</p>
@@ -62,15 +84,12 @@ const CheckoutFin: React.FC = () => {
 
           {collapseSelected === 2 && (
             <AddressStep
-              miDireccionCompleta={miDireccionCompleta}
               direccionCompleta={direccionCompleta}
+              direccionValidada={direccionValidada}
               onInputChange={handleInput}
-              onSaveAddress={handleGuardarDireccion}
-              onRemoveAddress={handleEliminarDireccion}
-              onContinue={() => {
-                handleEnviarDireccion();
-                usoCollapse(3);
-              }}
+              onConfirmarDireccion={handleConfirmarDireccion}
+              onLimpiarDireccion={handleLimpiarDireccion}
+              onContinue={() => usoCollapse(3)}
             />
           )}
 
@@ -87,7 +106,7 @@ const CheckoutFin: React.FC = () => {
             <div className="contenido-datos metodo-envio">
               <div className="contenedor-me">
                 <div className="contenedor-envio">
-                  <input type="checkbox" />
+                  <input type="checkbox" defaultChecked />
                 </div>
                 <div className="contenedor-envio">
                   <img src="/img/seur-envio.jpg" alt="Seur" />
@@ -117,13 +136,20 @@ const CheckoutFin: React.FC = () => {
                     id="textArea"
                     value={comentarioEnvio}
                     onChange={handleComentario}
+                    placeholder="Ejemplo: Dejar el paquete con el portero..."
                   />
                   <div
-                    onClick={comentario}
                     className="contenedor-button"
                     style={{ marginTop: "2%" }}
                   >
-                    <button onClick={() => usoCollapse(4)}>CONTINUAR</button>
+                    <button
+                      onClick={() => {
+                        comentario();
+                        usoCollapse(4);
+                      }}
+                    >
+                      CONTINUAR
+                    </button>
                   </div>
                 </div>
               </div>
@@ -142,15 +168,60 @@ const CheckoutFin: React.FC = () => {
           {collapseSelected === 4 && (
             <div className="contenido-datos forma-pago">
               <div className="cont-forma-pago">
-                <input type="checkbox" />
+                <input type="checkbox" defaultChecked />
                 <p>PAGO CON TARJETA</p>
               </div>
-              <div
-                onClick={handleOrden}
-                className="contenedor-button"
-                style={{ marginTop: "2%" }}
-              >
-                <button>FINALIZAR COMPRA</button>
+
+              {!cancelacionCompra && (
+                <div
+                  style={{
+                    backgroundColor: "#fff3cd",
+                    border: "1px solid #ffc107",
+                    borderRadius: "8px",
+                    padding: "15px",
+                    margin: "20px 0",
+                  }}
+                >
+                  <p
+                    style={{
+                      margin: "0 0 10px 0",
+                      fontWeight: "bold",
+                      color: "#856404",
+                    }}
+                  >
+                    ⚠️ Para finalizar la compra debes:
+                  </p>
+                  <ul
+                    style={{ margin: 0, paddingLeft: "20px", color: "#856404" }}
+                  >
+                    {(!datosPersonaless?.email ||
+                      !datosPersonaless?.nombre) && (
+                      <li>Completar tus datos personales (Paso 1)</li>
+                    )}
+                    {!direccionValidada && (
+                      <li>Confirmar tu dirección de envío (Paso 2)</li>
+                    )}
+                    {(!cart || cart.length === 0) && (
+                      <li>Agregar productos al carrito</li>
+                    )}
+                  </ul>
+                </div>
+              )}
+
+              <div className="contenedor-button" style={{ marginTop: "2%" }}>
+                <button
+                  onClick={handleOrden}
+                  disabled={!cancelacionCompra}
+                  style={{
+                    opacity: cancelacionCompra ? 1 : 0.6,
+                    cursor: cancelacionCompra ? "pointer" : "not-allowed",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {cancelacionCompra
+                    ? "FINALIZAR COMPRA"
+                    : "COMPLETA LOS DATOS PARA CONTINUAR"}
+                </button>
               </div>
             </div>
           )}
