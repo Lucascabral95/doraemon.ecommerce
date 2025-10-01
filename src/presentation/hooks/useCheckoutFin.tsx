@@ -1,17 +1,24 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
+
 import { db } from "../../Components/Firebase-config";
 import storeZustand from "../../Components/zustand";
-import Swal from "sweetalert2";
+import { useCart } from "./useCart";
 
 export const useCheckoutFin = () => {
   const { cantidadArticulossss, cart, miDireccionCompleta, datosPersonaless } =
     storeZustand();
 
+  const navigate = useNavigate();
+
   const [collapseSelected, setCollapseSelected] = useState<number>(1);
   const [comentarioEnvio, setComentarioEnvio] = useState<string>("");
   const [emailDeSesion, setEmailDeSesion] = useState<any>("");
+
+  const { clearCart } = useCart();
 
   const [cancelacionCompra, setCancelacionCompra] = useState<boolean>(false);
   const [direccionCompleta, setDireccionCompleta] = useState({
@@ -110,11 +117,7 @@ export const useCheckoutFin = () => {
     e.preventDefault();
     const auth = getAuth();
     signOut(auth)
-      .then(() => {
-        // localStorage.setItem("LogueoDeSesion", "false");
-        // localStorage.removeItem("datosMios");
-        // localStorage.removeItem("carritoDoraemon");
-      })
+      .then(() => {})
       .catch((error) => {
         console.log("Error en cierre de sesión:", error.message);
       });
@@ -183,15 +186,17 @@ export const useCheckoutFin = () => {
         console.log(doc.id);
         Swal.fire({
           icon: "success",
-          title: "Compra Exitosa",
+          title: "Compra exitosa",
+          timer: 1500,
           text: "¡Tu compra ha sido procesada exitosamente!",
           confirmButtonText: "OK",
         });
+
         setTimeout(() => {
-          window.location.href = "/comprasrealizadas";
+          navigate(`/detalle/compra/${doc.id}`);
         }, 1600);
 
-        localStorage.removeItem("carritoDoraemon");
+        clearCart();
       } catch (error) {
         console.error("Error al agregar el documento: ", error);
         Swal.fire({

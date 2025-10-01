@@ -1,12 +1,12 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
+
 import { useDatosPersonales } from "../../hooks";
 import "./DatosPersonales.scss";
 
 const DatosPersonales: React.FC = () => {
   const {
-    datosPersonales,
+    // datosPersonales,
     mostrarBoton,
     modoEdicion,
     handleChange,
@@ -185,7 +185,7 @@ const DatosPersonales: React.FC = () => {
             <div className="check">
               <input type="checkbox" required />
               <p className="politicas-luk-dos">
-                HE LEÍDO Y ACEPTO LAS{" "}
+                HE LEÍDO Y ACEPTO LAS
                 <span className="texto-azul">
                   CONDICIONES GENERALES DE CONTRATACIÓN
                 </span>

@@ -1,55 +1,17 @@
-// import { useEffect } from "react";
-// import storeZustand from "../../Components/zustand";
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import { doc, getDoc } from "firebase/firestore";
-// import { db } from "../../Components/Firebase-config";
-
-// export const UseUserData = () => {
-//   const { setAcceso, setMiDireccionCompleta } = storeZustand();
-
-//   useEffect(() => {
-//     const auth = getAuth();
-
-//     const obtenerMiDireccion = async (userId: string) => {
-//       try {
-//         const docRef = doc(db, "direccionesDeClientes", userId);
-//         const docSnap = await getDoc(docRef);
-
-//         let direcciones: any[] = [];
-//         if (docSnap.exists()) {
-//           direcciones = docSnap.data().direcciones || [];
-//         }
-
-//         console.log("direcciones", direcciones);
-//         setMiDireccionCompleta(direcciones);
-//       } catch (error) {
-//         console.error("Error obteniendo direcciones:", error);
-//       }
-//     };
-
-//     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
-//       if (user) {
-//         setAcceso(true);
-//         await obtenerMiDireccion(user.uid);
-//       } else {
-//         setAcceso(false);
-//         setMiDireccionCompleta([]);
-//       }
-//     });
-
-//     return () => {
-//       unsubscribeAuth();
-//     };
-//   }, [setAcceso, setMiDireccionCompleta]);
-// };
 import { useEffect } from "react";
-import storeZustand from "../../Components/zustand";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
+
+import storeZustand from "../../Components/zustand";
 import { db } from "../../Components/Firebase-config";
 
 export const UseUserData = () => {
-  const { setAcceso, setMiDireccionCompleta } = storeZustand();
+  const {
+    setAcceso,
+    setMiDireccionCompleta,
+    setEmailDeInicioDeSesion,
+    setDatosPersonaless,
+  } = storeZustand();
 
   useEffect(() => {
     const auth = getAuth();
@@ -62,8 +24,10 @@ export const UseUserData = () => {
       }
 
       setAcceso(true);
+      setEmailDeInicioDeSesion(user.email);
 
       const docRef = doc(db, "direccionesDeClientes", user.uid);
+      const docRefDatosPersonales = doc(db, "datosPersonales", user.uid);
 
       const unsubscribeSnapshot = onSnapshot(
         docRef,
@@ -80,13 +44,34 @@ export const UseUserData = () => {
         }
       );
 
+      const unsubscribeSnapshotDatosPersonales = onSnapshot(
+        docRefDatosPersonales,
+        (docSnap) => {
+          if (docSnap.exists()) {
+            const datosPersonales = docSnap.data() || [];
+            setDatosPersonaless(datosPersonales);
+          } else {
+            setDatosPersonaless([]);
+          }
+        },
+        (error) => {
+          console.error("❌ Error en listener de datos personales:", error);
+        }
+      );
+
       return () => {
         unsubscribeSnapshot();
+        unsubscribeSnapshotDatosPersonales();
       };
     });
 
     return () => {
       unsubscribeAuth();
     };
-  }, [setAcceso, setMiDireccionCompleta]);
+  }, [
+    setAcceso,
+    setMiDireccionCompleta,
+    setEmailDeInicioDeSesion,
+    setDatosPersonaless,
+  ]);
 };

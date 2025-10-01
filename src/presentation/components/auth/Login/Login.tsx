@@ -21,7 +21,7 @@ interface LocationState {
   email?: string;
 }
 
-const spanStyle = {
+const spanStyle: React.CSSProperties = {
   display: "inline-block",
   width: "14px",
   height: "14px",
@@ -44,8 +44,7 @@ const Login: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const { acceso, setAcceso, setEmailDeInicioDeSesion, setUsuarioEnSesion } =
-    storeZustand();
+  const { acceso, setAcceso, setEmailDeInicioDeSesion } = storeZustand();
 
   useEffect(() => {
     const auth = getAuth();
@@ -53,13 +52,12 @@ const Login: React.FC = () => {
       if (user) {
         setAcceso(true);
         setEmailDeInicioDeSesion(user.email);
-        setUsuarioEnSesion(user.email);
       } else {
         setAcceso(false);
       }
     });
     return unsubscribe;
-  }, [setAcceso, setEmailDeInicioDeSesion, setUsuarioEnSesion]);
+  }, [setAcceso, setEmailDeInicioDeSesion]);
 
   useEffect(() => {
     if (state?.registrationSuccess) {
@@ -105,12 +103,6 @@ const Login: React.FC = () => {
           "EmailDeInicioDeSesion",
           JSON.stringify(emailDeIngreso)
         );
-
-        const datosPersonales = {
-          email: formData.email,
-          password: formData.password,
-        };
-        // localStorage.setItem("datosMios", JSON.stringify(datosPersonales));
 
         setIsSubmitting(false);
       })

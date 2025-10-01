@@ -120,11 +120,29 @@ export const useCart = () => {
     [cart, updateCartInStorage]
   );
 
+  const clearCart = useCallback(async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      console.warn("Usuario no autenticado");
+      return;
+    }
+
+    const docRef = doc(db, "guardarEnCarrito", user.uid);
+    await setDoc(docRef, { carrito: [] }, { merge: true });
+
+    console.log(`Intento de vacio de carrito`);
+
+    updateCartInStorage([]);
+  }, [updateCartInStorage]);
+
   return {
     cart,
     cartTotals,
     increaseQuantity,
     decreaseQuantity,
     removeFromCart,
+    clearCart,
   };
 };

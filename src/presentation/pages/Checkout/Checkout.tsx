@@ -66,8 +66,7 @@ const Checkout: React.FC = () => {
   };
 
   const handlePurchase = () => {
-    window.location.reload();
-    window.location.href = "/checkout/fin";
+    navigate("/checkout/fin");
   };
 
   if (cart.length === 0) {

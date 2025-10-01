@@ -38,23 +38,6 @@ export const useDatosPersonales = () => {
       });
     } else {
       setMostrarBoton(false);
-
-      try {
-        const backup = localStorage.getItem("DatosPersonalesDelUsuario");
-        if (backup) {
-          const datos = JSON.parse(backup);
-          if (
-            datos &&
-            typeof datos === "object" &&
-            !Array.isArray(datos) &&
-            datos.email
-          ) {
-            setDatosPersonaless(datos);
-          }
-        }
-      } catch (error) {
-        console.error("❌ Error al verificar localStorage:", error);
-      }
     }
   }, [datosPersonaless, setDatosPersonaless]);
 
