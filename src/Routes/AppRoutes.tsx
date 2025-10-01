@@ -6,6 +6,11 @@ import MiddlewareRutasProtegidas from "../presentation/middleware/auth/rutasProt
 import AppLayout from "../presentation/Layouts/AppLayout";
 import PageLoader from "../presentation/components/UI/PageLoader/PageLoader";
 import { useProductStore } from "../store/useProductStore";
+import {
+  useInitializeCart,
+  useInitializeWishlist,
+  UseUserData,
+} from "../presentation/hooks";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
 const ItemListContainer = lazy(
@@ -67,8 +72,13 @@ const DetalleCompras = lazy(
 );
 
 const AppRoutes: React.FC = () => {
+  UseUserData();
+  useInitializeCart();
+  useInitializeWishlist();
   useScrollToTop();
-  const initializeProducts = useProductStore((state) => state.initializeProducts);
+  const initializeProducts = useProductStore(
+    (state) => state.initializeProducts
+  );
 
   useEffect(() => {
     initializeProducts();

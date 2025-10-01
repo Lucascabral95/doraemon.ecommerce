@@ -1,8 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import Articulos from "../../Json/Articulos.json";
-import storeZustand from "../../Components/zustand";
 import { Articulo } from "../../infrastructure/Interfaces";
+import { getAuth } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../../Components/Firebase-config";
+import storeZustand from "../../Components/zustand";
+import { useWishListFirestore } from "./useWishListFirestore";
 
 export interface CartItem extends Articulo {
   cantidad: number;
@@ -13,6 +17,9 @@ export const useWishlistOriginal = () => {
   const [articulosSeleccionados, setArticulosSeleccionados] = useState<
     Articulo[]
   >([]);
+
+  const { addToWishlistFirestore, removeFromWishlistFirestore } =
+    useWishListFirestore({ wishList });
 
   const precioTotalWishList = wishList.reduce(
     (total: number, producto: Articulo) => {
@@ -60,32 +67,89 @@ export const useWishlistOriginal = () => {
     [cart, setCart]
   );
 
+  // const eliminarDelWish = useCallback(
+  //   (id: number) => {
+  //     const productoAEliminar = wishList.find((p: Articulo) => p.id === id);
+
+  //     if (!productoAEliminar) {
+  //       console.warn(`Producto con ID ${id} no encontrado en wishlist`);
+  //       return;
+  //     }
+
+  //     const index = wishList.findIndex((p: Articulo) => p.id === id);
+  //     if (index !== -1) {
+  //       const nuevaLista = [...wishList];
+  //       nuevaLista.splice(index, 1);
+  //       setWishList(nuevaLista);
+  //       localStorage.setItem("WishList", JSON.stringify(nuevaLista));
+
+  //       setArticulosSeleccionados((prev) =>
+  //         prev.filter((item) => item.id !== id)
+  //       );
+
+  //       console.log(
+  //         `✅ Producto ${productoAEliminar.texto} eliminado de wishlist`
+  //       );
+  //     }
+  //   },
+  //   [wishList, setWishList]
+  // );
   const eliminarDelWish = useCallback(
-    (id: number) => {
-      const productoAEliminar = wishList.find((p: Articulo) => p.id === id);
+    async (id: number) => {
+      try {
+        const productoAEliminar = wishList.find((p: Articulo) => p.id === id);
 
-      if (!productoAEliminar) {
-        console.warn(`Producto con ID ${id} no encontrado en wishlist`);
-        return;
-      }
-
-      const index = wishList.findIndex((p: Articulo) => p.id === id);
-      if (index !== -1) {
-        const nuevaLista = [...wishList];
-        nuevaLista.splice(index, 1);
-        setWishList(nuevaLista);
-        localStorage.setItem("WishList", JSON.stringify(nuevaLista));
+        if (!productoAEliminar) {
+          console.warn(`Producto con ID ${id} no encontrado en wishlist`);
+          return;
+        }
 
         setArticulosSeleccionados((prev) =>
           prev.filter((item) => item.id !== id)
         );
-
-        console.log(
-          `✅ Producto ${productoAEliminar.texto} eliminado de wishlist`
+        const nuevaListaLocalStorage = wishList.filter(
+          (p: Articulo) => p.id !== id
         );
+        setWishList(nuevaListaLocalStorage);
+        localStorage.setItem(
+          "WishList",
+          JSON.stringify(nuevaListaLocalStorage)
+        );
+
+        // Eliminar producto de Firestore
+        const auth = getAuth();
+
+        if (!auth.currentUser) {
+          console.log("No hay usuario autenticado");
+          return;
+        }
+
+        const docRef = doc(db, "listaDeDeseados", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (!docSnap.exists()) {
+          return;
+        }
+
+        const currentWishlist: Articulo[] =
+          docSnap.data().listaDeDeseados || [];
+
+        const nuevaListaFirestore = currentWishlist.filter(
+          (p: Articulo) => p.id !== id
+        );
+
+        await setDoc(
+          docRef,
+          {
+            listaDeDeseados: nuevaListaFirestore,
+          },
+          { merge: true }
+        );
+      } catch (error) {
+        console.error("Error eliminando producto:", error);
       }
     },
-    [wishList, setWishList]
+    [wishList, setWishList, setArticulosSeleccionados]
   );
 
   const handleCheckBox = useCallback(
@@ -106,17 +170,15 @@ export const useWishlistOriginal = () => {
         setArticulosSeleccionados((prev) =>
           prev.filter((item) => item.id !== id)
         );
-        console.log(`🔘 Producto ${buscarProducto.texto} deseleccionado`);
       } else {
         setArticulosSeleccionados((prev) => [...prev, buscarProducto]);
-        console.log(`✅ Producto ${buscarProducto.texto} seleccionado`);
       }
     },
     [wishList, articulosSeleccionados]
   );
 
   const sacarDelWish = useCallback(
-    (selectedValue: string) => {
+    async (selectedValue: string) => {
       if (articulosSeleccionados.length === 0) {
         console.warn("No hay artículos seleccionados para la acción grupal");
         return;
@@ -132,11 +194,10 @@ export const useWishlistOriginal = () => {
 
         setWishList(updatedWishList);
         localStorage.setItem("WishList", JSON.stringify(updatedWishList));
+        //
+        await removeFromWishlistFirestore(updatedWishList);
+        //
         setArticulosSeleccionados([]);
-
-        console.log(
-          `🗑️ ${idsAEliminar.length} productos eliminados de wishlist`
-        );
       } else if (selectedValue === "agregar") {
         let productosAgregados = 0;
         let productosConStockInsuficiente = 0;
@@ -177,13 +238,6 @@ export const useWishlistOriginal = () => {
           JSON.stringify(carritoActualizado)
         );
         setArticulosSeleccionados([]);
-
-        console.log(`🛒 ${productosAgregados} productos agregados al carrito`);
-        if (productosConStockInsuficiente > 0) {
-          console.warn(
-            `⚠️ ${productosConStockInsuficiente} productos no se pudieron agregar por falta de stock`
-          );
-        }
       }
     },
     [articulosSeleccionados, wishList, cart, setWishList, setCart]
@@ -212,14 +266,14 @@ export const useWishlistOriginal = () => {
     };
   }, [wishList, articulosSeleccionados]);
 
-  useEffect(() => {
-    console.log("📊 Wishlist Stats:", {
-      totalWishlist: wishList.length,
-      totalSeleccionados: articulosSeleccionados.length,
-      precioTotal: precioTotalWishList.toFixed(2),
-      categorias: getCategorias(),
-    });
-  }, [wishList, articulosSeleccionados, precioTotalWishList, getCategorias]);
+  // useEffect(() => {
+  //   console.log("📊 Wishlist Stats:", {
+  //     totalWishlist: wishList.length,
+  //     totalSeleccionados: articulosSeleccionados.length,
+  //     precioTotal: precioTotalWishList.toFixed(2),
+  //     categorias: getCategorias(),
+  //   });
+  // }, [wishList, articulosSeleccionados, precioTotalWishList, getCategorias]);
 
   return {
     wishList,

@@ -55,7 +55,6 @@ const Login: React.FC = () => {
         setEmailDeInicioDeSesion(user.email);
         setUsuarioEnSesion(user.email);
       } else {
-        console.log(`❌ Firebase Auth: Usuario no logueado`);
         setAcceso(false);
       }
     });
@@ -64,14 +63,6 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (state?.registrationSuccess) {
-      Swal.fire({
-        title: "¡Registro exitoso!",
-        text: "Ahora puedes iniciar sesión con tu cuenta",
-        icon: "success",
-        timer: 3000,
-        showConfirmButton: true,
-        imageUrl: "/img/doraemon-feliz.gif",
-      });
       navigate(location.pathname, { replace: true, state: {} });
     }
   }, [state, navigate, location.pathname]);
@@ -108,11 +99,7 @@ const Login: React.FC = () => {
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, formData.email, formData.password)
-      .then((userCredential) => {
-        console.log("✅ Login exitoso:", userCredential.user.email);
-
-        localStorage.setItem("LogueoDeSesion", "true");
-
+      .then(() => {
         const emailDeIngreso = { email: formData.email };
         localStorage.setItem(
           "EmailDeInicioDeSesion",
@@ -123,12 +110,11 @@ const Login: React.FC = () => {
           email: formData.email,
           password: formData.password,
         };
-        localStorage.setItem("datosMios", JSON.stringify(datosPersonales));
+        // localStorage.setItem("datosMios", JSON.stringify(datosPersonales));
 
         setIsSubmitting(false);
       })
       .catch((error) => {
-        console.error("❌ Error en login:", error);
         setIsSubmitting(false);
 
         const errorCode = error.code;

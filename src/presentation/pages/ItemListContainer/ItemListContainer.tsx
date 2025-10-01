@@ -55,7 +55,7 @@ const ItemListContainer: React.FC = () => {
   });
 
   const { addToCart, cartItemsCount } = useProductCart({
-    products: sortedProducts,
+    products: sortedProducts as any,
   });
 
   const displayedProducts = useMemo(

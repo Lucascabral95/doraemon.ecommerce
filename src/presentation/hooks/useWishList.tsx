@@ -1,12 +1,19 @@
 import { useCallback } from "react";
 import storeZustand from "../../Components/zustand";
 import { Product } from "../../infrastructure/types/product.types";
+import { getAuth } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../Components/Firebase-config";
+
+import { useWishListFirestore } from "./useWishListFirestore";
 
 export const useWishlist = () => {
   const { wishList, setWishList } = storeZustand();
+  const { addToWishlistFirestore, removeFromWishlistFirestore } =
+    useWishListFirestore({ wishList });
 
   const addToWishlist = useCallback(
-    (product: Product): boolean => {
+    async (product: Product) => {
       try {
         const isAlreadyInWishlist = wishList.some(
           (item: Product) => item.id === product.id
@@ -19,7 +26,21 @@ export const useWishlist = () => {
 
         const updatedWishlist = [...wishList, product];
         setWishList(updatedWishlist);
-        localStorage.setItem("WishList", JSON.stringify(updatedWishlist));
+        // localStorage.setItem("WishList", JSON.stringify(updatedWishlist)); // Ya no se guarda mas en el localStorage
+
+        // Sincronizar con Firestore
+        // const auth = getAuth();
+        // if (!auth.currentUser) {
+        //   return false;
+        // }
+
+        // const docRef = doc(db, "listaDeDeseados", auth.currentUser.uid);
+        // await setDoc(
+        //   docRef,
+        //   { listaDeDeseados: updatedWishlist },
+        //   { merge: true }
+        // );
+        await addToWishlistFirestore(product);
 
         return true;
       } catch (error) {
@@ -29,15 +50,18 @@ export const useWishlist = () => {
     },
     [wishList, setWishList]
   );
-
+  ////
+  ////
+  ////
   const removeFromWishlist = useCallback(
-    (productId: number): boolean => {
+    async (productId: number): Promise<boolean> => {
       try {
         const updatedWishlist = wishList.filter(
           (item: Product) => item.id !== productId
         );
         setWishList(updatedWishlist);
-        localStorage.setItem("WishList", JSON.stringify(updatedWishlist));
+        // localStorage.setItem("WishList", JSON.stringify(updatedWishlist)); // Ya no se guarda mas en el localStorage
+        await removeFromWishlistFirestore(productId);
 
         return true;
       } catch (error) {
@@ -48,8 +72,13 @@ export const useWishlist = () => {
     [wishList, setWishList]
   );
 
+  ///////
+  ///////
+  ///////
+  ///////
+
   const toggleWishlist = useCallback(
-    (product: Product): boolean => {
+    async (product: Product) => {
       const isInWishlist = wishList.some(
         (item: Product) => item.id === product.id
       );
@@ -64,7 +93,7 @@ export const useWishlist = () => {
   );
 
   const isInWishlist = useCallback(
-    (productId: number): boolean => {
+    (productId: number) => {
       return wishList.some((item: Product) => item.id === productId);
     },
     [wishList]

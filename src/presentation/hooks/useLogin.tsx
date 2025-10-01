@@ -36,15 +36,11 @@ export const useLogin = ({ zustandStore }: UseLoginProps) => {
 
       if (authService.isReady()) {
         setIsServiceReady(true);
-        console.log("✅ Firebase Auth Service ready");
 
-        // Configurar listener de auth state
         const unsubscribe = authService.onAuthStateChanged(
           (user: FirebaseAuthUser | null) => {
             const isAuthenticated = !!user;
             setAcceso(isAuthenticated);
-
-            console.log("🔄 Auth state updated:", { isAuthenticated });
           }
         );
 
@@ -115,23 +111,16 @@ export const useLogin = ({ zustandStore }: UseLoginProps) => {
       setFormState((prev) => ({ ...prev, isSubmitting: true }));
 
       try {
-        console.log("🔄 Starting login process...");
-
         const authService = getFirebaseAuthService();
 
-        // Autenticar con Firebase
         const user = await authService.signIn({
           email: formState.email,
           password: formState.password,
         });
 
-        console.log("✅ Authentication successful");
-
-        // ✅ Guardar datos SEGUROS (sin contraseña)
         LoginStorageManager.saveAuthData(user.email!);
         setEmailDeInicioDeSesion(user.email!);
 
-        // Limpiar formulario
         setFormState({
           email: "",
           password: "",
@@ -139,11 +128,6 @@ export const useLogin = ({ zustandStore }: UseLoginProps) => {
           errors: {},
         });
       } catch (error: any) {
-        console.error("❌ Login failed:", {
-          hasError: true,
-          timestamp: new Date().toISOString(),
-        });
-
         showErrorAlert();
         setFormState((prev) => ({ ...prev, isSubmitting: false }));
       }

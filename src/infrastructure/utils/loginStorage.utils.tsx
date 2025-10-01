@@ -10,8 +10,6 @@ export class LoginStorageManager {
         LOGIN_CONFIG.storage.userEmail,
         JSON.stringify(emailData)
       );
-
-      console.log("✅ Auth data saved securely");
     } catch (error) {
       console.error("Error saving auth data:", error);
     }
@@ -20,10 +18,7 @@ export class LoginStorageManager {
   static clearAuthData(): void {
     localStorage.removeItem(LOGIN_CONFIG.storage.authStatus);
     localStorage.removeItem(LOGIN_CONFIG.storage.userEmail);
-
-    localStorage.removeItem("datosMios");
-
-    console.log("✅ Auth data cleared");
+    // localStorage.removeItem("datosMios");
   }
 
   static hasActiveSession(): boolean {

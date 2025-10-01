@@ -441,7 +441,7 @@ El store global de Zustand maneja todo el estado de la aplicación:
 - **`setCompras(data)`**: Actualiza historial de compras
 - **`setUsuarioEnSesion(email)`**: Establece usuario activo
 - **`reset()`**: Resetea todo el estado
-- **`logoutLocal()`**: Cierra sesión y limpia localStorage
+- **`logoutLocal()`**: Cierra sesión y te desloguea de Firebase Auth
 
 #### Persistencia
 

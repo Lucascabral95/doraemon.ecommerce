@@ -16,3 +16,7 @@ export * from "./useDatosPersonales";
 export * from "./useDetalleCompras";
 export * from "./useCurrentYear";
 export * from "./useScrollLock";
+export * from "./useInitializeWishlist";
+export * from "./useInitializeCart";
+export * from "./useCartFirestore";
+export * from "./UseUserData";

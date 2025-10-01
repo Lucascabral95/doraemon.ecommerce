@@ -1,21 +1,20 @@
 // import { create } from "zustand";
+// import { getAuth } from "firebase/auth";
 
 // const initialState = {
-//   cart: JSON.parse(localStorage.getItem("carritoDoraemon")) || [],
+//   cart: [],
 //   cantidadArticulosCarrito: [],
+
 //   acceso: (() => {
-//     try {
-//       const stored = localStorage.getItem("LogueoDeSesion");
-//       if (stored) return JSON.parse(stored);
-//     } catch (e) {
-//       console.error("Error reading auth:", e);
-//     }
-//     return false;
+//     const auth = getAuth();
+//     const user = auth.currentUser;
+//     return !!user;
 //   })(),
+
 //   datosDeSesion: JSON.parse(localStorage.getItem("datosMios")) || {},
 //   miDireccionCompleta: JSON.parse(localStorage.getItem("miDireccionCompleta")) || [],
 //   activeModal: false,
-//   wishList: JSON.parse(localStorage.getItem("WishList")) || [],
+//   wishList: [],
 //   cantidadArticulossss: 0,
 //   compras: [],
 //   datosPersonaless: (() => {
@@ -41,22 +40,12 @@
 
 //   setCart: (newCart) => {
 //     set({ cart: newCart });
-//     try {
-//       localStorage.setItem("carritoDoraemon", JSON.stringify(newCart));
-//     } catch {
-//       console.error("Error al guardar carritoDoraemon");
-//     }
 //   },
 
 //   setCantidadArticulosCarrito: (cantidad) => set({ cantidadArticulosCarrito: cantidad }),
 
 //   setAcceso: (newState) => {
 //     set({ acceso: newState });
-//     try {
-//       localStorage.setItem("LogueoDeSesion", JSON.stringify(newState));
-//     } catch {
-//       console.error("Error al guardar LogueoDeSesion");
-//     }
 //   },
 
 //   setDatosPersonales: (data) => {
@@ -79,13 +68,9 @@
 
 //   setActiveModal: (state) => set({ activeModal: state }),
 
-//   setWishList: (data) => {
+//   // La lista de deseado se lee directamente desde Firestore
+//   setWishList: async (data) => {
 //     set({ wishList: data });
-//     try {
-//       localStorage.setItem("WishList", JSON.stringify(data));
-//     } catch {
-//       console.error("Error al guardar WishList");
-//     }
 //   },
 
 //   setCantidadArticulossss: (value) => set({ cantidadArticulossss: value }),
@@ -131,69 +116,33 @@
 //     }
 //   },
 
-//   // Reset completo al estado inicial (recomendada)
 //   reset: () => {
-//     // No sobreescribimos funciones; solo estado
 //     set((state) => {
 //       const next = { ...state, ...initialState };
-//       // Mantener flags que dependan de hidratación si fuese el caso
 //       return next;
 //     }, true);
-//   },
-
-//   // Logout centralizado: limpia storage + resetea flags
-//   logoutLocal: () => {
-//     try {
-//       localStorage.setItem("LogueoDeSesion", JSON.stringify(false));
-//       localStorage.removeItem("datosMios");
-//       localStorage.removeItem("carritoDoraemon");
-//       // Mantener otras claves si son necesarias; añadir aquí si hace falta:
-//       // localStorage.removeItem("WishList"); etc.
-//     } catch {
-//       console.error("Error al limpiar storage");
-//     }
-//     set({
-//       acceso: false,
-//       datosDeSesion: {},
-//       usuarioEnSesion: "",
-//       cart: [],
-//       cantidadArticulosCarrito: [],
-//       wishList: [],
-//       compras: [],
-//       // mantener otras si aplica
-//     });
 //   },
 // }));
 
 // export default storeZustand;
-
-///////
-///////
-///////
-///////
-///////
-///////
-///////
-///////
-///////
 import { create } from "zustand";
+import { getAuth } from "firebase/auth";
 
 const initialState = {
-  cart: JSON.parse(localStorage.getItem("carritoDoraemon")) || [],
+  cart: [],
   cantidadArticulosCarrito: [],
+
   acceso: (() => {
-    try {
-      const stored = localStorage.getItem("LogueoDeSesion");
-      if (stored) return JSON.parse(stored);
-    } catch (e) {
-      console.error("Error reading auth:", e);
-    }
-    return false;
+    const auth = getAuth();
+    const user = auth.currentUser;
+    return !!user;
   })(),
-  datosDeSesion: JSON.parse(localStorage.getItem("datosMios")) || {},
-  miDireccionCompleta: JSON.parse(localStorage.getItem("miDireccionCompleta")) || [],
+
+  //miDireccionCompleta: JSON.parse(localStorage.getItem("miDireccionCompleta")) || [],
+  miDireccionCompleta: [],
+  //
   activeModal: false,
-  wishList: JSON.parse(localStorage.getItem("WishList")) || [],
+  wishList: [],
   cantidadArticulossss: 0,
   compras: [],
   datosPersonaless: (() => {
@@ -219,51 +168,32 @@ const storeZustand = create((set, get) => ({
 
   setCart: (newCart) => {
     set({ cart: newCart });
-    try {
-      localStorage.setItem("carritoDoraemon", JSON.stringify(newCart));
-    } catch {
-      console.error("Error al guardar carritoDoraemon");
-    }
   },
 
   setCantidadArticulosCarrito: (cantidad) => set({ cantidadArticulosCarrito: cantidad }),
 
   setAcceso: (newState) => {
     set({ acceso: newState });
-    try {
-      localStorage.setItem("LogueoDeSesion", JSON.stringify(newState));
-    } catch {
-      console.error("Error al guardar LogueoDeSesion");
-    }
   },
 
-  setDatosPersonales: (data) => {
-    set({ datosDeSesion: data });
-    try {
-      localStorage.setItem("datosMios", JSON.stringify(data));
-    } catch {
-      console.error("Error al guardar datosMios");
-    }
-  },
-
+  // setMiDireccionCompleta: (direction) => {
+  //   set({ miDireccionCompleta: direction });
+  //   try {
+  //     localStorage.setItem("miDireccionCompleta", JSON.stringify(direction));
+  //   } catch {
+  //     console.error("Error al guardar miDireccionCompleta");
+  //   }
+  // },
   setMiDireccionCompleta: (direction) => {
     set({ miDireccionCompleta: direction });
-    try {
-      localStorage.setItem("miDireccionCompleta", JSON.stringify(direction));
-    } catch {
-      console.error("Error al guardar miDireccionCompleta");
-    }
   },
+  //
 
   setActiveModal: (state) => set({ activeModal: state }),
 
-  setWishList: (data) => {
+  // La lista de deseado se lee directamente desde Firestore
+  setWishList: async (data) => {
     set({ wishList: data });
-    try {
-      localStorage.setItem("WishList", JSON.stringify(data));
-    } catch {
-      console.error("Error al guardar WishList");
-    }
   },
 
   setCantidadArticulossss: (value) => set({ cantidadArticulossss: value }),
@@ -314,25 +244,6 @@ const storeZustand = create((set, get) => ({
       const next = { ...state, ...initialState };
       return next;
     }, true);
-  },
-
-  logoutLocal: () => {
-    try {
-      localStorage.setItem("LogueoDeSesion", JSON.stringify(false));
-      localStorage.removeItem("datosMios");
-      localStorage.removeItem("carritoDoraemon");
-    } catch {
-      console.error("Error al limpiar storage");
-    }
-    set({
-      acceso: false,
-      datosDeSesion: {},
-      usuarioEnSesion: "",
-      cart: [],
-      cantidadArticulosCarrito: [],
-      wishList: [],
-      compras: [],
-    });
   },
 }));
 

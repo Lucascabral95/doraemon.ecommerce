@@ -6,7 +6,7 @@ import storeZustand from "../../Components/zustand";
 export function useLogout() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const logoutLocal = storeZustand((s) => s.logoutLocal);
+  //const logoutLocal = storeZustand((s) => s.logoutLocal);
 
   const logout = useCallback(async () => {
     if (loading) return;
@@ -15,14 +15,13 @@ export function useLogout() {
     try {
       const auth = getAuth();
       await signOut(auth);
-      logoutLocal();
+      //logoutLocal();
     } catch (e: unknown) {
-      console.error("Error en cierre de sesión:", e);
       setError(e as string);
     } finally {
       setLoading(false);
     }
-  }, [loading, logoutLocal]);
+  }, [loading]);
 
   return { logout, loading, error };
 }

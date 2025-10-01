@@ -111,10 +111,9 @@ export const useCheckoutFin = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        localStorage.setItem("LogueoDeSesion", "false");
-        localStorage.removeItem("datosMios");
-        localStorage.removeItem("carritoDoraemon");
-        console.log("Deslogueo exitoso.");
+        // localStorage.setItem("LogueoDeSesion", "false");
+        // localStorage.removeItem("datosMios");
+        // localStorage.removeItem("carritoDoraemon");
       })
       .catch((error) => {
         console.log("Error en cierre de sesión:", error.message);

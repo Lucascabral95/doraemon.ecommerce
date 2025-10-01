@@ -1,4 +1,5 @@
 export interface DireccionCompleta {
+  id?: number;
   alias: string;
   nombre: string;
   apellido: string;

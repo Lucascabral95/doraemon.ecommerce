@@ -10,6 +10,7 @@ import {
 
 interface AddressFormProps {
   direccionCompleta: {
+    id?: number;
     alias: string;
     nombre: string;
     apellido: string;

@@ -97,7 +97,7 @@ const Checkout: React.FC = () => {
 
           <div className="contenedor-compra">
             <div className="contenedor-articulos">
-              {cart.map((item, index) => (
+              {cart.map((item: any, index: number) => (
                 <CartItem
                   key={index}
                   item={item}

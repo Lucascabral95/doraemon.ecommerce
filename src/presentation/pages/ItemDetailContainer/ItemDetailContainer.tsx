@@ -13,7 +13,6 @@ import { ImageGallery } from "../../components/product/ImageGallery/ImageGallery
 import { ImageZoomModal } from "../../components/product/ImageZoomModal/ImageZoomModal";
 import { ProductInfoPanel } from "../../components/product/ProductInfoPanel/ProductInfoPanel";
 import { QuantitySelector } from "../../components/product/QuantitySelector/QuantitySelector";
-
 import { WishlistButton } from "../../components/product/WishListButton/WishListButton";
 import { RelatedProducts } from "../../components/product/RelatedProducts/RelatedProducts";
 import { ProductAdditionalInfo } from "../../components/product/ProductAdditionalInfo/ProductAdditionalInfo";

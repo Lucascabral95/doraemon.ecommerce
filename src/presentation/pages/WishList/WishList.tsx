@@ -4,10 +4,9 @@ import { FaTimesCircle } from "react-icons/fa";
 
 import { useWishlistOriginal } from "../../hooks";
 import CuerpoVacio from "../../../Components/Login/LoginSecciones/CuerpoVacio";
-// import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import { Articulo } from "../../../infrastructure/Interfaces";
-import "./Wishlist.scss";
 import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
+import "./Wishlist.scss";
 
 const Wishlist: React.FC = () => {
   const {
@@ -20,9 +19,6 @@ const Wishlist: React.FC = () => {
     sacarDelWish,
     isProductSelected,
   } = useWishlistOriginal();
-
-  const verdad = wishList.length === "";
-  console.log(`Es true or false el contenido del WishList: ${verdad}`);
 
   return (
     <>

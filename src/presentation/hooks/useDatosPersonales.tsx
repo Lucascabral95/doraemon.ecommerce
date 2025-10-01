@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
+import { getAuth } from "firebase/auth";
+import Swal from "sweetalert2";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
+
 import storeZustand from "../../Components/zustand";
 import { DatosPersonalesForm } from "../../infrastructure/constants/DatosPersonalesForm";
+import { db } from "../../Components/Firebase-config";
 
 export const useDatosPersonales = () => {
   const { datosPersonaless, setDatosPersonaless } = storeZustand();
@@ -16,13 +21,6 @@ export const useDatosPersonales = () => {
   const [modoEdicion, setModoEdicion] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("🔍 Verificando datos en store:", datosPersonaless);
-    console.log(
-      "🔍 Tipo de datos:",
-      typeof datosPersonaless,
-      Array.isArray(datosPersonaless)
-    );
-
     const esObjetoValido =
       datosPersonaless &&
       typeof datosPersonaless === "object" &&
@@ -31,7 +29,6 @@ export const useDatosPersonales = () => {
       datosPersonaless.email !== "";
 
     if (esObjetoValido) {
-      console.log("✅ Datos válidos encontrados, cargando...");
       setMostrarBoton(true);
       setDatosPersonales({
         nombre: datosPersonaless.nombre || "",
@@ -40,7 +37,6 @@ export const useDatosPersonales = () => {
         edad: datosPersonaless.edad || "",
       });
     } else {
-      console.log("📭 No hay datos válidos");
       setMostrarBoton(false);
 
       try {
@@ -53,7 +49,6 @@ export const useDatosPersonales = () => {
             !Array.isArray(datos) &&
             datos.email
           ) {
-            console.log("🔄 Sincronizando desde localStorage:", datos);
             setDatosPersonaless(datos);
           }
         }
@@ -65,7 +60,6 @@ export const useDatosPersonales = () => {
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(`🔄 Cambiando ${name}:`, value);
     setDatosPersonales((prevState) => ({
       ...prevState,
       [name]: value,
@@ -73,8 +67,6 @@ export const useDatosPersonales = () => {
   }, []);
 
   const validateData = useCallback((data: DatosPersonalesForm) => {
-    console.log("🔍 Validando datos:", data);
-
     if (!data.nombre || !data.apellido || !data.email || !data.edad) {
       throw new Error("Por favor completa todos los campos");
     }
@@ -89,42 +81,60 @@ export const useDatosPersonales = () => {
       throw new Error("Por favor ingresa una edad válida (1-100 años)");
     }
 
-    console.log("✅ Datos válidos");
     return true;
   }, []);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
-
-      console.log("🚀 Guardando datos:", datosPersonales);
 
       try {
         validateData(datosPersonales);
-
         setDatosPersonaless(datosPersonales);
 
-        console.log("✅ Datos guardados exitosamente");
+        /// Guardar datos del usuario en Firestore
+        const auth = getAuth();
+        const user = auth.currentUser;
 
+        if (!user) {
+          Swal.fire({
+            title: "No hay usuario autenticado",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          return;
+        }
+
+        const docRef = doc(db, "datosPersonales", user.uid);
+        await setDoc(docRef, datosPersonales);
+        ///
         setMostrarBoton(true);
         setModoEdicion(false);
 
-        alert("¡Datos guardados exitosamente!");
+        Swal.fire({
+          title: "¡Datos guardados exitosamente!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } catch (error) {
-        console.error("❌ Error validando datos:", error);
-        alert("Por favor completa todos los campos correctamente");
+        Swal.fire({
+          title: "Por favor completa todos los campos correctamente",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     },
     [datosPersonales, setDatosPersonaless, validateData]
   );
 
   const actualizarDatos = useCallback(() => {
-    console.log("🔄 Activando modo edición");
     setModoEdicion(true);
   }, []);
 
   const cancelarEdicion = useCallback(() => {
-    console.log("❌ Cancelando edición");
     setModoEdicion(false);
 
     if (
@@ -141,8 +151,7 @@ export const useDatosPersonales = () => {
     }
   }, [datosPersonaless]);
 
-  const limpiarDatos = useCallback(() => {
-    console.log("🗑️ Limpiando datos");
+  const limpiarDatos = useCallback(async () => {
     setDatosPersonaless({});
     setDatosPersonales({
       nombre: "",
@@ -150,9 +159,30 @@ export const useDatosPersonales = () => {
       email: "",
       edad: "",
     });
+    /// Eliminar datos del usuario en Firestore
+    const { currentUser } = getAuth();
+
+    if (!currentUser) {
+      Swal.fire({
+        title: "No hay usuario autenticado",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+
+    const docRef = doc(db, "datosPersonales", currentUser.uid);
+    await deleteDoc(docRef);
+    ///
     setMostrarBoton(false);
     setModoEdicion(false);
-    alert("Datos eliminados exitosamente");
+    Swal.fire({
+      title: "Datos eliminados exitosamente",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }, [setDatosPersonaless]);
 
   const getInputValues = useCallback(() => {

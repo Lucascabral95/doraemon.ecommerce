@@ -1,6 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { toast } from "sonner";
 import storeZustand from "../../Components/zustand";
+import { getAuth } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../Components/Firebase-config";
 
 interface CartItem {
   id: number;
@@ -12,29 +15,22 @@ interface CartItem {
 }
 
 export const useCart = () => {
-  const { cantidadArticulossss, setCantidadArticulossss } = storeZustand();
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const { cantidadArticulossss, setCantidadArticulossss, cart } =
+    storeZustand();
 
-  useEffect(() => {
-    const storedCart = localStorage.getItem("carritoDoraemon");
-    if (storedCart) {
-      try {
-        const parsedCart = JSON.parse(storedCart);
-        setCart(Array.isArray(parsedCart) ? parsedCart : []);
-      } catch (error) {
-        console.error("Error parsing cart:", error);
-        setCart([]);
-        toast.error("Error al cargar el carrito", {
-          description: "No se pudieron recuperar los productos guardados",
-        });
-      }
-    }
-  }, [cantidadArticulossss]);
-
-  const updateCartInStorage = useCallback((updatedCart: CartItem[]) => {
+  const updateCartInStorage = useCallback(async (updatedCart: CartItem[]) => {
     try {
-      localStorage.setItem("carritoDoraemon", JSON.stringify(updatedCart));
-      setCart(updatedCart);
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.warn("Usuario no autenticado");
+        return;
+      }
+
+      const docRef = doc(db, "guardarEnCarrito", user.uid);
+
+      await setDoc(docRef, { carrito: updatedCart }, { merge: true });
     } catch (error) {
       console.error("Error saving cart:", error);
       toast.error("Error al actualizar el carrito", {
@@ -44,8 +40,14 @@ export const useCart = () => {
   }, []);
 
   const cartTotals = {
-    total: cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0),
-    itemCount: cart.reduce((acc, item) => acc + item.cantidad, 0),
+    total: cart.reduce(
+      (acc: number, item: CartItem) => acc + item.precio * item.cantidad,
+      0
+    ),
+    itemCount: cart.reduce(
+      (acc: number, item: CartItem) => acc + item.cantidad,
+      0
+    ),
   };
 
   useEffect(() => {
@@ -54,9 +56,9 @@ export const useCart = () => {
 
   const increaseQuantity = useCallback(
     (id: number) => {
-      const item = cart.find((item) => item.id === id);
+      const item = cart.find((item: CartItem) => item.id === id);
 
-      const updatedCart = cart.map((item) =>
+      const updatedCart = cart.map((item: CartItem) =>
         item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
       );
       updateCartInStorage(updatedCart);
@@ -72,9 +74,9 @@ export const useCart = () => {
 
   const decreaseQuantity = useCallback(
     (id: number) => {
-      const item = cart.find((item) => item.id === id);
+      const item = cart.find((item: CartItem) => item.id === id);
 
-      const updatedCart = cart.map((item) =>
+      const updatedCart = cart.map((item: CartItem) =>
         item.id === id && item.cantidad > 1
           ? { ...item, cantidad: item.cantidad - 1 }
           : item
@@ -92,8 +94,8 @@ export const useCart = () => {
 
   const removeFromCart = useCallback(
     (id: number) => {
-      const itemToRemove = cart.find((item) => item.id === id);
-      const updatedCart = cart.filter((item) => item.id !== id);
+      const itemToRemove = cart.find((item: CartItem) => item.id === id);
+      const updatedCart = cart.filter((item: CartItem) => item.id !== id);
 
       updateCartInStorage(updatedCart);
 
