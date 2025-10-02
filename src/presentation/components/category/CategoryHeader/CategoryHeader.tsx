@@ -14,7 +14,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
   <div className="intro-categoria">
     <div className="intro-titulo">
       <div className="titulo">
-        <h2>{title}</h2>
+        <h2 lang="es">{title}</h2>
       </div>
       <div className="descripcion">
         <span>{description}</span>

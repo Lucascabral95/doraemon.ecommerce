@@ -11,6 +11,8 @@ const initialState = {
     return !!user;
   })(),
 
+  emailFirestoreAuth: '',
+
   miDireccionCompleta: [],
   activeModal: false,
   wishList: [],
@@ -55,6 +57,10 @@ const storeZustand = create((set) => ({
 
   setEmailDeInicioDeSesion: (data) => {
     set({ EmailDeInicioDeSesion: data });
+  },
+
+  setEmailFirestoreAuth: (data) => {
+    set({ emailFirestoreAuth: data });
   },
 
   reset: () => {

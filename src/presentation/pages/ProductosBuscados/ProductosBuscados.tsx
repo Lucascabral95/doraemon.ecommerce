@@ -54,7 +54,7 @@ const ProductosBuscados: React.FC = () => {
   ];
 
   const handleAddToCart = (productId: number): void => {
-    addToCart(productId.toString());
+    addToCart(productId.toString(), 1);
   };
 
   if (isLoading) {

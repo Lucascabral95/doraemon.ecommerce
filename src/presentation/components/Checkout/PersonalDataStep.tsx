@@ -2,41 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 interface PersonalDataStepProps {
-  datosPersonaless: any;
   onLogout: (e: React.MouseEvent) => void;
   onContinue: () => void;
+  emailFirestoreAuth: string;
 }
 
 export const PersonalDataStep: React.FC<PersonalDataStepProps> = ({
-  datosPersonaless,
   onLogout,
   onContinue,
+  emailFirestoreAuth,
 }) => {
   return (
     <div className="contenido-datos">
-      {datosPersonaless.email === "" ? (
-        <p className="texto-contenido-datos">
-          Completa tus datos personales:
-          <Link
-            to="/datos/personales"
-            className="texto-contenido-datos azul"
-            style={{ marginLeft: "5px" }}
-          >
-            en este link
-          </Link>
-          .
-        </p>
-      ) : (
-        <p className="texto-contenido-datos">
-          Conectado como{" "}
-          <Link to="/datos/personales" className="texto-contenido-datos azul">
-            {datosPersonaless?.nombre} {datosPersonaless?.apellido}
-          </Link>
-        </p>
-      )}
       <p className="texto-contenido-datos">
-        ¿No eres tú?{" "}
-        <span onClick={onLogout} className="texto-contenido-datos azul">
+        Conectado como
+        <Link
+          to="/datos/personales"
+          className="texto-contenido-datos azul"
+          style={{ marginLeft: "5px" }}
+        >
+          {emailFirestoreAuth}
+        </Link>
+      </p>
+
+      <p className="texto-contenido-datos">
+        ¿No eres tú?
+        <span
+          onClick={onLogout}
+          className="texto-contenido-datos azul"
+          style={{ marginLeft: "5px" }}
+        >
           Cerrar sesión
         </span>
       </p>

@@ -88,7 +88,7 @@ export const useProductCart = ({ products }: UseProductCartProps) => {
   };
 
   const addToCart = useCallback(
-    async (productId: string): Promise<void> => {
+    async (productId: string, quantity: number): Promise<void> => {
       try {
         const productIdNum = parseInt(productId, 10);
 
@@ -143,13 +143,13 @@ export const useProductCart = ({ products }: UseProductCartProps) => {
         if (existingProductIndex >= 0) {
           updatedCart = currentCart.map((item) =>
             item.id === productIdNum
-              ? { ...item, cantidad: item.cantidad + 1 }
+              ? { ...item, cantidad: item.cantidad + quantity }
               : item
           );
         } else {
           const newCartProduct: CartProduct = {
             ...selectedProduct,
-            cantidad: 1,
+            cantidad: quantity,
             addedAt: new Date().toISOString(),
           };
           updatedCart = [...currentCart, newCartProduct];

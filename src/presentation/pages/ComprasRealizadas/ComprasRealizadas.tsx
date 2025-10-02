@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useComprasRealizadas } from "../../hooks/useComprasRealizadas";
-// import CuerpoVacioFooter from "../../../Components/Footer/SectionsFooter/CuerpoVacioFooter";
 import Pedidos from "../../../Components/Login/LoginSecciones/Pedidos";
 import "./ComprasRealizadas.scss";
 import CuerpoVacioFooter from "../../components/Footer/CuerpoVacioFooter";
 
-const styleButton = {
+const styleButton: React.CSSProperties = {
   padding: "10px 20px",
   backgroundColor: "#009FE3",
   color: "white",
@@ -87,10 +86,7 @@ const ComprasRealizadas: React.FC = () => {
                           </Link>
                         </td>
                         <td>{item.fecha}</td>
-                        <td>
-                          {item.datosPersonales?.nombre}{" "}
-                          {item.datosPersonales?.apellido}
-                        </td>
+                        <td> {item.datosPersonales.email} </td>
                         <td>{getEstadoPedido(item)}</td>
                         <td>{item.cantidadDeArticulos}</td>
                         <td>{item.totalDeLaCompra} €</td>

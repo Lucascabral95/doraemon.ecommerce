@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Auth, getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
 
 import storeZustand from "../../Components/zustand";
@@ -11,10 +11,11 @@ export const UseUserData = () => {
     setMiDireccionCompleta,
     setEmailDeInicioDeSesion,
     setDatosPersonaless,
+    setEmailFirestoreAuth,
   } = storeZustand();
 
   useEffect(() => {
-    const auth = getAuth();
+    const auth = getAuth() as Auth;
 
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -25,6 +26,7 @@ export const UseUserData = () => {
 
       setAcceso(true);
       setEmailDeInicioDeSesion(user.email);
+      setEmailFirestoreAuth(user.email);
 
       const docRef = doc(db, "direccionesDeClientes", user.uid);
       const docRefDatosPersonales = doc(db, "datosPersonales", user.uid);

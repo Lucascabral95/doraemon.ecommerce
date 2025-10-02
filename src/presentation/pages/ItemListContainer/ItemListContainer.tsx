@@ -78,7 +78,7 @@ const ItemListContainer: React.FC = () => {
 
   const handleAddToCart = useCallback(
     (productId: number): void => {
-      addToCart(productId.toString());
+      addToCart(productId.toString(), 1);
     },
     [addToCart]
   );

@@ -15,22 +15,17 @@ export const useDetalleCompras = () => {
       setIsLoading(true);
       setError(null);
 
-      console.log("🔍 Obteniendo detalle de compra:", orderId);
-
       const docRef = doc(db, "ordenes", orderId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = { id: docSnap.id, ...docSnap.data() } as DetalleCompraData;
-        console.log("✅ Detalle de compra obtenido:", data);
         setCompras(data);
       } else {
-        console.log("❌ No se encontró la orden");
         setError("No se encontró la orden solicitada");
         setCompras(null);
       }
     } catch (err) {
-      console.error("❌ Error al obtener detalle:", err);
       setError("Error al cargar el detalle de la compra");
       setCompras(null);
     } finally {

@@ -67,7 +67,7 @@ const Categorias: React.FC = () => {
   });
 
   const handleAddToCart = (product: Product): void => {
-    addToCart(product.id.toString());
+    addToCart(product.id.toString(), 1);
   };
 
   return (

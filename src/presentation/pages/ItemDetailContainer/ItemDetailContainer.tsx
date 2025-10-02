@@ -85,7 +85,8 @@ const ItemDetailContainer: React.FC = () => {
   const handleAddToCart = (): void => {
     if (product && availability.isAvailable) {
       for (let i = 0; i < quantity; i++) {
-        addToCart(product.id.toString());
+        //addToCart(product.id.toString());
+        addToCart(product.id.toString(), quantity);
       }
     }
   };

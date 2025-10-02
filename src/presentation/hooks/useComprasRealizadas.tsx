@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
+
 import storeZustand from "../../Components/zustand";
 import { db } from "../../Components/Firebase-config";
 
@@ -50,7 +51,6 @@ export const useComprasRealizadas = () => {
           } as CompraRealizada);
         });
 
-        console.log("📦 Pedidos encontrados:", dataArr);
         setCompras(dataArr);
 
         setHasFinishedLoading(true);
@@ -72,10 +72,8 @@ export const useComprasRealizadas = () => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       if (user && user.email) {
         setEmailDeSesion(user.email);
-        console.log("✅ Usuario autenticado:", user.email);
         obtenerDatos(user.email);
       } else {
-        console.log("❌ Usuario no autenticado");
         setEmailDeSesion("");
         setCompras([]);
         setHasFinishedLoading(true);

@@ -15,6 +15,8 @@ export const useCheckoutFin = () => {
   );
   const datosPersonaless = storeZustand((state) => state.datosPersonaless);
 
+  const emailFirestoreAuth = storeZustand((state) => state.emailFirestoreAuth);
+
   const navigate = useNavigate();
   const { clearCart } = useCart();
 
@@ -77,8 +79,8 @@ export const useCheckoutFin = () => {
   }, []);
 
   const cancelacionCompra = useMemo(() => {
-    const tieneDatosPersonales =
-      datosPersonaless?.email && datosPersonaless?.nombre;
+    const tieneDatosPersonales = !!emailFirestoreAuth;
+
     const tieneDireccionValida = direccionValidada;
     const tieneProductos = cart && cart.length > 0;
 
@@ -220,7 +222,7 @@ export const useCheckoutFin = () => {
     if (!cancelacionCompra) {
       const errores: string[] = [];
 
-      if (!datosPersonaless?.email || !datosPersonaless?.nombre) {
+      if (!emailFirestoreAuth) {
         errores.push("• Completa tus datos personales (Paso 1)");
       }
 
@@ -263,11 +265,8 @@ export const useCheckoutFin = () => {
       const ordersRef = collection(db, "ordenes");
 
       const datosPersonales = {
-        nombre: datosPersonaless.nombre,
-        apellido: datosPersonaless.apellido,
-        email: user.email,
-        edad: datosPersonaless.edad || "No proporcionada",
-        telefono: direccionCompleta.telefono,
+        email: user.email || emailFirestoreAuth,
+        uid: user.uid,
       };
 
       const direccionDeEnvio = {
@@ -341,6 +340,7 @@ export const useCheckoutFin = () => {
     desicionRegalo,
     cantidadArticulossss,
     datosPersonaless,
+    emailFirestoreAuth,
 
     handleInput,
     usoCollapse,

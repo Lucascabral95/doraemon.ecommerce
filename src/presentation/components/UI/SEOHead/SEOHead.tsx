@@ -64,8 +64,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ seoData }) => {
     if (seoData.image) {
       updateMetaTag("twitter:image", seoData.image);
     }
-
-    console.log("✅ SEO meta tags updated for:", seoData.title);
   }, [seoData]);
 
   return null;

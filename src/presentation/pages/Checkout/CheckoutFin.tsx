@@ -18,7 +18,7 @@ const CheckoutFin: React.FC = () => {
     total,
     desicionRegalo,
     cantidadArticulossss,
-    datosPersonaless,
+    emailFirestoreAuth,
 
     handleInput,
     usoCollapse,
@@ -34,10 +34,11 @@ const CheckoutFin: React.FC = () => {
     <div className="checkout-fin">
       <div className="contenedor-checkout-fin">
         <div className="contenedor-de-datos">
+          {/* PASO 1: DATOS PERSONALES */}
           <div className="contenedor-datos" onClick={() => usoCollapse(1)}>
             <div className="datos">
               <p className="textito">1. TUS DATOS PERSONALES</p>
-              {datosPersonaless?.email && (
+              {emailFirestoreAuth && (
                 <span
                   style={{
                     color: "#28a745",
@@ -56,12 +57,13 @@ const CheckoutFin: React.FC = () => {
 
           {collapseSelected === 1 && (
             <PersonalDataStep
-              datosPersonaless={datosPersonaless}
+              emailFirestoreAuth={emailFirestoreAuth}
               onLogout={handleCerrarSesion}
               onContinue={() => usoCollapse(2)}
             />
           )}
 
+          {/* PASO 2: DIRECCIÓN */}
           <div className="contenedor-datos" onClick={() => usoCollapse(2)}>
             <div className="datos">
               <p className="textito">2. DIRECCIÓN</p>
@@ -93,6 +95,7 @@ const CheckoutFin: React.FC = () => {
             />
           )}
 
+          {/* PASO 3: MÉTODO DE ENVÍO */}
           <div className="contenedor-datos" onClick={() => usoCollapse(3)}>
             <div className="datos">
               <p className="textito">3. MÉTODO DE ENVÍO</p>
@@ -156,6 +159,7 @@ const CheckoutFin: React.FC = () => {
             </div>
           )}
 
+          {/* PASO 4: FORMA DE PAGO */}
           <div className="contenedor-datos" onClick={() => usoCollapse(4)}>
             <div className="datos">
               <p className="textito">4. FORMA DE PAGO</p>
@@ -172,6 +176,7 @@ const CheckoutFin: React.FC = () => {
                 <p>PAGO CON TARJETA</p>
               </div>
 
+              {/* Alerta de validación */}
               {!cancelacionCompra && (
                 <div
                   style={{
@@ -194,8 +199,7 @@ const CheckoutFin: React.FC = () => {
                   <ul
                     style={{ margin: 0, paddingLeft: "20px", color: "#856404" }}
                   >
-                    {(!datosPersonaless?.email ||
-                      !datosPersonaless?.nombre) && (
+                    {!emailFirestoreAuth && (
                       <li>Completar tus datos personales (Paso 1)</li>
                     )}
                     {!direccionValidada && (
