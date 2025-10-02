@@ -1,0 +1,22 @@
+.checkout-page {
+  max-width: 600px;
+  margin: 5vw auto 7vw auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .checkout-page {
+    margin: 8vw 4vw 5vw 4vw;
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page {
+    margin: 12vw 2vw 8vw 2vw;
+    padding: 24px 20px;
+  }
+}

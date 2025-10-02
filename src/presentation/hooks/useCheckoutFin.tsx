@@ -1,10 +1,8 @@
 import { useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 
-import { db } from "../../Components/Firebase-config";
 import storeZustand from "../../Components/zustand";
 import { useCart } from "./useCart";
 
@@ -218,7 +216,117 @@ export const useCheckoutFin = () => {
     [navigate]
   );
 
-  const handleOrden = useCallback(async () => {
+  // const handleOrden = useCallback(async () => {
+  //   if (!cancelacionCompra) {
+  //     const errores: string[] = [];
+
+  //     if (!emailFirestoreAuth) {
+  //       errores.push("• Completa tus datos personales (Paso 1)");
+  //     }
+
+  //     if (!direccionValidada) {
+  //       errores.push("• Confirma tu dirección de envío (Paso 2)");
+  //     }
+
+  //     if (!cart || cart.length === 0) {
+  //       errores.push("• Agrega productos al carrito");
+  //     }
+
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "No se puede completar la compra",
+  //       html: `
+  //         <p style="margin-bottom: 15px;"><strong>Faltan los siguientes datos:</strong></p>
+  //         <div style="text-align: left; margin: 0 auto; display: inline-block;">
+  //           ${errores.join("<br>")}
+  //         </div>
+  //       `,
+  //       confirmButtonText: "Entendido",
+  //     });
+  //     return;
+  //   }
+
+  //   const auth = getAuth();
+  //   const user = auth.currentUser;
+
+  //   if (!user) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "No autenticado",
+  //       text: "Debes iniciar sesión para completar la compra",
+  //       confirmButtonText: "OK",
+  //     });
+  //     return;
+  //   }
+
+  //   try {
+  //     const ordersRef = collection(db, "ordenes");
+
+  //     const datosPersonales = {
+  //       email: user.email || emailFirestoreAuth,
+  //       uid: user.uid,
+  //     };
+
+  //     const direccionDeEnvio = {
+  //       nombre: direccionCompleta.nombre,
+  //       apellido: direccionCompleta.apellido,
+  //       empresa: direccionCompleta.empresa || "",
+  //       ciudad: direccionCompleta.ciudad,
+  //       codigoPostal: direccionCompleta.codigoPostal,
+  //       direccion: direccionCompleta.direccion,
+  //       pais: direccionCompleta.pais,
+  //       provincia: direccionCompleta.provincia,
+  //       telefono: direccionCompleta.telefono,
+  //     };
+
+  //     const contenido = {
+  //       userId: user.uid,
+  //       direccionEnvio: direccionDeEnvio,
+  //       datosPersonales: datosPersonales,
+  //       carrito: cart,
+  //       fecha: new Date().toISOString(),
+  //       comentarioDeLaOrden: comentarioEnvio || "Sin comentarios",
+  //       cantidadDeArticulos: cantidadArticulossss,
+  //       totalDeLaCompra: total.toFixed(2),
+  //       estado: "pendiente",
+  //     };
+
+  //     const docRef = await addDoc(ordersRef, contenido);
+
+  //     await clearCart();
+
+  //     await Swal.fire({
+  //       icon: "success",
+  //       title: "¡Compra exitosa!",
+  //       text: "Tu pedido ha sido procesado correctamente",
+  //       timer: 2000,
+  //       showConfirmButton: false,
+  //     });
+
+  //     navigate(`/detalle/compra/${docRef.id}`);
+  //   } catch (error) {
+  //     console.error("Error al agregar el documento:", error);
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Error al procesar la compra",
+  //       text: "Hubo un problema al procesar tu compra. Inténtalo de nuevo.",
+  //       confirmButtonText: "OK",
+  //     });
+  //   }
+  // }, [
+  //   cancelacionCompra,
+  //   datosPersonaless,
+  //   direccionCompleta,
+  //   direccionValidada,
+  //   cart,
+  //   comentarioEnvio,
+  //   cantidadArticulossss,
+  //   total,
+  //   clearCart,
+  //   navigate,
+  // ]);
+
+  const handleOrden = useCallback(() => {
     if (!cancelacionCompra) {
       const errores: string[] = [];
 
@@ -261,15 +369,10 @@ export const useCheckoutFin = () => {
       return;
     }
 
-    try {
-      const ordersRef = collection(db, "ordenes");
-
-      const datosPersonales = {
-        email: user.email || emailFirestoreAuth,
-        uid: user.uid,
-      };
-
-      const direccionDeEnvio = {
+    const orderData = {
+      userId: user.uid,
+      email: user.email || emailFirestoreAuth,
+      direccionEnvio: {
         nombre: direccionCompleta.nombre,
         apellido: direccionCompleta.apellido,
         empresa: direccionCompleta.empresa || "",
@@ -279,52 +382,28 @@ export const useCheckoutFin = () => {
         pais: direccionCompleta.pais,
         provincia: direccionCompleta.provincia,
         telefono: direccionCompleta.telefono,
-      };
+      },
+      carrito: cart,
+      comentario: comentarioEnvio || "Sin comentarios",
+      cantidadArticulos: cantidadArticulossss,
+      total: total,
+      timestamp: Date.now(),
+    };
 
-      const contenido = {
-        userId: user.uid,
-        direccionEnvio: direccionDeEnvio,
-        datosPersonales: datosPersonales,
-        carrito: cart,
-        fecha: new Date().toISOString(),
-        comentarioDeLaOrden: comentarioEnvio || "Sin comentarios",
-        cantidadDeArticulos: cantidadArticulossss,
-        totalDeLaCompra: total.toFixed(2),
-        estado: "pendiente",
-      };
+    localStorage.setItem("pendingOrderData", JSON.stringify(orderData));
 
-      const docRef = await addDoc(ordersRef, contenido);
-
-      await clearCart();
-
-      await Swal.fire({
-        icon: "success",
-        title: "¡Compra exitosa!",
-        text: "Tu pedido ha sido procesado correctamente",
-        timer: 2000,
-        showConfirmButton: false,
-      });
-
-      navigate(`/detalle/compra/${docRef.id}`);
-    } catch (error) {
-      console.error("Error al agregar el documento:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Error al procesar la compra",
-        text: "Hubo un problema al procesar tu compra. Inténtalo de nuevo.",
-        confirmButtonText: "OK",
-      });
-    }
+    navigate("/stripe", {
+      state: { totalAmount: total },
+    });
   }, [
     cancelacionCompra,
-    datosPersonaless,
-    direccionCompleta,
+    emailFirestoreAuth,
     direccionValidada,
     cart,
+    direccionCompleta,
     comentarioEnvio,
     cantidadArticulossss,
     total,
-    clearCart,
     navigate,
   ]);
 

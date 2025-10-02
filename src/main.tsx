@@ -1,13 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+
 import "./infrastructure/config/firebase.config";
 ("bootstrap/scss/bootstrap");
 ("react-select/dist/react-select.css");
 import "react-loading-skeleton/dist/skeleton.css";
 import AppRoutes from "./Routes/AppRoutes";
-import "./index.css";
 import CustomToaster from "./presentation/components/UI/Toasters/ToasterAddToCart";
+import "./index.css";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 

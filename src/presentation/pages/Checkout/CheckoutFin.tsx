@@ -1,10 +1,10 @@
 import React from "react";
 
-import { useCheckoutFin } from "../../hooks";
 import { PersonalDataStep } from "../../components/Checkout/PersonalDataStep";
 import { AddressStep } from "../../components/Checkout/AddressStep";
 import { OrderSummary } from "../../components/Checkout/OrderSummary";
 import "./CheckoutFin.scss";
+import { useCheckoutFin } from "../../hooks/useCheckoutFin";
 
 const CheckoutFin: React.FC = () => {
   const {

@@ -29,35 +29,105 @@
 
 ---
 
-<!-- ## ⚙️ Prueba de Pagos con Stripe/MercadoPago
+# 🧪 Guía de Pruebas de Integración con Stripe
 
-Para probar la funcionalidad de pagos integrada en el entorno de desarrollo, seguí estos pasos:
+Esta guía proporciona la información necesaria para realizar pruebas exhaustivas del sistema de pagos integrado con **Stripe** en el entorno de desarrollo.
 
-### 💳 Datos de Tarjeta de Prueba (Stripe)
+---
 
-**Información de Pago:**
+## 💳 Tarjetas de Prueba
 
-- **Número de Tarjeta:** `4242 4242 4242 4242`
-- **Fecha de Caducidad:** Cualquier fecha futura (ej: `12/30`)
-- **Código de Seguridad:** Cualquier 3 dígitos (ej: `123`)
-- **Nombre del Titular:** Cualquier nombre
+### ✅ Pagos Exitosos
 
-### 📋 Proceso de Prueba
+Para simular transacciones aprobadas correctamente, utiliza los siguientes datos:
 
-**Flujo Completo:**
+| Campo                  | Valor                                |
+| ---------------------- | ------------------------------------ |
+| **Número de Tarjeta**  | `4242 4242 4242 4242`                |
+| **Red de Pago**        | Visa                                 |
+| **Fecha de Caducidad** | Cualquier fecha futura (ej: `12/30`) |
+| **Código CVC**         | Cualquier 3 dígitos (ej: `123`)      |
+| **Nombre del Titular** | Cualquier nombre                     |
+| **Código Postal**      | Cualquier código válido              |
 
-1. **Navegar al Carrito:** Agregá productos al carrito de compras
-2. **Proceder al Checkout:** Completá la información de envío
-3. **Completar Pago:** Ingresá los datos de la tarjeta de prueba
-4. **Confirmar Transacción:** Verificá el estado del pago y la creación de la orden
+---
 
-### ✅ Resultados Esperados
+### ❌ Simulación de Errores y Rechazos
 
-- **Estado de Pago:** Aprobado ✅
-- **Actualización de Stock:** Reducción automática del inventario
-- **Estado de Orden:** Cambia a "Pagado" en tiempo real
+Para probar diferentes escenarios de error, utiliza las siguientes tarjetas de prueba:
 
---- -->
+| Escenario              | Número de Tarjeta     | Código de Error    | Código de Rechazo        |
+| ---------------------- | --------------------- | ------------------ | ------------------------ |
+| Rechazo genérico       | `4000 0000 0000 0002` | `card_declined`    | `generic_decline`        |
+| Fondos insuficientes   | `4000 0000 0000 9995` | `card_declined`    | `insufficient_funds`     |
+| Tarjeta robada         | `4000 0000 0000 9979` | `card_declined`    | `stolen_card`            |
+| Tarjeta caducada       | `4000 0000 0000 0069` | `expired_card`     | —                        |
+| CVC incorrecto         | `4000 0000 0000 0127` | `card_declined`    | `incorrect_cvc`          |
+| Error de procesamiento | `4000 0000 0000 0119` | `processing_error` | —                        |
+| Número incorrecto      | `4242 4242 4242 4241` | `incorrect_number` | —                        |
+| Límite de velocidad    | `4000 0000 0000 6975` | `card_declined`    | `card_velocity_exceeded` |
+
+📖 **Referencia:** Para más detalles sobre códigos de error, consulta la [documentación oficial de Stripe](https://stripe.com/docs/testing).
+
+---
+
+## 🔄 Flujo de Prueba Completo
+
+### Pasos para Realizar una Prueba
+
+1. **Agregar Productos al Carrito**
+
+   - Navega por el catálogo de productos
+   - Selecciona productos y agrégalos al carrito
+
+2. **Iniciar Proceso de Checkout**
+
+   - Accede al carrito de compras
+   - Haz clic en **"Proceder al Checkout"**
+
+3. **Completar Información de Envío**
+
+   - Ingresa nombre completo
+   - Proporciona dirección de envío válida
+   - Confirma los datos antes de continuar
+
+4. **Seleccionar Método de Pago**
+
+   - Selecciona **"Pago con Tarjeta"**
+   - Ingresa los datos de la tarjeta de prueba
+
+5. **Confirmar Transacción**
+
+   - Revisa el resumen de la orden
+   - Confirma el pago
+
+6. **Verificar Resultado**
+   - Observa la redirección automática
+   - Revisa los detalles de la orden creada
+
+---
+
+## ✅ Resultados Esperados
+
+### Transacción Exitosa
+
+- ✓ **Estado del Pago:** Aprobado
+- ✓ **Orden Creada:** ID único asignado
+- ✓ **Stock Actualizado:** Reducción automática del inventario
+- ✓ **Estado de la Orden:** Pagado
+- ✓ **Carrito Vaciado:** Limpieza automática después del pago
+- ✓ **Redirección:** A la página de detalles de la orden
+- ✓ **Notificación:** Mensaje de confirmación al usuario
+
+### Transacción Rechazada
+
+- ✗ **Mensaje de Error:** Descripción clara del problema
+- ✗ **Estado del Pago:** Rechazado o Error
+- ✗ **Orden:** No se crea en el sistema
+- ✗ **Stock:** Sin cambios
+- ✗ **Usuario:** Permanece en la página de pago con opción de reintentar
+
+---
 
 ## 🚀 Tecnologías Utilizadas
 

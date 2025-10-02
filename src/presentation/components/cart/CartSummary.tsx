@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface CartSummaryProps {
   itemCount: number;
@@ -14,6 +15,8 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
   onPurchase,
 }) => {
   const [promoCode, setPromoCode] = useState<string>("");
+
+  const navigate = useNavigate();
 
   return (
     <div className="detalles">

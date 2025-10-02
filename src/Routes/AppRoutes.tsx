@@ -11,6 +11,10 @@ import {
   useInitializeWishlist,
   UseUserData,
 } from "../presentation/hooks";
+import CheckoutStripe from "../presentation/pages/Checkout/CheckoutStripe";
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "../infrastructure/config/stripe.config";
+import PaymentSuccessPage from "../presentation/pages/Payments/PaymentSuccess";
 
 const MainPage = lazy(() => import("../presentation/pages/MaInPage/MainPage"));
 const ItemListContainer = lazy(
@@ -118,10 +122,17 @@ const AppRoutes: React.FC = () => {
           <Route path="/footer/nota-legal" element={<NotaLegal />} />
           <Route path="/derechos" element={<DerechosReservados />} />
 
+          <Route
+            path="/payment-success"
+            element={
+              <Elements stripe={stripePromise}>
+                <PaymentSuccessPage />
+              </Elements>
+            }
+          />
+
           {/* Protegidas (mismo middleware) */}
           <Route element={<MiddlewareRutasProtegidas />}>
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/fin" element={<CheckoutFin />} />
             <Route path="/direccion" element={<Direccion />} />
             <Route path="/cupones" element={<Cupones />} />
             <Route path="/abono" element={<Abono />} />
@@ -130,6 +141,10 @@ const AppRoutes: React.FC = () => {
             <Route path="/datos/personales" element={<DatosPersonales />} />
             <Route path="/comprasRealizadas" element={<ComprasRealizadas />} />
             <Route path="/detalle/compra/:id" element={<DetalleCompras />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/fin" element={<CheckoutFin />} />
+            {/* Endpoint Stripe */}
+            <Route path="/stripe" element={<CheckoutStripe />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
